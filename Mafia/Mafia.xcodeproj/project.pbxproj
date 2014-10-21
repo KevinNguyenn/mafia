@@ -416,6 +416,7 @@
 				9D897C0819F07C4D00C1519F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9D897C0919F07C4D00C1519F /* Build configuration list for PBXNativeTarget "MafiaTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +425,7 @@
 				9D897C0B19F07C4D00C1519F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
