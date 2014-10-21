@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6246" systemVersion="14A379a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="TMw-kn-1cR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="TMw-kn-1cR">
     <dependencies>
-        <deployment identifier="iOS"/>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <development version="5100" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6239"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
         <!--Enter Night Time-->
@@ -25,7 +25,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="lec-FO-ej2" kind="custom" id="66T-fS-Nm8"/>
+                                    <segue destination="UsW-FW-2xt" kind="custom" id="66T-fS-Nm8"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Night Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" useAutomaticPreferredMaxLayoutWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wh0-2J-n1W">
@@ -149,9 +149,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KLx-XS-TJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-784" y="-459"/>
+            <point key="canvasLocation" x="-252" y="-459"/>
         </scene>
-        <!--Enter Day Time-->
+        <!--View Controller-->
         <scene sceneID="CRo-f3-YGD">
             <objects>
                 <viewController id="lec-FO-ej2" sceneMemberID="viewController">
@@ -212,11 +212,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Enter Day Time" id="Gnf-Kq-KQ0"/>
+                    <navigationItem key="navigationItem" id="CR3-yh-oGu"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8WB-EO-4xu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1456" y="-459"/>
+            <point key="canvasLocation" x="-924" y="-459"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="SaZ-go-od6">
@@ -275,7 +275,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="llN-3F-nu4">
-                                <rect key="frame" x="16" y="87" width="71" height="112"/>
+                                <rect key="frame" x="16" y="87" width="76" height="112"/>
                                 <connections>
                                     <segue destination="OS6-Ek-duy" kind="embed" id="nUB-an-AFl"/>
                                 </connections>
@@ -293,7 +293,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TCl-zI-WVI">
-                                <rect key="frame" x="16" y="226" width="71" height="115"/>
+                                <rect key="frame" x="16" y="226" width="76" height="115"/>
                                 <connections>
                                     <segue destination="5ur-gn-oiK" kind="embed" id="DgZ-jZ-hBc"/>
                                 </connections>
@@ -337,7 +337,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Efg-Cd-KEe"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="4XA-te-sMH">
-                        <rect key="frame" x="0.0" y="0.0" width="71" height="112"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -345,6 +345,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2cD-su-Jfp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="672" y="-524"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="YqV-Zf-xHo">
@@ -355,7 +356,7 @@
                         <viewControllerLayoutGuide type="bottom" id="WlS-Mt-qvQ"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Cqw-vO-ZtV">
-                        <rect key="frame" x="0.0" y="0.0" width="75" height="112"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -391,7 +392,7 @@
                         <viewControllerLayoutGuide type="bottom" id="dXe-Fr-5cd"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Bit-bV-76W">
-                        <rect key="frame" x="0.0" y="0.0" width="71" height="115"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -399,6 +400,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r4S-DB-uQS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="672" y="137"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Acr-kx-807">
@@ -409,7 +411,7 @@
                         <viewControllerLayoutGuide type="bottom" id="xx8-56-ZYc"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="eMD-5Q-nec">
-                        <rect key="frame" x="0.0" y="0.0" width="75" height="115"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -417,6 +419,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5X-Hj-VwA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1037" y="136"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Uld-6j-cGo">
@@ -427,7 +430,7 @@
                         <viewControllerLayoutGuide type="bottom" id="h1g-tF-ckV"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mRt-Un-6P2">
-                        <rect key="frame" x="0.0" y="0.0" width="76" height="115"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -435,6 +438,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6bX-L5-EhK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Enter Day Time-->
+        <scene sceneID="wHl-FR-tKm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UsW-FW-2xt" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Enter Day Time" id="Gnf-Kq-KQ0"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ikC-PG-sSE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="lec-FO-ej2" kind="relationship" relationship="rootViewController" id="Q80-jA-hGh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DB7-wI-OhE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1456" y="-459"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
