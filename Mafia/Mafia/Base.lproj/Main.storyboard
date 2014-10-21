@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="e5z-A8-tXJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6246" systemVersion="14A379a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="e5z-A8-tXJ">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
+        <deployment identifier="iOS"/>
         <development version="5100" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6239"/>
     </dependencies>
     <scenes>
         <!--Enter Night Time-->
@@ -202,10 +202,10 @@
             </objects>
             <point key="canvasLocation" x="-924" y="-459"/>
         </scene>
-        <!--View Controller-->
+        <!--Select Players View Controller-->
         <scene sceneID="SaZ-go-od6">
             <objects>
-                <viewController id="TMw-kn-1cR" sceneMemberID="viewController">
+                <viewController id="TMw-kn-1cR" customClass="SelectPlayersViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7w5-Gf-8oJ"/>
                         <viewControllerLayoutGuide type="bottom" id="Wh9-gD-Ulp"/>
@@ -242,6 +242,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="4i5-Ea-V5a"/>
+                    <connections>
+                        <outlet property="pickerPlayers" destination="vU8-iW-IOI" id="UfW-ne-t2i"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3dD-kp-QYj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

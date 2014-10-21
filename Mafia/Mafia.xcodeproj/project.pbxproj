@@ -14,6 +14,7 @@
 		9D897BF419F07C4C00C1519F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D897BF319F07C4C00C1519F /* Images.xcassets */; };
 		9D897BF719F07C4C00C1519F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D897BF519F07C4C00C1519F /* LaunchScreen.xib */; };
 		9D897C0319F07C4D00C1519F /* MafiaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D897C0219F07C4D00C1519F /* MafiaTests.m */; };
+		E457EC1819F723B70011ADFD /* SelectPlayersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E457EC1719F723B70011ADFD /* SelectPlayersViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		9D897BFC19F07C4C00C1519F /* MafiaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MafiaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D897C0119F07C4D00C1519F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D897C0219F07C4D00C1519F /* MafiaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MafiaTests.m; sourceTree = "<group>"; };
+		E457EC1619F723B70011ADFD /* SelectPlayersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectPlayersViewController.h; sourceTree = "<group>"; };
+		E457EC1719F723B70011ADFD /* SelectPlayersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectPlayersViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 				9D897BED19F07C4C00C1519F /* ViewController.h */,
 				9D897BEE19F07C4C00C1519F /* ViewController.m */,
 				9D897BF019F07C4C00C1519F /* Main.storyboard */,
+				E457EC1619F723B70011ADFD /* SelectPlayersViewController.h */,
+				E457EC1719F723B70011ADFD /* SelectPlayersViewController.m */,
 				9D897BF319F07C4C00C1519F /* Images.xcassets */,
 				9D897BF519F07C4C00C1519F /* LaunchScreen.xib */,
 				9D897BE619F07C4C00C1519F /* Supporting Files */,
@@ -222,6 +227,7 @@
 				9D897BEF19F07C4C00C1519F /* ViewController.m in Sources */,
 				9D897BEC19F07C4C00C1519F /* AppDelegate.m in Sources */,
 				9D897BE919F07C4C00C1519F /* main.m in Sources */,
+				E457EC1819F723B70011ADFD /* SelectPlayersViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
