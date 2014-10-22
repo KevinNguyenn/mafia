@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B8B1D6419F72E3B00306163 /* MafiaBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8B1D6319F72E3A00306163 /* MafiaBackground.m */; };
+		8B8B1D6A19F7307B00306163 /* mafia.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B8B1D6919F7307B00306163 /* mafia.jpg */; };
 		9D897BE919F07C4C00C1519F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D897BE819F07C4C00C1519F /* main.m */; };
 		9D897BEC19F07C4C00C1519F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D897BEB19F07C4C00C1519F /* AppDelegate.m */; };
 		9D897BEF19F07C4C00C1519F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D897BEE19F07C4C00C1519F /* ViewController.m */; };
@@ -15,6 +17,7 @@
 		9D897BF719F07C4C00C1519F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D897BF519F07C4C00C1519F /* LaunchScreen.xib */; };
 		9D897C0319F07C4D00C1519F /* MafiaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D897C0219F07C4D00C1519F /* MafiaTests.m */; };
 		E457EC1819F723B70011ADFD /* SelectPlayersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E457EC1719F723B70011ADFD /* SelectPlayersViewController.m */; };
+		E457EC1A19F728480011ADFD /* infoButton.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E457EC1919F728480011ADFD /* infoButton.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +31,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8B8B1D6219F72E3A00306163 /* MafiaBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MafiaBackground.h; sourceTree = "<group>"; };
+		8B8B1D6319F72E3A00306163 /* MafiaBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MafiaBackground.m; sourceTree = "<group>"; };
+		8B8B1D6919F7307B00306163 /* mafia.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mafia.jpg; sourceTree = "<group>"; };
 		9D897BE319F07C4C00C1519F /* Mafia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mafia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D897BE719F07C4C00C1519F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D897BE819F07C4C00C1519F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -43,6 +49,7 @@
 		9D897C0219F07C4D00C1519F /* MafiaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MafiaTests.m; sourceTree = "<group>"; };
 		E457EC1619F723B70011ADFD /* SelectPlayersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectPlayersViewController.h; sourceTree = "<group>"; };
 		E457EC1719F723B70011ADFD /* SelectPlayersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectPlayersViewController.m; sourceTree = "<group>"; };
+		E457EC1919F728480011ADFD /* infoButton.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = infoButton.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,13 +91,17 @@
 		9D897BE519F07C4C00C1519F /* Mafia */ = {
 			isa = PBXGroup;
 			children = (
+				8B8B1D6919F7307B00306163 /* mafia.jpg */,
 				9D897BEA19F07C4C00C1519F /* AppDelegate.h */,
 				9D897BEB19F07C4C00C1519F /* AppDelegate.m */,
 				9D897BED19F07C4C00C1519F /* ViewController.h */,
+				8B8B1D6219F72E3A00306163 /* MafiaBackground.h */,
+				8B8B1D6319F72E3A00306163 /* MafiaBackground.m */,
 				9D897BEE19F07C4C00C1519F /* ViewController.m */,
 				9D897BF019F07C4C00C1519F /* Main.storyboard */,
 				E457EC1619F723B70011ADFD /* SelectPlayersViewController.h */,
 				E457EC1719F723B70011ADFD /* SelectPlayersViewController.m */,
+				E457EC1919F728480011ADFD /* infoButton.jpg */,
 				9D897BF319F07C4C00C1519F /* Images.xcassets */,
 				9D897BF519F07C4C00C1519F /* LaunchScreen.xib */,
 				9D897BE619F07C4C00C1519F /* Supporting Files */,
@@ -204,7 +215,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B8B1D6A19F7307B00306163 /* mafia.jpg in Resources */,
 				9D897BF219F07C4C00C1519F /* Main.storyboard in Resources */,
+				E457EC1A19F728480011ADFD /* infoButton.jpg in Resources */,
 				9D897BF719F07C4C00C1519F /* LaunchScreen.xib in Resources */,
 				9D897BF419F07C4C00C1519F /* Images.xcassets in Resources */,
 			);
@@ -224,6 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B8B1D6419F72E3B00306163 /* MafiaBackground.m in Sources */,
 				9D897BEF19F07C4C00C1519F /* ViewController.m in Sources */,
 				9D897BEC19F07C4C00C1519F /* AppDelegate.m in Sources */,
 				9D897BE919F07C4C00C1519F /* main.m in Sources */,

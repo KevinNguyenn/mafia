@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6246" systemVersion="14A379a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="e5z-A8-tXJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="e5z-A8-tXJ">
     <dependencies>
-        <deployment identifier="iOS"/>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <development version="5100" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6239"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
         <!--Enter Night Time-->
@@ -238,6 +238,21 @@
                                     <segue destination="fcF-Tk-1Wr" kind="custom" id="fFL-co-Ina"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z59-PR-4py">
+                                <rect key="frame" x="264" y="84" width="26" height="26"/>
+                                <state key="normal" image="infoButton.jpg">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Button">
+                                            <attributes>
+                                                <font key="NSFont" size="15" name="HelveticaNeue-Bold"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <segue destination="rZq-g6-NIR" kind="push" id="MZZ-1q-5gl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -249,6 +264,75 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3dD-kp-QYj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1089" y="250"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="llB-eF-hsn">
+            <objects>
+                <viewController id="rZq-g6-NIR" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="w3E-FI-lGf"/>
+                        <viewControllerLayoutGuide type="bottom" id="oRE-bG-fMH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0gj-aU-XhI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How to Play" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" useAutomaticPreferredMaxLayoutWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0aU-R1-Jxl">
+                                <rect key="frame" x="114" y="96" width="93" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nominate one player to be the Moderator." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" useAutomaticPreferredMaxLayoutWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="upy-Q2-wC5">
+                                <rect key="frame" x="16" y="164" width="320" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Each player will select a card to determine" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" useAutomaticPreferredMaxLayoutWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dbR-Dc-wDc">
+                                <rect key="frame" x="16" y="200" width="338" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="their role." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" useAutomaticPreferredMaxLayoutWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lpM-D6-SkE">
+                                <rect key="frame" x="16" y="221" width="338" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Only the Moderator has access to the" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" useAutomaticPreferredMaxLayoutWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="faO-Aw-LJe">
+                                <rect key="frame" x="16" y="262" width="338" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Death Switch in order to remove players" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" useAutomaticPreferredMaxLayoutWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mC4-HN-jgI">
+                                <rect key="frame" x="16" y="283" width="338" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="from the game after they have been" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" useAutomaticPreferredMaxLayoutWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gaG-TM-I7p">
+                                <rect key="frame" x="16" y="303" width="338" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="killed." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" useAutomaticPreferredMaxLayoutWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8QA-XZ-TaD">
+                                <rect key="frame" x="16" y="324" width="338" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Fkx-zn-ctd"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r0j-E7-85I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1092" y="893"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Acf-EQ-Y6o">
@@ -316,10 +400,10 @@
             </objects>
             <point key="canvasLocation" x="-583" y="330"/>
         </scene>
-        <!--View Controller-->
+        <!--Mafia Background-->
         <scene sceneID="d7t-CI-IH1">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="OS6-Ek-duy" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="OS6-Ek-duy" customClass="MafiaBackground" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kYZ-dh-3Jx"/>
                         <viewControllerLayoutGuide type="bottom" id="Efg-Cd-KEe"/>
@@ -327,18 +411,23 @@
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="4XA-te-sMH">
                         <rect key="frame" x="0.0" y="0.0" width="76" height="112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mafia.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="F0l-kq-8SU">
+                                <rect key="frame" x="0.0" y="0.0" width="76" height="157"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2cD-su-Jfp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="672" y="-524"/>
+            <point key="canvasLocation" x="620" y="40"/>
         </scene>
-        <!--View Controller-->
+        <!--Mafia Background-->
         <scene sceneID="YqV-Zf-xHo">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="3ar-fH-wdB" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="3ar-fH-wdB" customClass="MafiaBackground" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dWL-ca-RwO"/>
                         <viewControllerLayoutGuide type="bottom" id="WlS-Mt-qvQ"/>
@@ -346,6 +435,11 @@
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Cqw-vO-ZtV">
                         <rect key="frame" x="0.0" y="0.0" width="75" height="112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mafia.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Lh1-ey-xET">
+                                <rect key="frame" x="0.0" y="0.0" width="75" height="157"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
@@ -353,10 +447,10 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DHj-4s-FxX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--View Controller-->
+        <!--Mafia Background-->
         <scene sceneID="SPe-Ab-F2T">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="08c-i2-ZTm" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="08c-i2-ZTm" customClass="MafiaBackground" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="waL-Gt-n8v"/>
                         <viewControllerLayoutGuide type="bottom" id="R92-T1-Mqd"/>
@@ -364,6 +458,11 @@
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="YKQ-C9-FM2">
                         <rect key="frame" x="0.0" y="0.0" width="76" height="112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mafia.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="J47-P1-Sd7">
+                                <rect key="frame" x="0.0" y="0.0" width="76" height="157"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
@@ -371,10 +470,10 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v37-d6-MaH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--View Controller-->
+        <!--Mafia Background-->
         <scene sceneID="wxf-wm-LAl">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="5ur-gn-oiK" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="5ur-gn-oiK" customClass="MafiaBackground" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="O0G-wv-f9M"/>
                         <viewControllerLayoutGuide type="bottom" id="dXe-Fr-5cd"/>
@@ -382,6 +481,11 @@
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Bit-bV-76W">
                         <rect key="frame" x="0.0" y="0.0" width="76" height="115"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mafia.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="qih-Yq-hJG">
+                                <rect key="frame" x="0.0" y="0.0" width="76" height="157"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
@@ -390,10 +494,10 @@
             </objects>
             <point key="canvasLocation" x="1204" y="136.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Mafia Background-->
         <scene sceneID="Acr-kx-807">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="PPC-pj-0Cw" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="PPC-pj-0Cw" customClass="MafiaBackground" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="b25-7A-hK3"/>
                         <viewControllerLayoutGuide type="bottom" id="xx8-56-ZYc"/>
@@ -401,6 +505,11 @@
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="eMD-5Q-nec">
                         <rect key="frame" x="0.0" y="0.0" width="75" height="115"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mafia.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="piM-0E-R3N">
+                                <rect key="frame" x="0.0" y="0.0" width="75" height="157"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
@@ -409,10 +518,10 @@
             </objects>
             <point key="canvasLocation" x="1568.5" y="135.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Mafia Background-->
         <scene sceneID="Uld-6j-cGo">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="mYr-Nd-8Gm" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="mYr-Nd-8Gm" customClass="MafiaBackground" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Puk-0r-Ydn"/>
                         <viewControllerLayoutGuide type="bottom" id="h1g-tF-ckV"/>
@@ -420,6 +529,11 @@
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mRt-Un-6P2">
                         <rect key="frame" x="0.0" y="0.0" width="76" height="115"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mafia.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Z5w-LB-6AY">
+                                <rect key="frame" x="0.0" y="0.0" width="76" height="157"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
@@ -465,6 +579,10 @@
             <point key="canvasLocation" x="-1621" y="250"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="infoButton.jpg" width="256" height="256"/>
+        <image name="mafia.jpg" width="80" height="120"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
