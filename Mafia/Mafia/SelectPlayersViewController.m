@@ -30,7 +30,6 @@
     // Connect data to picker
     self.pickerPlayers.dataSource = self;
     self.pickerPlayers.delegate = self;
-    NSLog(@"EBOLA");
     
 }
 
@@ -63,7 +62,6 @@
     NSLog(@"num players selected: %d",row);
     // 6 players
     if(row == 0) {
-        NSLog(@"nigga bitcH");
         cardSpecs = [[NSDictionary alloc] initWithObjectsAndKeys:
                               @{@"cardWidth": @"75", @"cardHeight": @"112", @"xCoord": @"16", @"yCoord": @"62"}, @"card1",
                               @{@"cardWidth": @"75", @"cardHeight": @"112", @"xCoord": @"123", @"yCoord": @"62"}, @"card2",

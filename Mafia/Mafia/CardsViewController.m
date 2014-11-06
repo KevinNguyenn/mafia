@@ -18,8 +18,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSLog(@"EBOLA 2");
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupCards:) name:@"setupCards" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
