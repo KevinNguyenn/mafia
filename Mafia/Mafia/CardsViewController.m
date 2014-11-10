@@ -9,7 +9,10 @@
 #import "CardsViewController.h"
 #import "SingleCard.h"
 
+
 @interface CardsViewController ()
+
+@property (nonatomic, weak) NSString* currentButtonText;
 
 @end
 
@@ -17,8 +20,41 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"%@", self.currentButtonText);
     // Do any additional setup after loading the view.
+    if([self.currentButtonText isEqualToString:@"Enter Day Time"]) {
+        NSLog(@"about to enter day time");
+        [self.beginDayButton setTitle: self.currentButtonText forState:UIControlStateNormal];
+        self.beginDayButton.enabled = YES;
+        self.beginNightButton.enabled = NO;
+        self.continueDayButton.enabled = NO;
+//        [self.beginNightButton setTitle: @"Begin Game" forState:UIControlStateNormal];
+        [self.continueDayButton setTitle: @"Continue Day Time" forState:UIControlStateNormal];
+        [self.beginNightButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [self.continueDayButton setTitleColor: [UIColor grayColor] forState:UIControlStateNormal];
+        [self.beginDayButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    }
+    else if([self.currentButtonText isEqualToString:@"Continue Day Time"]) {
+        NSLog(@"about to continue day time");
+        [self.continueDayButton setTitle: self.currentButtonText forState:UIControlStateNormal];
+        self.beginDayButton.enabled = NO;
+        self.beginNightButton.enabled = NO;
+        self.continueDayButton.enabled = YES;
+        [self.beginNightButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [self.continueDayButton setTitleColor: [UIColor orangeColor] forState:UIControlStateNormal];
+        [self.beginDayButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    }
+    // beginning start
+    else {
+        [self.beginNightButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [self.beginDayButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [self.continueDayButton setTitleColor: [UIColor grayColor] forState:UIControlStateNormal];
+        self.beginDayButton.enabled = NO;
+        self.continueDayButton.enabled = NO;
+        self.beginNightButton.enabled = YES;
+    }
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -44,19 +80,19 @@
     CGFloat cardHeight = 0.0;
     for(id key in cardSpecs) {
         NSDictionary *indivCard = [cardSpecs objectForKey:key];
-        for(id key1 in indivCard) {
-            if([key1 isEqualToString:@"xCoord"]) {
-                xCoord = (CGFloat)[[indivCard objectForKey:key1] floatValue];
+        for(id attribute in indivCard) {
+            if([attribute isEqualToString:@"xCoord"]) {
+                xCoord = (CGFloat)[[indivCard objectForKey:attribute] floatValue];
             }
-            else if([key1 isEqualToString:@"yCoord"]) {
-                yCoord = (CGFloat)[[indivCard objectForKey:key1] floatValue];
+            else if([attribute isEqualToString:@"yCoord"]) {
+                yCoord = (CGFloat)[[indivCard objectForKey:attribute] floatValue];
             }
-            else if([key1 isEqualToString:@"cardWidth"]) {
-                cardWidth = (CGFloat)[[indivCard objectForKey:key1] floatValue];
+            else if([attribute isEqualToString:@"cardWidth"]) {
+                cardWidth = (CGFloat)[[indivCard objectForKey:attribute] floatValue];
             }
             else {
                 // assumes cardHeight
-                cardHeight = (CGFloat)[[indivCard objectForKey:key1] floatValue];
+                cardHeight = (CGFloat)[[indivCard objectForKey:attribute] floatValue];
             }
         }
         CGRect cardSpec = CGRectMake(xCoord, yCoord, cardWidth, cardHeight);
@@ -64,14 +100,15 @@
         singleCard = [singleCard makeCard : cardSpec];
         
         // changes color of a singleCard
-        singleCard.backgroundColor = [UIColor grayColor];
+        singleCard.backgroundColor = [UIColor greenColor];
         
         // adds the singleCard to the [current] view
         [self.view addSubview:singleCard];
     }
+}
 
-    
-    
+-(void) updatePlayButton : (NSString *) text {
+    self.currentButtonText = text;
 }
 
 @end

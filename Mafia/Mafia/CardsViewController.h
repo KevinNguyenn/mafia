@@ -11,5 +11,12 @@
 @interface CardsViewController : UIViewController
 
 -(void) setupCards : (NSDictionary *) cardSpecs;
+-(void) updatePlayButton : (NSString *) text;
+
+@property (weak, nonatomic) IBOutlet UIButton *beginNightButton;
+@property (weak, nonatomic) IBOutlet UIButton *beginDayButton;
+@property (weak, nonatomic) IBOutlet UIButton *continueDayButton;
+
+
 
 @end

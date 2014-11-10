@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8B8B1D6419F72E3B00306163 /* MafiaBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8B1D6319F72E3A00306163 /* MafiaBackground.m */; };
 		8B8B1D6A19F7307B00306163 /* mafia.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B8B1D6919F7307B00306163 /* mafia.jpg */; };
+		9D32D1A81A108C7200319C4E /* NightKillPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D32D1A71A108C7200319C4E /* NightKillPersonViewController.m */; };
+		9D32D1AB1A10BE1D00319C4E /* DayKillPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D32D1AA1A10BE1D00319C4E /* DayKillPersonViewController.m */; };
 		9D4A589A1A0069EE00B955D4 /* CardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A58991A0069EE00B955D4 /* CardsViewController.m */; };
 		9D897BE919F07C4C00C1519F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D897BE819F07C4C00C1519F /* main.m */; };
 		9D897BEC19F07C4C00C1519F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D897BEB19F07C4C00C1519F /* AppDelegate.m */; };
@@ -36,6 +38,10 @@
 		8B8B1D6219F72E3A00306163 /* MafiaBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MafiaBackground.h; sourceTree = "<group>"; };
 		8B8B1D6319F72E3A00306163 /* MafiaBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MafiaBackground.m; sourceTree = "<group>"; };
 		8B8B1D6919F7307B00306163 /* mafia.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mafia.jpg; sourceTree = "<group>"; };
+		9D32D1A61A108C7200319C4E /* NightKillPersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NightKillPersonViewController.h; sourceTree = "<group>"; };
+		9D32D1A71A108C7200319C4E /* NightKillPersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NightKillPersonViewController.m; sourceTree = "<group>"; };
+		9D32D1A91A10BE1D00319C4E /* DayKillPersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayKillPersonViewController.h; sourceTree = "<group>"; };
+		9D32D1AA1A10BE1D00319C4E /* DayKillPersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayKillPersonViewController.m; sourceTree = "<group>"; };
 		9D4A58981A0069EE00B955D4 /* CardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardsViewController.h; sourceTree = "<group>"; };
 		9D4A58991A0069EE00B955D4 /* CardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardsViewController.m; sourceTree = "<group>"; };
 		9D897BE319F07C4C00C1519F /* Mafia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mafia.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +117,10 @@
 				9D4A58991A0069EE00B955D4 /* CardsViewController.m */,
 				9DEAE22D1A0ABCC400887B50 /* SingleCard.h */,
 				9DEAE22E1A0ABCC400887B50 /* SingleCard.m */,
+				9D32D1A61A108C7200319C4E /* NightKillPersonViewController.h */,
+				9D32D1A71A108C7200319C4E /* NightKillPersonViewController.m */,
+				9D32D1A91A10BE1D00319C4E /* DayKillPersonViewController.h */,
+				9D32D1AA1A10BE1D00319C4E /* DayKillPersonViewController.m */,
 				E457EC1919F728480011ADFD /* infoButton.jpg */,
 				9D897BF319F07C4C00C1519F /* Images.xcassets */,
 				9D897BF519F07C4C00C1519F /* LaunchScreen.xib */,
@@ -253,6 +263,8 @@
 				9D897BE919F07C4C00C1519F /* main.m in Sources */,
 				9DEAE22F1A0ABCC400887B50 /* SingleCard.m in Sources */,
 				9D4A589A1A0069EE00B955D4 /* CardsViewController.m in Sources */,
+				9D32D1A81A108C7200319C4E /* NightKillPersonViewController.m in Sources */,
+				9D32D1AB1A10BE1D00319C4E /* DayKillPersonViewController.m in Sources */,
 				E457EC1819F723B70011ADFD /* SelectPlayersViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

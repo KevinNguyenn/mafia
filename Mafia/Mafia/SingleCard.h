@@ -13,9 +13,12 @@
 
 -(id)makeCard : (CGRect) cardSpec;
 
+// attributes for the card
 @property (nonatomic) NSInteger *cardWidth;
 @property (nonatomic) NSInteger *cardHeight;
 @property (nonatomic) NSInteger *xCoord;
 @property (nonatomic) NSInteger *yCoord;
+
+// [TODO] attach connected textfield and update name
 
 @end
