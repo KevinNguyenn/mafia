@@ -8,6 +8,8 @@
 
 #import "CardsViewController.h"
 #import "SingleCard.h"
+#import "AppDelegate.h"
+#import <CoreData/CoreData.h>
 
 
 @interface CardsViewController ()
@@ -104,6 +106,22 @@
         
         // adds the singleCard to the [current] view
         [self.view addSubview:singleCard];
+        
+        
+        
+        // and add the singleCard to Core data
+        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        NSManagedObjectContext *context = appDelegate.managedObjectContext;
+        NSManagedObject *newCard = [NSEntityDescription insertNewObjectForEntityForName:@"Card" inManagedObjectContext:context];
+        [newCard setValue: singleCard.cardWidth forKey:@"cardWidth"];
+        [newCard setValue: singleCard.cardHeight forKey:@"cardHeight"];
+        [newCard setValue: singleCard.xCoord forKey:@"xCoord"];
+        [newCard setValue: singleCard.yCoord forKey:@"yCoord"];
+        
+        // Save changes to the persistent store
+        NSError *error;
+        [context save:&error];
+        
     }
 }
 

@@ -656,33 +656,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h9z-fL-O41">
-                                <connections>
-                                    <segue destination="08c-i2-ZTm" kind="embed" id="0ZZ-NG-CmC"/>
-                                </connections>
-                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h9z-fL-O41"/>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KsL-0O-Wme"/>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m9M-jw-02v">
-                                <connections>
-                                    <segue destination="mYr-Nd-8Gm" kind="embed" id="55W-qJ-Dhi"/>
-                                </connections>
-                            </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TCl-zI-WVI">
-                                <connections>
-                                    <segue destination="5ur-gn-oiK" kind="embed" id="DgZ-jZ-hBc"/>
-                                </connections>
-                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m9M-jw-02v"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TCl-zI-WVI"/>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="llN-3F-nu4"/>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8zU-Zw-LJn">
-                                <connections>
-                                    <segue destination="PPC-pj-0Cw" kind="embed" id="v69-A7-g6D"/>
-                                </connections>
-                            </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rix-SY-F0v">
-                                <connections>
-                                    <segue destination="3ar-fH-wdB" kind="embed" id="i3P-zg-0mm"/>
-                                </connections>
-                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8zU-Zw-LJn"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rix-SY-F0v"/>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LtX-F6-zKd"/>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="opD-Ag-8Go"/>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F2h-Du-0GT"/>
@@ -762,146 +742,6 @@
             </objects>
             <point key="canvasLocation" x="-132" y="-158"/>
         </scene>
-        <!--Mafia Background-->
-        <scene sceneID="d7t-CI-IH1">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="OS6-Ek-duy" customClass="MafiaBackground" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kYZ-dh-3Jx"/>
-                        <viewControllerLayoutGuide type="bottom" id="Efg-Cd-KEe"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="4XA-te-sMH">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mafia.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="F0l-kq-8SU">
-                                <rect key="frame" x="0.0" y="0.0" width="76" height="157"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="fnn-Ks-Myx"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2cD-su-Jfp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3558" y="-969"/>
-        </scene>
-        <!--Mafia Background-->
-        <scene sceneID="YqV-Zf-xHo">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="3ar-fH-wdB" customClass="MafiaBackground" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dWL-ca-RwO"/>
-                        <viewControllerLayoutGuide type="bottom" id="WlS-Mt-qvQ"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Cqw-vO-ZtV">
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mafia.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Lh1-ey-xET">
-                                <rect key="frame" x="4" y="0.0" width="75" height="157"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DHj-4s-FxX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3057" y="-1361"/>
-        </scene>
-        <!--Mafia Background-->
-        <scene sceneID="SPe-Ab-F2T">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="08c-i2-ZTm" customClass="MafiaBackground" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="waL-Gt-n8v"/>
-                        <viewControllerLayoutGuide type="bottom" id="R92-T1-Mqd"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="YKQ-C9-FM2">
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mafia.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="J47-P1-Sd7">
-                                <rect key="frame" x="0.0" y="0.0" width="76" height="157"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="v37-d6-MaH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3376" y="-465"/>
-        </scene>
-        <!--Mafia Background-->
-        <scene sceneID="wxf-wm-LAl">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="5ur-gn-oiK" customClass="MafiaBackground" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="O0G-wv-f9M"/>
-                        <viewControllerLayoutGuide type="bottom" id="dXe-Fr-5cd"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Bit-bV-76W">
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mafia.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="qih-Yq-hJG">
-                                <rect key="frame" x="0.0" y="0.0" width="76" height="157"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="r4S-DB-uQS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2697" y="-2164.5"/>
-        </scene>
-        <!--Mafia Background-->
-        <scene sceneID="Acr-kx-807">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="PPC-pj-0Cw" customClass="MafiaBackground" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="b25-7A-hK3"/>
-                        <viewControllerLayoutGuide type="bottom" id="xx8-56-ZYc"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="eMD-5Q-nec">
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mafia.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="piM-0E-R3N">
-                                <rect key="frame" x="0.0" y="0.0" width="75" height="157"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W5X-Hj-VwA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2916.5" y="-1740.5"/>
-        </scene>
-        <!--Mafia Background-->
-        <scene sceneID="Uld-6j-cGo">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="mYr-Nd-8Gm" customClass="MafiaBackground" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Puk-0r-Ydn"/>
-                        <viewControllerLayoutGuide type="bottom" id="h1g-tF-ckV"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mRt-Un-6P2">
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mafia.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Z5w-LB-6AY">
-                                <rect key="frame" x="0.0" y="0.0" width="76" height="157"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6bX-L5-EhK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2129" y="-2265.5"/>
-        </scene>
         <!--Night2 View Controller-->
         <scene sceneID="hwh-Dk-BWi">
             <objects>
@@ -974,7 +814,6 @@
     </scenes>
     <resources>
         <image name="infoButton.jpg" width="256" height="256"/>
-        <image name="mafia.jpg" width="80" height="120"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
