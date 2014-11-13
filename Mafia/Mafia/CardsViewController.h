@@ -10,13 +10,20 @@
 
 @interface CardsViewController : UIViewController
 
--(void) setupCards : (NSDictionary *) cardSpecs;
+-(void) setupCards : (NSDictionary *) cardSpecs AndUpdate : (BOOL) update;
 -(void) updatePlayButton : (NSString *) text;
 
 @property (weak, nonatomic) IBOutlet UIButton *beginNightButton;
 @property (weak, nonatomic) IBOutlet UIButton *beginDayButton;
 @property (weak, nonatomic) IBOutlet UIButton *continueDayButton;
+@property (weak, nonatomic) IBOutlet UISwitch *deathSwitch;
+@property (weak, nonatomic) IBOutlet UILabel *deathSwitchLabel;
 
+
+@property BOOL didSetupCards;
+
+
+- (void)refreshCards;
 
 
 @end

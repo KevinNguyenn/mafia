@@ -736,6 +736,8 @@
                         <outlet property="beginDayButton" destination="mz1-Bv-TEv" id="HZ2-z0-bjc"/>
                         <outlet property="beginNightButton" destination="3ix-EO-enW" id="WJ8-vh-E6t"/>
                         <outlet property="continueDayButton" destination="4kk-de-DfW" id="eVp-RG-drU"/>
+                        <outlet property="deathSwitch" destination="7Ls-EY-On0" id="xmD-8l-5X4"/>
+                        <outlet property="deathSwitchLabel" destination="2Nh-2X-Krs" id="JYp-EH-do7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cpo-Ey-8sC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -822,6 +824,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="4AE-H6-ULJ"/>
-        <segue reference="fFL-co-Ina"/>
+        <segue reference="ht0-VE-uw8"/>
     </inferredMetricsTieBreakers>
 </document>

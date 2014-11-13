@@ -9,12 +9,14 @@
 #import "CardsViewController.h"
 #import "SingleCard.h"
 #import "AppDelegate.h"
-#import <CoreData/CoreData.h>
+
 
 
 @interface CardsViewController ()
 
 @property (nonatomic, weak) NSString* currentButtonText;
+@property (nonatomic, strong) NSMutableArray *cardStorage;
+
 
 @end
 
@@ -22,7 +24,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"%@", self.currentButtonText);
+    self.cardStorage = [[NSMutableArray alloc] init];
+    
+    [self refreshCards];
+    
+    NSLog(@"setup observer");
+    [[NSNotificationCenter defaultCenter] addObserver:self selector : @selector(ViewControllerShouldReloadNotification) name:@"ViewControllerShouldReloadNotification" object:nil];
+    
+    
     // Do any additional setup after loading the view.
     if([self.currentButtonText isEqualToString:@"Enter Day Time"]) {
         NSLog(@"about to enter day time");
@@ -35,6 +44,8 @@
         [self.beginNightButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [self.continueDayButton setTitleColor: [UIColor grayColor] forState:UIControlStateNormal];
         [self.beginDayButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        self.deathSwitch.enabled = YES;
+        [self.deathSwitchLabel setTextColor:[UIColor redColor]];
     }
     else if([self.currentButtonText isEqualToString:@"Continue Day Time"]) {
         NSLog(@"about to continue day time");
@@ -45,16 +56,74 @@
         [self.beginNightButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [self.continueDayButton setTitleColor: [UIColor orangeColor] forState:UIControlStateNormal];
         [self.beginDayButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        self.deathSwitch.enabled = YES;
+        [self.deathSwitchLabel setTextColor:[UIColor redColor]];
     }
     // beginning start
     else {
+        self.beginDayButton.enabled = NO;
+        self.beginNightButton.enabled = YES;
+        self.continueDayButton.enabled = NO;
         [self.beginNightButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         [self.beginDayButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [self.continueDayButton setTitleColor: [UIColor grayColor] forState:UIControlStateNormal];
-        self.beginDayButton.enabled = NO;
-        self.continueDayButton.enabled = NO;
-        self.beginNightButton.enabled = YES;
+        self.deathSwitch.enabled = NO;
+        [self.deathSwitchLabel setTextColor:[UIColor grayColor]];
     }
+    
+}
+
+//- (void)viewDidAppear:(BOOL)animated
+//{
+//    [super viewDidAppear:animated];
+//
+//}
+
+- (void)refreshCards {
+    if(self.didSetupCards == YES) {
+        NSLog(@"persist the cards");
+        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        NSManagedObjectContext *context = appDelegate.managedObjectContext;
+        NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Card" inManagedObjectContext:context];
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        [request setEntity:entityDescription];
+        
+        // put the nsmanageobjects/datamodels into the contactList
+        self.cardStorage = [[context executeFetchRequest:request error:nil] mutableCopy];
+        
+        SingleCard *tempCard;
+        NSManagedObject *temp;
+        // actually load the cards onto the screen...
+        for (temp in self.cardStorage) {
+            tempCard = [temp valueForKey:@"oneCard"];
+            // changes color of a singleCard (SET GREEN FOR REFERENCE)
+            tempCard.backgroundColor = [UIColor blueColor];
+            [self.view addSubview:tempCard];
+        }
+    }
+    else {
+        NSLog(@"clean up cards");
+        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        NSManagedObjectContext *context = appDelegate.managedObjectContext;
+        NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Card" inManagedObjectContext:context];
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        [request setEntity:entityDescription];
+        
+        self.cardStorage = [[context executeFetchRequest:request error:nil] mutableCopy];
+        int c = 0;
+        SingleCard *tempCard;
+        NSManagedObject *temp;
+        // actually load the cards onto the screen...
+        for (temp in self.cardStorage) {
+            NSLog(@"%d", c);
+            tempCard = [temp valueForKey:@"oneCard"];
+            [tempCard removeFromSuperview];
+            [context deleteObject:temp];
+            c++;
+        }
+    }
+    
+ 
 }
 
 
@@ -73,7 +142,9 @@
 }
 */
 
--(void) setupCards : (NSDictionary *) cardSpecs {
+-(void) setupCards : (NSDictionary *) cardSpecs AndUpdate : (BOOL) update {
+    // remove any hanging cards from previous session
+    [self refreshCards];
     
     SingleCard *singleCard;
     CGFloat xCoord = 0.0;
@@ -84,49 +155,62 @@
         NSDictionary *indivCard = [cardSpecs objectForKey:key];
         for(id attribute in indivCard) {
             if([attribute isEqualToString:@"xCoord"]) {
+                // get the xCoord
                 xCoord = (CGFloat)[[indivCard objectForKey:attribute] floatValue];
             }
             else if([attribute isEqualToString:@"yCoord"]) {
+                // get the yCoord
                 yCoord = (CGFloat)[[indivCard objectForKey:attribute] floatValue];
             }
             else if([attribute isEqualToString:@"cardWidth"]) {
+                // get cardWidth
                 cardWidth = (CGFloat)[[indivCard objectForKey:attribute] floatValue];
             }
             else {
-                // assumes cardHeight
+                // assumes to get cardHeight
                 cardHeight = (CGFloat)[[indivCard objectForKey:attribute] floatValue];
             }
         }
+        // setup card
         CGRect cardSpec = CGRectMake(xCoord, yCoord, cardWidth, cardHeight);
         singleCard = [[SingleCard alloc] init];
         singleCard = [singleCard makeCard : cardSpec];
-        
-        // changes color of a singleCard
-        singleCard.backgroundColor = [UIColor greenColor];
-        
-        // adds the singleCard to the [current] view
-        [self.view addSubview:singleCard];
-        
         
         
         // and add the singleCard to Core data
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *context = appDelegate.managedObjectContext;
         NSManagedObject *newCard = [NSEntityDescription insertNewObjectForEntityForName:@"Card" inManagedObjectContext:context];
-        [newCard setValue: singleCard.cardWidth forKey:@"cardWidth"];
-        [newCard setValue: singleCard.cardHeight forKey:@"cardHeight"];
-        [newCard setValue: singleCard.xCoord forKey:@"xCoord"];
-        [newCard setValue: singleCard.yCoord forKey:@"yCoord"];
+        
+        [newCard setValue:singleCard forKey:@"oneCard"];
+   
         
         // Save changes to the persistent store
         NSError *error;
         [context save:&error];
-        
     }
+    
+    self.didSetupCards = update;
+    if(self.didSetupCards == NO) {
+        self.didSetupCards = YES;
+    }
+    
+    [self refreshCards];
 }
 
 -(void) updatePlayButton : (NSString *) text {
     self.currentButtonText = text;
+    self.didSetupCards = YES;
+    [self refreshCards];
 }
+
+
+
+-(void) ViewControllerShouldReloadNotification {
+    [self refreshCards];
+}
+
+
+
 
 @end

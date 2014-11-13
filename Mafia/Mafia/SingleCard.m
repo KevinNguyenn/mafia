@@ -27,8 +27,14 @@
 -(id) makeCard : (CGRect) cardSpec {
     // TODO: change with differing cards?
     UIView *card = [[UIView alloc] initWithFrame: cardSpec];
+    self.cardHeight = cardSpec.size.width;
+    self.cardWidth = cardSpec.size.width;
+    self.xCoord = cardSpec.origin.x;
+    self.yCoord = cardSpec.origin.y;
     return card;
 }
+
+
 
 
 @end
