@@ -11,7 +11,7 @@
 
 @interface SingleCard : UIView
 
--(id)makeCard : (CGRect) cardSpec;
+-(id)makeCard : (CGRect) cardSpec WithLabel : (CGRect) labelSpec AndType : (int) labelType;
 
 // attributes for the card
 @property (nonatomic) NSInteger cardWidth;

@@ -14,7 +14,7 @@
     // Holds the number of players
     NSArray *pickerData;
     
-    NSDictionary *cardSpecs;
+    NSDictionary *cardSpecs, *labelSpecs;
 }
 @end
 
@@ -40,12 +40,11 @@
 }
 
 -(void)viewWillAppear: (BOOL) animated {
-    NSLog(@"view did appear on select player controller");
+    // notification is not active upon first opening of app because the observer has not been set up
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ViewControllerShouldReloadNotification" object:nil];
     NSUserDefaults *pickerViewSelectionDefaults = [NSUserDefaults standardUserDefaults];
     [self.pickerPlayers selectRow:[pickerViewSelectionDefaults integerForKey:@"picker"] inComponent:0 animated:YES];
     if([self.pickerPlayers selectedRowInComponent:0] == 0) {
-//        NSLog(@"default 6 players selected");
         // Scale #: 1
         cardSpecs = [[NSDictionary alloc] initWithObjectsAndKeys:
                      @{@"cardWidth": @"75", @"cardHeight": @"112", @"xCoord": @"16", @"yCoord": @"139"}, @"card1",
@@ -54,6 +53,8 @@
                      @{@"cardWidth": @"75", @"cardHeight": @"112", @"xCoord": @"16", @"yCoord": @"288"}, @"card4",
                      @{@"cardWidth": @"75", @"cardHeight": @"112", @"xCoord": @"123", @"yCoord": @"288"}, @"card5",
                      @{@"cardWidth": @"75", @"cardHeight": @"112", @"xCoord": @"228", @"yCoord": @"288"}, @"card6", nil];
+        labelSpecs = [[NSDictionary alloc] initWithObjectsAndKeys:
+                      @{@"labelWidth": @"75", @"labelHeight": @"20", @"xCoord": @"0", @"yCoord": @"90"} , @"labelType1", nil];
     }
 }
 
@@ -98,6 +99,8 @@
                      @{@"cardWidth": @"75", @"cardHeight": @"112", @"xCoord": @"16", @"yCoord": @"288"}, @"card4",
                      @{@"cardWidth": @"75", @"cardHeight": @"112", @"xCoord": @"123", @"yCoord": @"288"}, @"card5",
                      @{@"cardWidth": @"75", @"cardHeight": @"112", @"xCoord": @"228", @"yCoord": @"288"}, @"card6", nil];
+        labelSpecs = [[NSDictionary alloc] initWithObjectsAndKeys:
+                      @{@"labelWidth": @"75", @"labelHeight": @"20", @"xCoord": @"0", @"yCoord": @"90"} , @"labelType1", nil];
     }
     //!!!!!!!!!
     // Scale #: 1
@@ -112,6 +115,8 @@
                      @{@"cardWidth": @"75", @"cardHeight": @"112", @"xCoord": @"123", @"yCoord": @"258"}, @"card5",
                      @{@"cardWidth": @"75", @"cardHeight": @"112", @"xCoord": @"228", @"yCoord": @"258"}, @"card6",
                      @{@"cardWidth": @"75", @"cardHeight": @"112", @"xCoord": @"123", @"yCoord": @"388"}, @"card7", nil];
+        labelSpecs = [[NSDictionary alloc] initWithObjectsAndKeys:
+                      @{@"labelWidth": @"75", @"labelHeight": @"20", @"xCoord": @"0", @"yCoord": @"90"} , @"labelType1", nil];
     }
     // Scale #: 2
     // 8 players
@@ -126,6 +131,8 @@
                      @{@"cardWidth": @"65", @"cardHeight": @"102", @"xCoord": @"228", @"yCoord": @"249"}, @"card6",
                      @{@"cardWidth": @"65", @"cardHeight": @"102", @"xCoord": @"77", @"yCoord": @"380"}, @"card7",
                      @{@"cardWidth": @"65", @"cardHeight": @"102", @"xCoord": @"186", @"yCoord": @"380"}, @"card8", nil];
+        labelSpecs = [[NSDictionary alloc] initWithObjectsAndKeys:
+                      @{@"labelWidth": @"65", @"labelHeight": @"20", @"xCoord": @"0", @"yCoord": @"79"} , @"labelType1", nil];
     }
     // Scale #: 2
     // 9 players
@@ -141,6 +148,8 @@
                      @{@"cardWidth": @"65", @"cardHeight": @"102", @"xCoord": @"27", @"yCoord": @"380"}, @"card7",
                      @{@"cardWidth": @"65", @"cardHeight": @"102", @"xCoord": @"128", @"yCoord": @"380"}, @"card8",
                      @{@"cardWidth": @"65", @"cardHeight": @"102", @"xCoord": @"228", @"yCoord": @"380"}, @"card9", nil];
+        labelSpecs = [[NSDictionary alloc] initWithObjectsAndKeys:
+                      @{@"labelWidth": @"65", @"labelHeight": @"20", @"xCoord": @"0", @"yCoord": @"79"} , @"labelType1", nil];
     }
     // Scale #: 3
     // 10 players
@@ -157,6 +166,9 @@
                      @{@"cardWidth": @"58", @"cardHeight": @"80", @"xCoord": @"136", @"yCoord": @"313"}, @"card8",
                      @{@"cardWidth": @"58", @"cardHeight": @"80", @"xCoord": @"225", @"yCoord": @"313"}, @"card9",
                      @{@"cardWidth": @"58", @"cardHeight": @"80", @"xCoord": @"136", @"yCoord": @"409"}, @"card10", nil];
+        labelSpecs = [[NSDictionary alloc] initWithObjectsAndKeys:
+                     @{@"labelWidth": @"58", @"labelHeight": @"20", @"xCoord": @"0", @"yCoord": @"60"} , @"labelType2", nil];
+                     
     }
     else {
         NSLog(@"wat something went wrong");
@@ -176,8 +188,8 @@
     // Pass the selected object to the new view controller.
     
     if([segue.identifier isEqualToString: @"goToCards"]) {
-        NSLog(@"about to go to cards");
-        [segue.destinationViewController setupCards : cardSpecs AndUpdate : NO ];
+//        NSLog(@"about to go to cards");
+        [segue.destinationViewController setupCards : cardSpecs AndLabels: labelSpecs AndUpdate : NO ];
     }
 }
 

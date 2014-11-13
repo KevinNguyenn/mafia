@@ -28,7 +28,7 @@
     
     [self refreshCards];
     
-    NSLog(@"setup observer");
+//    NSLog(@"setup observer");
     [[NSNotificationCenter defaultCenter] addObserver:self selector : @selector(ViewControllerShouldReloadNotification) name:@"ViewControllerShouldReloadNotification" object:nil];
     
     
@@ -46,6 +46,8 @@
         [self.beginDayButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         self.deathSwitch.enabled = YES;
         [self.deathSwitchLabel setTextColor:[UIColor redColor]];
+        
+
     }
     else if([self.currentButtonText isEqualToString:@"Continue Day Time"]) {
         NSLog(@"about to continue day time");
@@ -80,8 +82,9 @@
 //}
 
 - (void)refreshCards {
+    // reload the cards
     if(self.didSetupCards == YES) {
-        NSLog(@"persist the cards");
+//        NSLog(@"persist the cards");
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *context = appDelegate.managedObjectContext;
         NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Card" inManagedObjectContext:context];
@@ -96,13 +99,14 @@
         // actually load the cards onto the screen...
         for (temp in self.cardStorage) {
             tempCard = [temp valueForKey:@"oneCard"];
-            // changes color of a singleCard (SET GREEN FOR REFERENCE)
-            tempCard.backgroundColor = [UIColor blueColor];
+            // changes color of a singleCard
+            tempCard.backgroundColor = [UIColor lightGrayColor];
             [self.view addSubview:tempCard];
         }
     }
+    // clean the cards
     else {
-        NSLog(@"clean up cards");
+//        NSLog(@"clean up cards");
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *context = appDelegate.managedObjectContext;
         NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Card" inManagedObjectContext:context];
@@ -110,16 +114,13 @@
         [request setEntity:entityDescription];
         
         self.cardStorage = [[context executeFetchRequest:request error:nil] mutableCopy];
-        int c = 0;
+   
         SingleCard *tempCard;
         NSManagedObject *temp;
-        // actually load the cards onto the screen...
         for (temp in self.cardStorage) {
-            NSLog(@"%d", c);
             tempCard = [temp valueForKey:@"oneCard"];
             [tempCard removeFromSuperview];
             [context deleteObject:temp];
-            c++;
         }
     }
     
@@ -142,15 +143,38 @@
 }
 */
 
--(void) setupCards : (NSDictionary *) cardSpecs AndUpdate : (BOOL) update {
+-(void) setupCards : (NSDictionary *) cardSpecs AndLabels :(NSDictionary *) labelSpecs AndUpdate : (BOOL) update {
     // remove any hanging cards from previous session
     [self refreshCards];
-    
+    int labelType;
     SingleCard *singleCard;
     CGFloat xCoord = 0.0;
     CGFloat yCoord = 0.0;
     CGFloat cardWidth = 0.0;
     CGFloat cardHeight = 0.0;
+    
+    CGFloat labelXCoord = 0.0;
+    CGFloat labelYCoord = 0.0;
+    CGFloat labelWidth = 0.0;
+    CGFloat labelHeight = 0.0;
+    
+    // setup label
+    
+    NSDictionary *theLabel;
+    if([labelSpecs objectForKey:@"labelType1"]) {
+        theLabel = [labelSpecs objectForKey:@"labelType1"];
+        labelType = 1;
+    }
+    else {
+        theLabel = [labelSpecs objectForKey:@"labelType2"];
+        labelType = 2;
+    }
+    labelXCoord = (CGFloat)[[theLabel objectForKey: @"xCoord"] floatValue];
+    labelYCoord = (CGFloat)[[theLabel objectForKey: @"yCoord"] floatValue];
+    labelWidth = (CGFloat)[[theLabel objectForKey: @"labelWidth"] floatValue];
+    labelHeight = (CGFloat)[[theLabel objectForKey: @"labelHeight"] floatValue];
+    
+    // setup cards
     for(id key in cardSpecs) {
         NSDictionary *indivCard = [cardSpecs objectForKey:key];
         for(id attribute in indivCard) {
@@ -173,8 +197,9 @@
         }
         // setup card
         CGRect cardSpec = CGRectMake(xCoord, yCoord, cardWidth, cardHeight);
+        CGRect labelSpec = CGRectMake(labelXCoord, labelYCoord, labelWidth, labelHeight);
         singleCard = [[SingleCard alloc] init];
-        singleCard = [singleCard makeCard : cardSpec];
+        singleCard = [singleCard makeCard : cardSpec WithLabel: labelSpec AndType: labelType];
         
         
         // and add the singleCard to Core data
@@ -202,14 +227,19 @@
     self.currentButtonText = text;
     self.didSetupCards = YES;
     [self refreshCards];
+    [self killOneInnocent];
 }
-
 
 
 -(void) ViewControllerShouldReloadNotification {
     [self refreshCards];
 }
 
+-(void) killOneInnocent {
+    if(self.deathSwitch.on == YES) {
+        NSLog(@"kill a nigga");
+    }
+}
 
 
 

@@ -10,7 +10,7 @@
 
 @interface CardsViewController : UIViewController
 
--(void) setupCards : (NSDictionary *) cardSpecs AndUpdate : (BOOL) update;
+-(void) setupCards : (NSDictionary *) cardSpecs AndLabels: (NSDictionary *) labelSpecs AndUpdate : (BOOL) update;
 -(void) updatePlayButton : (NSString *) text;
 
 @property (weak, nonatomic) IBOutlet UIButton *beginNightButton;
