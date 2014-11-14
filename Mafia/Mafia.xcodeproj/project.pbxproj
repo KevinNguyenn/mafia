@@ -12,6 +12,10 @@
 		9D32D1A81A108C7200319C4E /* NightKillPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D32D1A71A108C7200319C4E /* NightKillPersonViewController.m */; };
 		9D32D1AB1A10BE1D00319C4E /* DayKillPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D32D1AA1A10BE1D00319C4E /* DayKillPersonViewController.m */; };
 		9D4A589A1A0069EE00B955D4 /* CardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A58991A0069EE00B955D4 /* CardsViewController.m */; };
+		9D7E388C1A15713E00044C2B /* SingleCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7E388B1A15713E00044C2B /* SingleCardViewController.m */; };
+		9D7E388F1A15BB0300044C2B /* CustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7E388E1A15BB0300044C2B /* CustomSegue.m */; };
+		9D7E38921A15BC0800044C2B /* CustomUnwindSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7E38911A15BC0800044C2B /* CustomUnwindSegue.m */; };
+		9D7E38951A15D35D00044C2B /* CardsNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7E38941A15D35D00044C2B /* CardsNavigationViewController.m */; };
 		9D897BE919F07C4C00C1519F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D897BE819F07C4C00C1519F /* main.m */; };
 		9D897BEC19F07C4C00C1519F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D897BEB19F07C4C00C1519F /* AppDelegate.m */; };
 		9D897BEF19F07C4C00C1519F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D897BEE19F07C4C00C1519F /* ViewController.m */; };
@@ -48,6 +52,14 @@
 		9D32D1AA1A10BE1D00319C4E /* DayKillPersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayKillPersonViewController.m; sourceTree = "<group>"; };
 		9D4A58981A0069EE00B955D4 /* CardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardsViewController.h; sourceTree = "<group>"; };
 		9D4A58991A0069EE00B955D4 /* CardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardsViewController.m; sourceTree = "<group>"; };
+		9D7E388A1A15713E00044C2B /* SingleCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleCardViewController.h; sourceTree = "<group>"; };
+		9D7E388B1A15713E00044C2B /* SingleCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleCardViewController.m; sourceTree = "<group>"; };
+		9D7E388D1A15BB0300044C2B /* CustomSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSegue.h; sourceTree = "<group>"; };
+		9D7E388E1A15BB0300044C2B /* CustomSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSegue.m; sourceTree = "<group>"; };
+		9D7E38901A15BC0800044C2B /* CustomUnwindSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUnwindSegue.h; sourceTree = "<group>"; };
+		9D7E38911A15BC0800044C2B /* CustomUnwindSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUnwindSegue.m; sourceTree = "<group>"; };
+		9D7E38931A15D35D00044C2B /* CardsNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardsNavigationViewController.h; sourceTree = "<group>"; };
+		9D7E38941A15D35D00044C2B /* CardsNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardsNavigationViewController.m; sourceTree = "<group>"; };
 		9D897BE319F07C4C00C1519F /* Mafia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mafia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D897BE719F07C4C00C1519F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D897BE819F07C4C00C1519F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -126,14 +138,22 @@
 				9D897BF019F07C4C00C1519F /* Main.storyboard */,
 				E457EC1619F723B70011ADFD /* SelectPlayersViewController.h */,
 				E457EC1719F723B70011ADFD /* SelectPlayersViewController.m */,
+				9D7E38931A15D35D00044C2B /* CardsNavigationViewController.h */,
+				9D7E38941A15D35D00044C2B /* CardsNavigationViewController.m */,
 				9D4A58981A0069EE00B955D4 /* CardsViewController.h */,
 				9D4A58991A0069EE00B955D4 /* CardsViewController.m */,
+				9D7E388A1A15713E00044C2B /* SingleCardViewController.h */,
+				9D7E388B1A15713E00044C2B /* SingleCardViewController.m */,
 				9DEAE22D1A0ABCC400887B50 /* SingleCard.h */,
 				9DEAE22E1A0ABCC400887B50 /* SingleCard.m */,
 				9D32D1A61A108C7200319C4E /* NightKillPersonViewController.h */,
 				9D32D1A71A108C7200319C4E /* NightKillPersonViewController.m */,
 				9D32D1A91A10BE1D00319C4E /* DayKillPersonViewController.h */,
 				9D32D1AA1A10BE1D00319C4E /* DayKillPersonViewController.m */,
+				9D7E388D1A15BB0300044C2B /* CustomSegue.h */,
+				9D7E388E1A15BB0300044C2B /* CustomSegue.m */,
+				9D7E38901A15BC0800044C2B /* CustomUnwindSegue.h */,
+				9D7E38911A15BC0800044C2B /* CustomUnwindSegue.m */,
 				E457EC1919F728480011ADFD /* infoButton.jpg */,
 				9D897BF319F07C4C00C1519F /* Images.xcassets */,
 				9D897BF519F07C4C00C1519F /* LaunchScreen.xib */,
@@ -280,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D7E38951A15D35D00044C2B /* CardsNavigationViewController.m in Sources */,
 				8B8B1D6419F72E3B00306163 /* MafiaBackground.m in Sources */,
 				9D897BEF19F07C4C00C1519F /* ViewController.m in Sources */,
 				9D897BEC19F07C4C00C1519F /* AppDelegate.m in Sources */,
@@ -288,7 +309,10 @@
 				9D4A589A1A0069EE00B955D4 /* CardsViewController.m in Sources */,
 				9D32D1A81A108C7200319C4E /* NightKillPersonViewController.m in Sources */,
 				9DEB387F1A12CE60003B72ED /* Model.xcdatamodeld in Sources */,
+				9D7E38921A15BC0800044C2B /* CustomUnwindSegue.m in Sources */,
+				9D7E388F1A15BB0300044C2B /* CustomSegue.m in Sources */,
 				9D32D1AB1A10BE1D00319C4E /* DayKillPersonViewController.m in Sources */,
+				9D7E388C1A15713E00044C2B /* SingleCardViewController.m in Sources */,
 				E457EC1819F723B70011ADFD /* SelectPlayersViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,8 +7,12 @@
 //
 
 #import "CardsViewController.h"
-#import "SingleCard.h"
 #import "AppDelegate.h"
+#import "SingleCardViewController.h"
+
+// Custom segue stuff
+#import "CustomSegue.h"
+#import "CustomUnwindSegue.h"
 
 
 
@@ -16,7 +20,8 @@
 
 @property (nonatomic, weak) NSString* currentButtonText;
 @property (nonatomic, strong) NSMutableArray *cardStorage;
-
+@property (nonatomic, weak) SingleCard *card;
+@property CGPoint cardCenter;
 
 @end
 
@@ -30,6 +35,7 @@
     
 //    NSLog(@"setup observer");
     [[NSNotificationCenter defaultCenter] addObserver:self selector : @selector(ViewControllerShouldReloadNotification) name:@"ViewControllerShouldReloadNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector : @selector(pullUpIndividualCard:) name:@"pullUpIndividualCard" object:nil];
     
     
     // Do any additional setup after loading the view.
@@ -75,11 +81,11 @@
     
 }
 
-//- (void)viewDidAppear:(BOOL)animated
-//{
-//    [super viewDidAppear:animated];
-//
-//}
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+
+}
 
 - (void)refreshCards {
     // reload the cards
@@ -133,15 +139,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 -(void) setupCards : (NSDictionary *) cardSpecs AndLabels :(NSDictionary *) labelSpecs AndUpdate : (BOOL) update {
     // remove any hanging cards from previous session
@@ -201,6 +198,8 @@
         singleCard = [[SingleCard alloc] init];
         singleCard = [singleCard makeCard : cardSpec WithLabel: labelSpec AndType: labelType];
         
+        SingleCardViewController *singleCardVC = [[SingleCardViewController alloc] init];
+        singleCard.delegate = singleCardVC;
         
         // and add the singleCard to Core data
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
@@ -240,6 +239,52 @@
         NSLog(@"kill a nigga");
     }
 }
+
+-(void) pullUpIndividualCard : (NSNotification *) cardSpec {
+    NSDictionary *cardDict = [cardSpec userInfo];
+    SingleCard *card = [cardDict objectForKey: @"card"];
+    self.card = card;
+    NSLog(@"ultimate wow");
+    [self performSegueWithIdentifier : @"viewSingleCard" sender : card];
+}
+
+
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+     // Get the new view controller using [segue destinationViewController].
+     // Pass the selected object to the new view controller.
+     if([segue isKindOfClass:[CustomSegue class]]) {
+         // Set the start point for the animation to center of the button for the animation
+         NSLog(@"woahhaha");
+         ((CustomSegue *)segue).originatingPoint = [sender getCenter];
+         self.cardCenter = [sender getCenter];
+     }
+ }
+
+// THIS IS REALLY HACKY...
+// This is the IBAction method referenced in the Storyboard Exit for the Unwind segue.
+// It needs to be here to create a link for the unwind segue.
+// But we'll do nothing with it.
+- (IBAction) unwindFromViewController:(UIStoryboardSegue *)sender {
+
+}
+
+//// We need to over-ride this method from UIViewController to provide a custom segue for unwinding
+//- (UIStoryboardSegue *)segueForUnwindingToViewController:(UIViewController *)toViewController fromViewController:(UIViewController *)fromViewController identifier:(NSString *)identifier {
+//    // Instantiate a new CustomUnwindSegue
+//    CustomUnwindSegue *segue = [[CustomUnwindSegue alloc] initWithIdentifier:identifier source:fromViewController destination:toViewController];
+//    NSLog(@"bleh?");
+//    // Set the target point for the animation to the center of the button in this VC
+//    segue.targetPoint = self.cardCenter;
+//    return segue;
+//}
+
+-(CGPoint) getViewCenter {
+    return self.cardCenter;
+}
+ 
 
 
 

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SingleCard.h"
 
-@interface CardsViewController : UIViewController
+@interface CardsViewController : UIViewController <SingleCardProtocol>
 
 -(void) setupCards : (NSDictionary *) cardSpecs AndLabels: (NSDictionary *) labelSpecs AndUpdate : (BOOL) update;
 -(void) updatePlayButton : (NSString *) text;
@@ -24,6 +25,9 @@
 
 
 - (void)refreshCards;
+
+// part of custom segue stuff
+-(CGPoint) getViewCenter;
 
 
 @end

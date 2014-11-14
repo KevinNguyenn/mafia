@@ -8,6 +8,7 @@
 
 #import "SingleCard.h"
 #import "ViewController.h"
+#import "SingleCardViewController.h"
 
 @implementation SingleCard
 
@@ -59,6 +60,9 @@
 
 -(void) handleSingleTap:(UITapGestureRecognizer *)gr {
     NSLog(@"touched card!");
+    NSDictionary *theCard = @{@"card": self};
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"pullUpIndividualCard" object:nil userInfo:theCard];
+    
 }
 
 //-(void) handleDoubleMove:(UIPinchGestureRecognizer *)gr {
@@ -83,6 +87,11 @@
     }
     return self;
 }
+
+-(CGPoint) getCenter {
+    return self.center;
+}
+
 
 
 
