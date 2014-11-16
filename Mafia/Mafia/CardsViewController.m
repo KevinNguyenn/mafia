@@ -36,6 +36,8 @@
     
     self.playerRoles = [[NSMutableArray alloc] init];
     
+    // initialize temp card
+    self.card.nameLabel.text = @"filler";
     
     [self refreshCards];
     
@@ -114,10 +116,6 @@
         // actually load the cards onto the screen...
         for (temp in self.cardStorage) {
             tempCard = [temp valueForKey:@"oneCard"];
-            
-            tempCard.cardNumber = [[temp valueForKey:@"cardNumber"] integerValue];
-            [tempCard.nameLabel setText:[temp valueForKey:@"name"]];
-            
             // changes color of a singleCard
             tempCard.backgroundColor = [UIColor lightGrayColor];
             [self.view addSubview:tempCard];
@@ -125,7 +123,7 @@
     }
     // clean the cards
     else {
-//        NSLog(@"clean up cards");
+        NSLog(@"clean up cards");
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *context = appDelegate.managedObjectContext;
         NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Card" inManagedObjectContext:context];
@@ -158,7 +156,7 @@
     [self refreshCards];
     int labelType;
     SingleCard *singleCard;
-    NSInteger cardNumber = 0;
+    NSInteger cardNumber = 1;
     CGFloat xCoord = 0.0;
     CGFloat yCoord = 0.0;
     CGFloat cardWidth = 0.0;
@@ -205,23 +203,21 @@
                 // assumes to get cardHeight
                 cardHeight = (CGFloat)[[indivCard objectForKey:attribute] floatValue];
             }
-            else {
-                NSLog(@"reach here?");
-                cardNumber = (NSInteger)[[indivCard objectForKey:attribute] integerValue];
-                NSLog(@"%d", cardNumber);
-            }
         }
         // setup card
         CGRect cardSpec = CGRectMake(xCoord, yCoord, cardWidth, cardHeight);
         CGRect labelSpec = CGRectMake(labelXCoord, labelYCoord, labelWidth, labelHeight);
         singleCard = [[SingleCard alloc] init];
         singleCard = [singleCard makeCard : cardSpec WithLabel: labelSpec AndType: labelType AndCardNumber : cardNumber];
-        
+
         SingleCardViewController *singleCardVC = [[SingleCardViewController alloc] init];
         singleCard.delegate = singleCardVC;
         
         // Core Data stuff
-        [CardsViewController assignCard : singleCard AndKey : key];
+        [CardsViewController saveCard : singleCard];
+        
+        // going to next card
+        cardNumber++;
     }
     
     self.didSetupCards = update;
@@ -251,48 +247,12 @@
 }
 
 // Core data under-the-hood method
-+(void) assignCard : (SingleCard *) card AndKey : (id) key {
++(void) saveCard : (SingleCard *) card {
     // and add the singleCard to Core data
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = appDelegate.managedObjectContext;
     NSManagedObject *newCard = [NSEntityDescription insertNewObjectForEntityForName:@"Card" inManagedObjectContext:context];
-    
     [newCard setValue : card forKey:@"oneCard"];
-    [newCard setValue : @"" forKey : @"name"];
-    
-    if([key isEqualToString:@"card1"]) {
-        [newCard setValue: [NSNumber numberWithInteger:1] forKey:@"cardNumber"];
-    }
-    else if([key isEqualToString:@"card2"]) {
-        [newCard setValue: [NSNumber numberWithInteger:2] forKey:@"cardNumber"];
-    }
-    else if([key isEqualToString:@"card3"]) {
-        [newCard setValue: [NSNumber numberWithInteger:3] forKey:@"cardNumber"];
-    }
-    else if([key isEqualToString:@"card4"]) {
-        [newCard setValue: [NSNumber numberWithInteger:4] forKey:@"cardNumber"];
-    }
-    else if([key isEqualToString:@"card5"]) {
-        [newCard setValue: [NSNumber numberWithInteger:5] forKey:@"cardNumber"];
-    }
-    else if([key isEqualToString:@"card6"]) {
-        [newCard setValue: [NSNumber numberWithInteger:6] forKey:@"cardNumber"];
-    }
-    else if([key isEqualToString:@"card7"]) {
-        [newCard setValue: [NSNumber numberWithInteger:7]forKey:@"cardNumber"];
-    }
-    else if([key isEqualToString:@"card8"]) {
-        [newCard setValue: [NSNumber numberWithInteger:8] forKey:@"cardNumber"];
-    }
-    else if([key isEqualToString:@"card9"]) {
-        [newCard setValue: [NSNumber numberWithInteger:9] forKey:@"cardNumber"];
-    }
-    else if([key isEqualToString:@"card10"]) {
-        [newCard setValue: [NSNumber numberWithInteger:10] forKey:@"cardNumber"];
-    }
-    
-    NSLog(@"check save card %@", [newCard valueForKey:@"cardNumber"]);
-    
     // Save changes to the persistent store
     NSError *error;
     [context save:&error];
@@ -304,8 +264,8 @@
     SingleCard *card = [cardDict objectForKey: @"card"];
     // temporary variable
     NSLog(@"pull up card");
-    NSLog(@"%d", card.cardNumber);
     self.card = card;
+    NSLog(@"%d", self.card.cardNumber);
     [self performSegueWithIdentifier : @"viewSingleCard" sender : card];
 }
 
@@ -315,7 +275,6 @@
     NSDictionary *cardDict = [cardSpec userInfo];
     NSString *name = [cardDict objectForKey: @"playerName"];
     NSLog(@"%@", name);
-    SingleCard *tempCard = nil;
     
     // access the core data
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
@@ -327,22 +286,20 @@
     // Save changes to the persistent store
     NSError *error;
     
-    //Set up to get the thing you want to update
-    [request setPredicate:[NSPredicate predicateWithFormat:@"cardNumber = %d", self.card.cardNumber]];
-    
-    tempCard = [[context executeFetchRequest :request error: &error] lastObject];
-    
-    [self.card.nameLabel setText: name];
-    NSLog(@"%@", self.card.nameLabel.text);
-    NSLog(@"%d", self.card.cardNumber);
-    NSLog(@"show card number %@", tempCard.cardNumber);
-    
-    [tempCard setValue:name forKey:@"name"];
-    
+    NSMutableArray *tempArray = [[NSMutableArray alloc] init];
+    tempArray = [[context executeFetchRequest :request error: &error] lastObject];
+    SingleCard *tempCard;
+    NSManagedObject *temp;
+    for (temp in tempArray) {
+        tempCard = [temp valueForKey:@"oneCard"];
+        if(tempCard.cardNumber == self.card.cardNumber) {
+            NSLog(@"reached the card");
+            [tempCard.nameLabel setText: name];
+        }
+    }
+
+
     [context save:&error];
-    
-    
-    
     
     NSLog(@"updated card!");
 }

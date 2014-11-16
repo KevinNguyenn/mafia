@@ -28,34 +28,35 @@
 //}
 
 -(id) makeCard : (CGRect) cardSpec WithLabel : (CGRect) labelSpec AndType : (int)labelType AndCardNumber : (NSInteger) cardNumber {
-    // TODO: change with differing cards?
+    
     SingleCard *card = [[SingleCard alloc] initWithFrame: cardSpec];
     card.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |
     UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
     
-    self.nameLabel = [[UILabel alloc] initWithFrame: labelSpec];
+    card.nameLabel = [[UILabel alloc] initWithFrame: labelSpec];
     
-    [self.nameLabel setTextColor:[UIColor blackColor]];
-    [self.nameLabel setBackgroundColor:[UIColor clearColor]];
+    [card.nameLabel setTextColor:[UIColor blackColor]];
+    [card.nameLabel setBackgroundColor:[UIColor clearColor]];
+    
     if(labelType == 1) {
-       [self.nameLabel setFont:[UIFont fontWithName: @"Helvetica Neue" size: 11.0f]];
+       [card.nameLabel setFont:[UIFont fontWithName: @"Helvetica Neue" size: 11.0f]];
     }
     else {
-        [self.nameLabel setFont:[UIFont fontWithName: @"Helvetica Neue" size: 10.0f]];
+        [card.nameLabel setFont:[UIFont fontWithName: @"Helvetica Neue" size: 10.0f]];
     }
-    [self.nameLabel setText:@"Name"];
     
-    self.nameLabel.autoresizingMask = card.autoresizingMask;
-    self.nameLabel.textAlignment = NSTextAlignmentCenter;
-    [card addSubview:self.nameLabel];
+    [card.nameLabel setText:@"Name"];
     
+    card.nameLabel.autoresizingMask = card.autoresizingMask;
+    card.nameLabel.textAlignment = NSTextAlignmentCenter;
+    [card addSubview:card.nameLabel];
     
-    self.cardNumber = cardNumber;
+    card.cardNumber = cardNumber;
     
-    self.cardHeight = cardSpec.size.width;
-    self.cardWidth = cardSpec.size.width;
-    self.xCoord = cardSpec.origin.x;
-    self.yCoord = cardSpec.origin.y;
+    card.cardHeight = cardSpec.size.width;
+    card.cardWidth = cardSpec.size.width;
+    card.xCoord = cardSpec.origin.x;
+    card.yCoord = cardSpec.origin.y;
     card.userInteractionEnabled = YES;
     return card;
 }
@@ -89,6 +90,10 @@
 //        [self addGestureRecognizer: doubleMove];
     }
     return self;
+}
+
+-(UILabel*) getNameLabel {
+    return self.nameLabel;
 }
 
 -(CGPoint) getCenter {

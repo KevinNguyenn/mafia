@@ -12,13 +12,11 @@
 @protocol SingleCardProtocol <NSObject>
 
 -(void) pullUpIndividualCard : (UIView *) theCard;
+-(void) updateNameOfCard : (NSNotification *) cardSpec;
 
 @end
 
 @interface SingleCard : UIView
-
--(id)makeCard : (CGRect) cardSpec WithLabel : (CGRect) labelSpec AndType : (int) labelType AndCardNumber : (NSInteger) cardNumber;
--(CGPoint) getCenter;
 
 // attributes for the card
 @property (nonatomic) NSInteger cardWidth;
@@ -34,6 +32,13 @@
 
 @property(weak, nonatomic) id <SingleCardProtocol> delegate;
 // [TODO] attach connected textfield and update name
+
+
+-(id)makeCard : (CGRect) cardSpec WithLabel : (CGRect) labelSpec AndType : (int) labelType AndCardNumber : (NSInteger) cardNumber;
+-(CGPoint) getCenter;
+-(UILabel*) getNameLabel;
+
+
 
 
 
