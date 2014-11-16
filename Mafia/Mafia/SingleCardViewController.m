@@ -20,7 +20,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSLog(@"Something here");
+
+    self.nameField.delegate = self;
+    
+//    [self.exitButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     
     //Commented out for now
 //    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
@@ -47,7 +50,26 @@
 
 -(void) handleSingleTap:(UITapGestureRecognizer *)gr {
     // Use or nah???
+}
+
+// press away from keyboard to dismiss
+-(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.nameField resignFirstResponder];
     
+    // pass notification back to cards view to update the name
+    NSDictionary *theCard = @{@"playerName": self.nameField.text};
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateNameOfCard" object:nil userInfo:theCard];
+}
+
+// resign the keyboard when done "return button"
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if(textField) {
+        [textField resignFirstResponder];
+    }
+    // pass notification back to cards view to update the name
+    NSDictionary *theCard = @{@"playerName" : self.nameField.text};
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateNameOfCard" object:nil userInfo:theCard];
+    return YES;
 }
 
 

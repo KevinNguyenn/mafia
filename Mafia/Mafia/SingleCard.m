@@ -27,28 +27,30 @@
 //    // Drawing code
 //}
 
--(id) makeCard : (CGRect) cardSpec WithLabel : (CGRect) labelSpec AndType : (int)labelType{
+-(id) makeCard : (CGRect) cardSpec WithLabel : (CGRect) labelSpec AndType : (int)labelType AndCardNumber : (NSInteger) cardNumber {
     // TODO: change with differing cards?
     SingleCard *card = [[SingleCard alloc] initWithFrame: cardSpec];
     card.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |
     UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
     
-    UILabel *nameLabel = [[UILabel alloc] initWithFrame: labelSpec];
+    self.nameLabel = [[UILabel alloc] initWithFrame: labelSpec];
     
-    [nameLabel setTextColor:[UIColor blackColor]];
-    [nameLabel setBackgroundColor:[UIColor clearColor]];
+    [self.nameLabel setTextColor:[UIColor blackColor]];
+    [self.nameLabel setBackgroundColor:[UIColor clearColor]];
     if(labelType == 1) {
-       [nameLabel setFont:[UIFont fontWithName: @"Helvetica Neue" size: 11.0f]];
+       [self.nameLabel setFont:[UIFont fontWithName: @"Helvetica Neue" size: 11.0f]];
     }
     else {
-        [nameLabel setFont:[UIFont fontWithName: @"Helvetica Neue" size: 10.0f]];
+        [self.nameLabel setFont:[UIFont fontWithName: @"Helvetica Neue" size: 10.0f]];
     }
-    [nameLabel setText:@"Name"];
+    [self.nameLabel setText:@"Name"];
     
-    nameLabel.autoresizingMask = card.autoresizingMask;
-    nameLabel.textAlignment = NSTextAlignmentCenter;
-    [card addSubview:nameLabel];
+    self.nameLabel.autoresizingMask = card.autoresizingMask;
+    self.nameLabel.textAlignment = NSTextAlignmentCenter;
+    [card addSubview:self.nameLabel];
     
+    
+    self.cardNumber = cardNumber;
     
     self.cardHeight = cardSpec.size.width;
     self.cardWidth = cardSpec.size.width;
@@ -58,9 +60,10 @@
     return card;
 }
 
--(void) handleSingleTap:(UITapGestureRecognizer *)gr {
+-(void) handleSingleTap : (UITapGestureRecognizer *)gr {
     NSLog(@"touched card!");
     NSDictionary *theCard = @{@"card": self};
+    NSLog(@"%d", self.cardNumber);
     [[NSNotificationCenter defaultCenter] postNotificationName:@"pullUpIndividualCard" object:nil userInfo:theCard];
     
 }

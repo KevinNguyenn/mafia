@@ -25,8 +25,6 @@
     // Set center to start point of the button
     destinationViewController.view.center = self.originatingPoint;
     
-    NSLog(@"do stuff?");
-    
     [UIView animateWithDuration:0.5
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseInOut

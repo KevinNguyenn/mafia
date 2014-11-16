@@ -17,7 +17,7 @@
 
 @interface SingleCard : UIView
 
--(id)makeCard : (CGRect) cardSpec WithLabel : (CGRect) labelSpec AndType : (int) labelType;
+-(id)makeCard : (CGRect) cardSpec WithLabel : (CGRect) labelSpec AndType : (int) labelType AndCardNumber : (NSInteger) cardNumber;
 -(CGPoint) getCenter;
 
 // attributes for the card
@@ -25,6 +25,10 @@
 @property (nonatomic) NSInteger cardHeight;
 @property (nonatomic) NSInteger xCoord;
 @property (nonatomic) NSInteger yCoord;
+
+@property (nonatomic) NSInteger cardNumber;
+
+@property (nonatomic) UILabel *nameLabel;
 
 @property (nonatomic, weak) SingleCard *theCard;
 

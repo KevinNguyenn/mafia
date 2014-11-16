@@ -9,6 +9,7 @@
 #import "NSMutableArray_Shuffle.h"
 
 @implementation NSMutableArray (Shuffle)
+
 - (void)shuffle {
     NSUInteger count = [self count];
     for(NSUInteger i = 0; i < count; ++i) {
@@ -17,4 +18,5 @@
         [self exchangeObjectAtIndex:i withObjectAtIndex:exchangeIndex];
     }
 }
+
 @end

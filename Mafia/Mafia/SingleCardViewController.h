@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "SingleCard.h"
 
-@interface SingleCardViewController : UIViewController
+@interface SingleCardViewController : UIViewController <UITextFieldDelegate>
+
+@property (weak, nonatomic) IBOutlet UITextField *nameField;
+@property (weak, nonatomic) IBOutlet UIButton *exitButton;
 
 @end

@@ -11,7 +11,9 @@
 		8B8B1D6A19F7307B00306163 /* mafia.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B8B1D6919F7307B00306163 /* mafia.jpg */; };
 		9D32D1A81A108C7200319C4E /* NightKillPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D32D1A71A108C7200319C4E /* NightKillPersonViewController.m */; };
 		9D32D1AB1A10BE1D00319C4E /* DayKillPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D32D1AA1A10BE1D00319C4E /* DayKillPersonViewController.m */; };
+		9D3CC2CA1A17FD6900ED9BE7 /* delete_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3CC2C91A17FD6900ED9BE7 /* delete_24.png */; };
 		9D4A589A1A0069EE00B955D4 /* CardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A58991A0069EE00B955D4 /* CardsViewController.m */; };
+		9D4FE8E61A1803A300608336 /* NSMutableArray_Shuffle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4FE8E51A1803A300608336 /* NSMutableArray_Shuffle.m */; };
 		9D7E388C1A15713E00044C2B /* SingleCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7E388B1A15713E00044C2B /* SingleCardViewController.m */; };
 		9D7E388F1A15BB0300044C2B /* CustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7E388E1A15BB0300044C2B /* CustomSegue.m */; };
 		9D7E38921A15BC0800044C2B /* CustomUnwindSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7E38911A15BC0800044C2B /* CustomUnwindSegue.m */; };
@@ -50,8 +52,11 @@
 		9D32D1A71A108C7200319C4E /* NightKillPersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NightKillPersonViewController.m; sourceTree = "<group>"; };
 		9D32D1A91A10BE1D00319C4E /* DayKillPersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayKillPersonViewController.h; sourceTree = "<group>"; };
 		9D32D1AA1A10BE1D00319C4E /* DayKillPersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayKillPersonViewController.m; sourceTree = "<group>"; };
+		9D3CC2C91A17FD6900ED9BE7 /* delete_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_24.png; sourceTree = "<group>"; };
 		9D4A58981A0069EE00B955D4 /* CardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardsViewController.h; sourceTree = "<group>"; };
 		9D4A58991A0069EE00B955D4 /* CardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardsViewController.m; sourceTree = "<group>"; };
+		9D4FE8E41A1803A300608336 /* NSMutableArray_Shuffle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMutableArray_Shuffle.h; sourceTree = "<group>"; };
+		9D4FE8E51A1803A300608336 /* NSMutableArray_Shuffle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMutableArray_Shuffle.m; sourceTree = "<group>"; };
 		9D7E388A1A15713E00044C2B /* SingleCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleCardViewController.h; sourceTree = "<group>"; };
 		9D7E388B1A15713E00044C2B /* SingleCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleCardViewController.m; sourceTree = "<group>"; };
 		9D7E388D1A15BB0300044C2B /* CustomSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSegue.h; sourceTree = "<group>"; };
@@ -127,15 +132,16 @@
 		9D897BE519F07C4C00C1519F /* Mafia */ = {
 			isa = PBXGroup;
 			children = (
+				9D3CC2C91A17FD6900ED9BE7 /* delete_24.png */,
 				9DEB387D1A12CE60003B72ED /* Model.xcdatamodeld */,
 				8B8B1D6919F7307B00306163 /* mafia.jpg */,
+				9D897BF019F07C4C00C1519F /* Main.storyboard */,
 				9D897BEA19F07C4C00C1519F /* AppDelegate.h */,
 				9D897BEB19F07C4C00C1519F /* AppDelegate.m */,
 				9D897BED19F07C4C00C1519F /* ViewController.h */,
+				9D897BEE19F07C4C00C1519F /* ViewController.m */,
 				8B8B1D6219F72E3A00306163 /* MafiaBackground.h */,
 				8B8B1D6319F72E3A00306163 /* MafiaBackground.m */,
-				9D897BEE19F07C4C00C1519F /* ViewController.m */,
-				9D897BF019F07C4C00C1519F /* Main.storyboard */,
 				E457EC1619F723B70011ADFD /* SelectPlayersViewController.h */,
 				E457EC1719F723B70011ADFD /* SelectPlayersViewController.m */,
 				9D7E38931A15D35D00044C2B /* CardsNavigationViewController.h */,
@@ -146,6 +152,8 @@
 				9D7E388B1A15713E00044C2B /* SingleCardViewController.m */,
 				9DEAE22D1A0ABCC400887B50 /* SingleCard.h */,
 				9DEAE22E1A0ABCC400887B50 /* SingleCard.m */,
+				9D4FE8E41A1803A300608336 /* NSMutableArray_Shuffle.h */,
+				9D4FE8E51A1803A300608336 /* NSMutableArray_Shuffle.m */,
 				9D32D1A61A108C7200319C4E /* NightKillPersonViewController.h */,
 				9D32D1A71A108C7200319C4E /* NightKillPersonViewController.m */,
 				9D32D1A91A10BE1D00319C4E /* DayKillPersonViewController.h */,
@@ -282,6 +290,7 @@
 				9D897BF219F07C4C00C1519F /* Main.storyboard in Resources */,
 				E457EC1A19F728480011ADFD /* infoButton.jpg in Resources */,
 				9D897BF719F07C4C00C1519F /* LaunchScreen.xib in Resources */,
+				9D3CC2CA1A17FD6900ED9BE7 /* delete_24.png in Resources */,
 				9D897BF419F07C4C00C1519F /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,6 +314,7 @@
 				9D897BEF19F07C4C00C1519F /* ViewController.m in Sources */,
 				9D897BEC19F07C4C00C1519F /* AppDelegate.m in Sources */,
 				9D897BE919F07C4C00C1519F /* main.m in Sources */,
+				9D4FE8E61A1803A300608336 /* NSMutableArray_Shuffle.m in Sources */,
 				9DEAE22F1A0ABCC400887B50 /* SingleCard.m in Sources */,
 				9D4A589A1A0069EE00B955D4 /* CardsViewController.m in Sources */,
 				9D32D1A81A108C7200319C4E /* NightKillPersonViewController.m in Sources */,

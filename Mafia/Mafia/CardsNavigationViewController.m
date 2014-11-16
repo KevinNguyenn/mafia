@@ -41,7 +41,7 @@
 - (UIStoryboardSegue *)segueForUnwindingToViewController:(UIViewController *)toViewController fromViewController:(UIViewController *)fromViewController identifier:(NSString *)identifier {
     // Instantiate a new CustomUnwindSegue
     CustomUnwindSegue *segue = [[CustomUnwindSegue alloc] initWithIdentifier:identifier source:fromViewController destination:toViewController];
-    NSLog(@"bleh?");
+    NSLog(@"navigation controller unwind...");
     // Set the target point for the animation to the center of the button in this VC
     segue.targetPoint = [(CardsViewController*)toViewController getViewCenter];
     return segue;

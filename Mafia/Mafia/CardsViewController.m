@@ -20,8 +20,11 @@
 
 @property (nonatomic, weak) NSString* currentButtonText;
 @property (nonatomic, strong) NSMutableArray *cardStorage;
+@property (nonatomic, strong) NSMutableArray *playerRoles;
 @property (nonatomic, weak) SingleCard *card;
 @property CGPoint cardCenter;
+
++(void) assignCard : (SingleCard *) card AndKey : (id) key;
 
 @end
 
@@ -31,11 +34,15 @@
     [super viewDidLoad];
     self.cardStorage = [[NSMutableArray alloc] init];
     
+    self.playerRoles = [[NSMutableArray alloc] init];
+    
+    
     [self refreshCards];
     
 //    NSLog(@"setup observer");
     [[NSNotificationCenter defaultCenter] addObserver:self selector : @selector(ViewControllerShouldReloadNotification) name:@"ViewControllerShouldReloadNotification" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector : @selector(pullUpIndividualCard:) name:@"pullUpIndividualCard" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector : @selector(updateNameOfCard:) name:@"updateNameOfCard" object:nil];
     
     
     // Do any additional setup after loading the view.
@@ -88,8 +95,10 @@
 }
 
 - (void)refreshCards {
+    NSLog(@"-----");
     // reload the cards
     if(self.didSetupCards == YES) {
+        NSLog(@"the refresh");
 //        NSLog(@"persist the cards");
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *context = appDelegate.managedObjectContext;
@@ -105,6 +114,10 @@
         // actually load the cards onto the screen...
         for (temp in self.cardStorage) {
             tempCard = [temp valueForKey:@"oneCard"];
+            
+            tempCard.cardNumber = [[temp valueForKey:@"cardNumber"] integerValue];
+            [tempCard.nameLabel setText:[temp valueForKey:@"name"]];
+            
             // changes color of a singleCard
             tempCard.backgroundColor = [UIColor lightGrayColor];
             [self.view addSubview:tempCard];
@@ -145,6 +158,7 @@
     [self refreshCards];
     int labelType;
     SingleCard *singleCard;
+    NSInteger cardNumber = 0;
     CGFloat xCoord = 0.0;
     CGFloat yCoord = 0.0;
     CGFloat cardWidth = 0.0;
@@ -156,7 +170,6 @@
     CGFloat labelHeight = 0.0;
     
     // setup label
-    
     NSDictionary *theLabel;
     if([labelSpecs objectForKey:@"labelType1"]) {
         theLabel = [labelSpecs objectForKey:@"labelType1"];
@@ -174,6 +187,7 @@
     // setup cards
     for(id key in cardSpecs) {
         NSDictionary *indivCard = [cardSpecs objectForKey:key];
+        
         for(id attribute in indivCard) {
             if([attribute isEqualToString:@"xCoord"]) {
                 // get the xCoord
@@ -187,31 +201,27 @@
                 // get cardWidth
                 cardWidth = (CGFloat)[[indivCard objectForKey:attribute] floatValue];
             }
-            else {
+            else if([attribute isEqualToString:@"cardHeight"]){
                 // assumes to get cardHeight
                 cardHeight = (CGFloat)[[indivCard objectForKey:attribute] floatValue];
+            }
+            else {
+                NSLog(@"reach here?");
+                cardNumber = (NSInteger)[[indivCard objectForKey:attribute] integerValue];
+                NSLog(@"%d", cardNumber);
             }
         }
         // setup card
         CGRect cardSpec = CGRectMake(xCoord, yCoord, cardWidth, cardHeight);
         CGRect labelSpec = CGRectMake(labelXCoord, labelYCoord, labelWidth, labelHeight);
         singleCard = [[SingleCard alloc] init];
-        singleCard = [singleCard makeCard : cardSpec WithLabel: labelSpec AndType: labelType];
+        singleCard = [singleCard makeCard : cardSpec WithLabel: labelSpec AndType: labelType AndCardNumber : cardNumber];
         
         SingleCardViewController *singleCardVC = [[SingleCardViewController alloc] init];
         singleCard.delegate = singleCardVC;
         
-        // and add the singleCard to Core data
-        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-        NSManagedObjectContext *context = appDelegate.managedObjectContext;
-        NSManagedObject *newCard = [NSEntityDescription insertNewObjectForEntityForName:@"Card" inManagedObjectContext:context];
-        
-        [newCard setValue:singleCard forKey:@"oneCard"];
-   
-        
-        // Save changes to the persistent store
-        NSError *error;
-        [context save:&error];
+        // Core Data stuff
+        [CardsViewController assignCard : singleCard AndKey : key];
     }
     
     self.didSetupCards = update;
@@ -240,12 +250,101 @@
     }
 }
 
+// Core data under-the-hood method
++(void) assignCard : (SingleCard *) card AndKey : (id) key {
+    // and add the singleCard to Core data
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = appDelegate.managedObjectContext;
+    NSManagedObject *newCard = [NSEntityDescription insertNewObjectForEntityForName:@"Card" inManagedObjectContext:context];
+    
+    [newCard setValue : card forKey:@"oneCard"];
+    [newCard setValue : @"" forKey : @"name"];
+    
+    if([key isEqualToString:@"card1"]) {
+        [newCard setValue: [NSNumber numberWithInteger:1] forKey:@"cardNumber"];
+    }
+    else if([key isEqualToString:@"card2"]) {
+        [newCard setValue: [NSNumber numberWithInteger:2] forKey:@"cardNumber"];
+    }
+    else if([key isEqualToString:@"card3"]) {
+        [newCard setValue: [NSNumber numberWithInteger:3] forKey:@"cardNumber"];
+    }
+    else if([key isEqualToString:@"card4"]) {
+        [newCard setValue: [NSNumber numberWithInteger:4] forKey:@"cardNumber"];
+    }
+    else if([key isEqualToString:@"card5"]) {
+        [newCard setValue: [NSNumber numberWithInteger:5] forKey:@"cardNumber"];
+    }
+    else if([key isEqualToString:@"card6"]) {
+        [newCard setValue: [NSNumber numberWithInteger:6] forKey:@"cardNumber"];
+    }
+    else if([key isEqualToString:@"card7"]) {
+        [newCard setValue: [NSNumber numberWithInteger:7]forKey:@"cardNumber"];
+    }
+    else if([key isEqualToString:@"card8"]) {
+        [newCard setValue: [NSNumber numberWithInteger:8] forKey:@"cardNumber"];
+    }
+    else if([key isEqualToString:@"card9"]) {
+        [newCard setValue: [NSNumber numberWithInteger:9] forKey:@"cardNumber"];
+    }
+    else if([key isEqualToString:@"card10"]) {
+        [newCard setValue: [NSNumber numberWithInteger:10] forKey:@"cardNumber"];
+    }
+    
+    NSLog(@"check save card %@", [newCard valueForKey:@"cardNumber"]);
+    
+    // Save changes to the persistent store
+    NSError *error;
+    [context save:&error];
+}
+
+// NSNotification method
 -(void) pullUpIndividualCard : (NSNotification *) cardSpec {
     NSDictionary *cardDict = [cardSpec userInfo];
     SingleCard *card = [cardDict objectForKey: @"card"];
+    // temporary variable
+    NSLog(@"pull up card");
+    NSLog(@"%d", card.cardNumber);
     self.card = card;
-    NSLog(@"ultimate wow");
     [self performSegueWithIdentifier : @"viewSingleCard" sender : card];
+}
+
+// NSNotification method
+-(void) updateNameOfCard : (NSNotification *) cardSpec {
+    NSLog(@"pls update name");
+    NSDictionary *cardDict = [cardSpec userInfo];
+    NSString *name = [cardDict objectForKey: @"playerName"];
+    NSLog(@"%@", name);
+    SingleCard *tempCard = nil;
+    
+    // access the core data
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = appDelegate.managedObjectContext;
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Card" inManagedObjectContext:context];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    
+    // Save changes to the persistent store
+    NSError *error;
+    
+    //Set up to get the thing you want to update
+    [request setPredicate:[NSPredicate predicateWithFormat:@"cardNumber = %d", self.card.cardNumber]];
+    
+    tempCard = [[context executeFetchRequest :request error: &error] lastObject];
+    
+    [self.card.nameLabel setText: name];
+    NSLog(@"%@", self.card.nameLabel.text);
+    NSLog(@"%d", self.card.cardNumber);
+    NSLog(@"show card number %@", tempCard.cardNumber);
+    
+    [tempCard setValue:name forKey:@"name"];
+    
+    [context save:&error];
+    
+    
+    
+    
+    NSLog(@"updated card!");
 }
 
 
@@ -257,7 +356,6 @@
      // Pass the selected object to the new view controller.
      if([segue isKindOfClass:[CustomSegue class]]) {
          // Set the start point for the animation to center of the button for the animation
-         NSLog(@"woahhaha");
          ((CustomSegue *)segue).originatingPoint = [sender getCenter];
          self.cardCenter = [sender getCenter];
      }
@@ -268,7 +366,7 @@
 // It needs to be here to create a link for the unwind segue.
 // But we'll do nothing with it.
 - (IBAction) unwindFromViewController:(UIStoryboardSegue *)sender {
-
+    [self refreshCards];
 }
 
 //// We need to over-ride this method from UIViewController to provide a custom segue for unwinding

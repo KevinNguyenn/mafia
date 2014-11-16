@@ -289,10 +289,10 @@
             </objects>
             <point key="canvasLocation" x="2553" y="-913"/>
         </scene>
-        <!--SingleCard View Controller-->
+        <!--SingleCard1 View Controller-->
         <scene sceneID="hnm-23-y4F">
             <objects>
-                <viewController id="Hw8-cr-clw" userLabel="SingleCard View Controller" customClass="SingleCardViewController" sceneMemberID="viewController">
+                <viewController id="Hw8-cr-clw" userLabel="SingleCard1 View Controller" customClass="SingleCardViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JOT-44-AWw"/>
                         <viewControllerLayoutGuide type="bottom" id="vUt-er-pcy"/>
@@ -301,37 +301,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HOV-Qu-kic">
-                                <color key="backgroundColor" red="0.64739705209999998" green="1" blue="0.67348915639999996" alpha="1" colorSpace="calibratedRGB"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vao-V6-GQn">
+                                <rect key="frame" x="42" y="86" width="236" height="395"/>
+                                <connections>
+                                    <segue destination="vcU-hd-x7E" kind="embed" id="9oM-1L-7Qj"/>
+                                </connections>
                             </containerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Test label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMb-BG-hgg">
-                                <rect key="frame" x="124" y="422" width="73" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OLL-We-999">
-                                <rect key="frame" x="100" y="116" width="121" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ss6-47-Fsi">
-                                <rect key="frame" x="137" y="37" width="46" height="30"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ss6-47-Fsi">
+                                <rect key="frame" x="22" y="54" width="24" height="24"/>
+                                <state key="normal" image="delete_24.png">
+                                    <color key="titleShadowColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="HiU-Ek-Ho5" kind="unwind" unwindAction="unwindFromViewController:" id="FAl-XW-EJW"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="exitButton" destination="ss6-47-Fsi" id="3ls-8k-oEm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VOD-ec-l3T" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="HiU-Ek-Ho5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-132" y="515"/>
+            <point key="canvasLocation" x="-132" y="631"/>
         </scene>
         <!--Day Time1 View Controller-->
         <scene sceneID="CRo-f3-YGD">
@@ -475,17 +470,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z59-PR-4py">
-                                <rect key="frame" x="278" y="109" width="26" height="26"/>
-                                <state key="normal" image="infoButton.jpg">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Button">
-                                            <attributes>
-                                                <font key="NSFont" size="15" name="HelveticaNeue-Bold"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z59-PR-4py">
+                                <rect key="frame" x="278" y="109" width="22" height="22"/>
                                 <connections>
                                     <segue destination="rZq-g6-NIR" kind="modal" modalTransitionStyle="crossDissolve" id="MZZ-1q-5gl"/>
                                 </connections>
@@ -858,9 +844,44 @@
             </objects>
             <point key="canvasLocation" x="-1767" y="250"/>
         </scene>
+        <!--SingleCard2 View Controller-->
+        <scene sceneID="PgP-9Z-ZPa">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="vcU-hd-x7E" userLabel="SingleCard2 View Controller" customClass="SingleCardViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="P1R-Tq-KWA"/>
+                        <viewControllerLayoutGuide type="bottom" id="a1j-L1-xob"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="hIL-bd-c1n">
+                        <rect key="frame" x="0.0" y="0.0" width="236" height="395"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OLL-We-999">
+                                <rect key="frame" x="16" y="61" width="204" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Role is here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMb-BG-hgg">
+                                <rect key="frame" x="16" y="320" width="204" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <connections>
+                        <outlet property="nameField" destination="OLL-We-999" id="gdC-YL-a3D"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SfT-uz-7tw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="342" y="630.5"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="infoButton.jpg" width="256" height="256"/>
+        <image name="delete_24.png" width="24" height="24"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -868,7 +889,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ht0-VE-uw8"/>
         <segue reference="4AE-H6-ULJ"/>
+        <segue reference="fFL-co-Ina"/>
     </inferredMetricsTieBreakers>
 </document>

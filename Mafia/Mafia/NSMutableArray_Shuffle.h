@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface NSMutableArray (Shuffle)
+
 -(void)shuffle;
+
 @end
