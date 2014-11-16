@@ -24,7 +24,6 @@
 @property (nonatomic, weak) SingleCard *card;
 @property CGPoint cardCenter;
 
-+(void) assignCard : (SingleCard *) card AndKey : (id) key;
 
 @end
 
@@ -40,6 +39,8 @@
     self.card.nameLabel.text = @"filler";
     
     [self refreshCards];
+    
+    [self.deathSwitch addTarget:self action:@selector(deathToggled:) forControlEvents: UIControlEventValueChanged];
     
 //    NSLog(@"setup observer");
     [[NSNotificationCenter defaultCenter] addObserver:self selector : @selector(ViewControllerShouldReloadNotification) name:@"ViewControllerShouldReloadNotification" object:nil];
@@ -297,12 +298,28 @@
             [tempCard.nameLabel setText: name];
         }
     }
-
-
     [context save:&error];
     
     NSLog(@"updated card!");
 }
+
+
+
+
+
+-(void) deathToggled:(id)sender {
+    UISwitch *mySwitch = (UISwitch *)sender;
+    if ([mySwitch isOn]) {
+        NSLog(@"its on!");
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"KillButtonOn" object:nil];
+        
+    }
+    else {
+        NSLog(@"its off!");
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"SaveButtonOn" object:nil];
+    }
+}
+
 
 
  #pragma mark - Navigation
@@ -326,15 +343,16 @@
     [self refreshCards];
 }
 
-//// We need to over-ride this method from UIViewController to provide a custom segue for unwinding
-//- (UIStoryboardSegue *)segueForUnwindingToViewController:(UIViewController *)toViewController fromViewController:(UIViewController *)fromViewController identifier:(NSString *)identifier {
-//    // Instantiate a new CustomUnwindSegue
-//    CustomUnwindSegue *segue = [[CustomUnwindSegue alloc] initWithIdentifier:identifier source:fromViewController destination:toViewController];
-//    NSLog(@"bleh?");
-//    // Set the target point for the animation to the center of the button in this VC
-//    segue.targetPoint = self.cardCenter;
-//    return segue;
-//}
+// HACKY AGAIN, have to establish this unwind segue method in the navigation controller...
+// We need to over-ride this method from UIViewController to provide a custom segue for unwinding
+- (UIStoryboardSegue *)segueForUnwindingToViewController:(UIViewController *)toViewController fromViewController:(UIViewController *)fromViewController identifier:(NSString *)identifier {
+    // Instantiate a new CustomUnwindSegue
+    CustomUnwindSegue *segue = [[CustomUnwindSegue alloc] initWithIdentifier:identifier source:fromViewController destination:toViewController];
+    NSLog(@"blahhhhh");
+    // Set the target point for the animation to the center of the button in this VC
+    segue.targetPoint = [(CardsViewController*)toViewController getViewCenter];
+    return segue;
+}
 
 -(CGPoint) getViewCenter {
     return self.cardCenter;

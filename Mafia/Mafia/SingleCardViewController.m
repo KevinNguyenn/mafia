@@ -7,6 +7,7 @@
 //
 
 #import "SingleCardViewController.h"
+#import "CardsViewController.h"
 
 
 @interface SingleCardViewController ()
@@ -30,6 +31,13 @@
 //    [self.view addGestureRecognizer:singleTap];
 //    singleTap.numberOfTapsRequired = 1;
 //    singleTap.numberOfTouchesRequired = 1;
+    
+    
+    [self displaySaveButton];
+    NSLog(@"set observer");
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector : @selector(displayKillButton) name:@"KillButtonOn" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector : @selector(displaySaveButton) name:@"SaveButtonOn" object:nil];
 }
 
 
@@ -70,6 +78,20 @@
     NSDictionary *theCard = @{@"playerName" : self.nameField.text};
     [[NSNotificationCenter defaultCenter] postNotificationName:@"updateNameOfCard" object:nil userInfo:theCard];
     return YES;
+}
+
+-(void) displayKillButton  {
+    NSLog(@"change to kill");
+    [self.actionButton setTitle:@"Kill" forState:UIControlStateNormal];
+    [self.actionButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+}
+
+
+
+-(void) displaySaveButton {
+    NSLog(@"change to save");
+    [self.actionButton setTitle:@"Save" forState:UIControlStateNormal];
+    [self.actionButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
 }
 
 

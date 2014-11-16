@@ -13,5 +13,6 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UIButton *exitButton;
+@property (weak, nonatomic) IBOutlet UIButton *actionButton;
 
 @end

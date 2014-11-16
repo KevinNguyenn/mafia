@@ -12,7 +12,6 @@
 @protocol SingleCardProtocol <NSObject>
 
 -(void) pullUpIndividualCard : (UIView *) theCard;
--(void) updateNameOfCard : (NSNotification *) cardSpec;
 
 @end
 
