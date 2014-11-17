@@ -27,10 +27,10 @@
 //    [self.exitButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     
     //Commented out for now
-//    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
-//    [self.view addGestureRecognizer:singleTap];
-//    singleTap.numberOfTapsRequired = 1;
-//    singleTap.numberOfTouchesRequired = 1;
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    [self.view addGestureRecognizer:singleTap];
+    singleTap.numberOfTapsRequired = 1;
+    singleTap.numberOfTouchesRequired = 1;
     
     
 //    [self displaySaveButton];
@@ -59,6 +59,7 @@
 
 -(void) handleSingleTap:(UITapGestureRecognizer *)gr {
     // Use or nah???
+    NSLog(@"use or nah");
 }
 
 // press away from keyboard to dismiss
@@ -66,8 +67,10 @@
     [self.nameField resignFirstResponder];
     
     // pass notification back to cards view to update the name
-    NSDictionary *theCard = @{@"playerName": self.nameField.text};
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateNameOfCard" object:nil userInfo:theCard];
+    if(self.nameField.text != NULL) {
+        NSDictionary *theCard = @{@"playerName": self.nameField.text};
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateNameOfCard" object:nil userInfo:theCard];
+    }
 }
 
 // resign the keyboard when done "return button"
@@ -76,8 +79,10 @@
         [textField resignFirstResponder];
     }
     // pass notification back to cards view to update the name
-    NSDictionary *theCard = @{@"playerName" : self.nameField.text};
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateNameOfCard" object:nil userInfo:theCard];
+    if(self.nameField.text != NULL) {
+        NSDictionary *theCard = @{@"playerName": self.nameField.text};
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateNameOfCard" object:nil userInfo:theCard];
+    }
     return YES;
 }
 
