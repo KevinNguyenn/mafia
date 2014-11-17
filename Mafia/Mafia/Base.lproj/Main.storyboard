@@ -316,10 +316,17 @@
                                     <segue destination="HiU-Ek-Ho5" kind="unwind" unwindAction="unwindFromViewController:" id="FAl-XW-EJW"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUt-R9-iVS">
+                                <rect key="frame" x="137" y="509" width="46" height="30"/>
+                                <state key="normal" title="&lt;&gt;">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="actionButton" destination="FUt-R9-iVS" id="lfq-zb-vXK"/>
                         <outlet property="exitButton" destination="ss6-47-Fsi" id="3ls-8k-oEm"/>
                     </connections>
                 </viewController>
@@ -861,14 +868,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUt-R9-iVS">
-                                <rect key="frame" x="95" y="345" width="46" height="30"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Role is here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMb-BG-hgg">
-                                <rect key="frame" x="16" y="282" width="204" height="21"/>
+                                <rect key="frame" x="16" y="354" width="204" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -878,7 +879,6 @@
                     </view>
                     <toolbarItems/>
                     <connections>
-                        <outlet property="actionButton" destination="FUt-R9-iVS" id="BmO-bX-yev"/>
                         <outlet property="nameField" destination="OLL-We-999" id="gdC-YL-a3D"/>
                     </connections>
                 </viewController>

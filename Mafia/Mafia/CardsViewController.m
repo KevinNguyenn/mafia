@@ -24,6 +24,7 @@
 @property (nonatomic, weak) SingleCard *card;
 @property CGPoint cardCenter;
 
+@property BOOL isDeathSwitchOn;
 
 @end
 
@@ -98,10 +99,10 @@
 }
 
 - (void)refreshCards {
-    NSLog(@"-----");
+//    NSLog(@"-----");
     // reload the cards
     if(self.didSetupCards == YES) {
-        NSLog(@"the refresh");
+//        NSLog(@"the refresh");
 //        NSLog(@"persist the cards");
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *context = appDelegate.managedObjectContext;
@@ -124,7 +125,7 @@
     }
     // clean the cards
     else {
-        NSLog(@"clean up cards");
+//        NSLog(@"clean up cards");
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *context = appDelegate.managedObjectContext;
         NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Card" inManagedObjectContext:context];
@@ -288,7 +289,7 @@
     NSError *error;
     
     NSMutableArray *tempArray = [[NSMutableArray alloc] init];
-    tempArray = [[context executeFetchRequest :request error: &error] lastObject];
+    tempArray = [[context executeFetchRequest :request error: &error] mutableCopy];
     SingleCard *tempCard;
     NSManagedObject *temp;
     for (temp in tempArray) {
@@ -311,12 +312,12 @@
     UISwitch *mySwitch = (UISwitch *)sender;
     if ([mySwitch isOn]) {
         NSLog(@"its on!");
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"KillButtonOn" object:nil];
+        self.isDeathSwitchOn = YES;
         
     }
     else {
         NSLog(@"its off!");
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"SaveButtonOn" object:nil];
+        self.isDeathSwitchOn = NO;
     }
 }
 
@@ -333,6 +334,7 @@
          ((CustomSegue *)segue).originatingPoint = [sender getCenter];
          self.cardCenter = [sender getCenter];
      }
+     NSLog(@"done?");
  }
 
 // THIS IS REALLY HACKY...
@@ -357,8 +359,10 @@
 -(CGPoint) getViewCenter {
     return self.cardCenter;
 }
+
+-(BOOL) getSwitchStatus {
+    return self.isDeathSwitchOn;
+}
  
-
-
 
 @end

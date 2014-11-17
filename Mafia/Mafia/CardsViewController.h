@@ -20,11 +20,10 @@
 @property (weak, nonatomic) IBOutlet UISwitch *deathSwitch;
 @property (weak, nonatomic) IBOutlet UILabel *deathSwitchLabel;
 
-
 @property BOOL didSetupCards;
 
-
-- (void)refreshCards;
+-(BOOL) getSwitchStatus;
+-(void) refreshCards;
 
 // part of custom segue stuff
 -(CGPoint) getViewCenter;

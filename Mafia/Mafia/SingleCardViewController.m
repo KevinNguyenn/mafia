@@ -33,11 +33,12 @@
 //    singleTap.numberOfTouchesRequired = 1;
     
     
-    [self displaySaveButton];
-    NSLog(@"set observer");
+//    [self displaySaveButton];
+    NSLog(@"view did load on single card view controller...");
+    NSLog(@"%@", [self.actionButton class]);
+    NSLog(@"%@", [self.exitButton class]);
+    NSLog(@"%@", self.actionButton.titleLabel.text);
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector : @selector(displayKillButton) name:@"KillButtonOn" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector : @selector(displaySaveButton) name:@"SaveButtonOn" object:nil];
 }
 
 
@@ -80,18 +81,20 @@
     return YES;
 }
 
--(void) displayKillButton  {
+-(void) displayKillButton : (NSString *) theKill {
     NSLog(@"change to kill");
-    [self.actionButton setTitle:@"Kill" forState:UIControlStateNormal];
+    [self.actionButton setTitle: theKill forState:UIControlStateNormal];
     [self.actionButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
 }
 
 
 
--(void) displaySaveButton {
+-(void) displaySaveButton : (NSString *) theSave {
+    NSLog(@"%@", self.actionButton.titleLabel.text);
     NSLog(@"change to save");
-    [self.actionButton setTitle:@"Save" forState:UIControlStateNormal];
-    [self.actionButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [self.actionButton setTitle: theSave forState:UIControlStateNormal];
+    [self.actionButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    NSLog(@"%@", self.actionButton.titleLabel.text);
 }
 
 

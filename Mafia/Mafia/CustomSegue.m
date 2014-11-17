@@ -7,6 +7,8 @@
 //
 
 #import "CustomSegue.h"
+#import "SingleCardViewController.h"
+#import "CardsViewController.h"
 
 @implementation CustomSegue
 
@@ -22,6 +24,7 @@
     
     // Store original centre point of the destination view
     CGPoint originalCenter = destinationViewController.view.center;
+    
     // Set center to start point of the button
     destinationViewController.view.center = self.originatingPoint;
     
@@ -35,8 +38,26 @@
                      }
                      completion:^(BOOL finished){
                          [destinationViewController.view removeFromSuperview]; // remove from temp super view
-                         [sourceViewController presentViewController:destinationViewController animated:NO completion:NULL]; // present VC
-                     }];
+                         // present VC
+                         [sourceViewController presentViewController:destinationViewController animated:NO completion:NULL];
+                         
+                         
+                         // change the button here
+                         if([(CardsViewController *)sourceViewController getSwitchStatus] == YES) {
+                             NSLog(@"do the kill");
+                             [(SingleCardViewController *)destinationViewController displayKillButton:@"Kill"];
+                         }
+                         else {
+                             NSLog(@"do the save");
+                             [(SingleCardViewController *)destinationViewController displaySaveButton:@"Save"];
+                         }
+                     }
+     ];
+    
+
+
+    
+    
 }
 
 @end

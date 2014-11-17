@@ -15,4 +15,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *exitButton;
 @property (weak, nonatomic) IBOutlet UIButton *actionButton;
 
+
+//methods
+-(void) displayKillButton : (NSString *) theKill;
+-(void) displaySaveButton : (NSString *) theSave;
+
+
 @end
