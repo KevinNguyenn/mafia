@@ -67,7 +67,7 @@
     [self.nameField resignFirstResponder];
     
     // pass notification back to cards view to update the name
-    if(self.nameField.text != NULL) {
+    if(self.nameField.text != NULL && ![self.nameField.text isEqualToString:@""]) {
         NSDictionary *theCard = @{@"playerName": self.nameField.text};
         [[NSNotificationCenter defaultCenter] postNotificationName:@"updateNameOfCard" object:nil userInfo:theCard];
     }
@@ -79,7 +79,7 @@
         [textField resignFirstResponder];
     }
     // pass notification back to cards view to update the name
-    if(self.nameField.text != NULL) {
+    if(self.nameField.text != NULL && ![self.nameField.text isEqualToString:@""]) {
         NSDictionary *theCard = @{@"playerName": self.nameField.text};
         [[NSNotificationCenter defaultCenter] postNotificationName:@"updateNameOfCard" object:nil userInfo:theCard];
     }
