@@ -24,7 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *notificationLabel;
 
 // methods to modify text of action button
--(void) displayKillButton : (NSString *) theKill AndCardSpec: (SingleCard *) cardView;
+-(void) displayKillButton : (NSString *) theKill;
 -(void) displaySaveButton : (NSString *) theSave;
 
 

@@ -33,7 +33,7 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
      if([segue.identifier isEqualToString: @"killPersonNightSegue"]) {
-         [segue.destinationViewController updatePlayButton : @"Enter Day Time"];
+         [segue.destinationViewController updatePlayButton : @"Enter Day Time" AndCanTouchCard : YES];
      }
 }
 
