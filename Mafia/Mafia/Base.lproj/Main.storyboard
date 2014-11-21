@@ -333,9 +333,6 @@
                                 <state key="normal" title="-">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="saveName:" destination="Hw8-cr-clw" eventType="touchUpInside" id="Soy-fp-t7V"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -896,7 +893,7 @@
                     <toolbarItems/>
                     <connections>
                         <outlet property="nameField" destination="OLL-We-999" id="ocw-5m-Vbp"/>
-                        <outlet property="roleField" destination="gMb-BG-hgg" id="hHC-sT-krR"/>
+                        <outlet property="roleLabel" destination="gMb-BG-hgg" id="oGs-Dg-iEb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SfT-uz-7tw" userLabel="First Responder" sceneMemberID="firstResponder"/>

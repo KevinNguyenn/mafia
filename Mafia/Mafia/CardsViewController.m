@@ -36,23 +36,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.cardStorage = [[NSMutableArray alloc] init];
-    
     self.playerRoles = [[NSMutableArray alloc] init];
-    
-    // initialize temp card
-    self.card.nameLabel.text = @"filler";
     
     [self refreshCards];
     
     [self.deathSwitch addTarget:self action:@selector(deathToggled:) forControlEvents: UIControlEventValueChanged];
     
-//    NSLog(@"setup observer");
+    // setup observers for nsnotification methods
     [[NSNotificationCenter defaultCenter] addObserver:self selector : @selector(ViewControllerShouldReloadNotification) name:@"ViewControllerShouldReloadNotification" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector : @selector(pullUpIndividualCard:) name:@"pullUpIndividualCard" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector : @selector(updateNameOfCard:) name:@"updateNameOfCard" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector : @selector(addDeadLabel:) name:@"KillPlayer" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector : @selector(addDeadLabel) name:@"KillPlayer" object:nil];
     
-    // Do any additional setup after loading the view.
+    
+    
     if([self.currentButtonText isEqualToString:@"Enter Day Time"]) {
         NSLog(@"about to enter day time");
         [self.beginDayButton setTitle: self.currentButtonText forState:UIControlStateNormal];
@@ -83,6 +80,7 @@
     }
     // beginning start
     else {
+        NSLog(@"beginning start");
         self.beginDayButton.enabled = NO;
         self.beginNightButton.enabled = YES;
         self.continueDayButton.enabled = NO;
@@ -95,10 +93,9 @@
     
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-
+    NSLog(@"U WOT M8");
 }
 
 - (void)refreshCards {
@@ -123,17 +120,10 @@
             tempCard.backgroundColor = [UIColor lightGrayColor];
             [self.view addSubview:tempCard];
             // [redux] enable the card touch to perform kill
-            if(self.canTouchCard == YES && self.isDeathSwitchOn == YES) {
-                tempCard.userInteractionEnabled = YES;
-            }
-//            else if({
-//                tempCard.userInteractionEnabled = NO;
-//            }
         }
     }
     // clean the cards
     else {
-//        NSLog(@"clean up cards");
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *context = appDelegate.managedObjectContext;
         NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Card" inManagedObjectContext:context];
@@ -150,8 +140,6 @@
             [context deleteObject:temp];
         }
     }
-    
- 
 }
 
 
@@ -174,33 +162,40 @@
     int numPolice = 1;
     int numInnocents = 0;
 
-    if(numPlayers > 8)
+    if(numPlayers > 8) {
         numMafia = 3;
-    else
+    }
+    else {
         numMafia = 2;
+    }
     
     numInnocents = numPlayers - numMafia - numPolice;
 
     // Add mafia
-    for(int i=0; i<numMafia; ++i)
+    for(int i = 0; i < numMafia; ++i) {
         [roles addObject:[NSNumber numberWithInt:1]];
+    }
         
     // Add police
-    for(int i=0; i<numPolice; ++i)
+    for(int i = 0; i < numPolice; ++i) {
         [roles addObject:[NSNumber numberWithInt:2]];
+    }
         
     // Add innocents
-    for(int i=0; i<numInnocents; ++i)
-        [roles addObject:[NSNumber numberWithInt:3]];
+    for(int i = 0; i < numInnocents; ++i) {
+       [roles addObject:[NSNumber numberWithInt:3]];
+    }
     
     // Randomize roles that are to be assigned
     [roles shuffle];
     
     // remove any hanging cards from previous session
     [self refreshCards];
+    
     int labelType;
     SingleCard *singleCard;
     NSInteger cardNumber = 1;
+    
     CGFloat xCoord = 0.0;
     CGFloat yCoord = 0.0;
     CGFloat cardWidth = 0.0;
@@ -211,7 +206,7 @@
     CGFloat labelWidth = 0.0;
     CGFloat labelHeight = 0.0;
     
-    // setup label
+    // setup label for different sizes of cards
     NSDictionary *theLabel;
     if([labelSpecs objectForKey:@"labelType1"]) {
         theLabel = [labelSpecs objectForKey:@"labelType1"];
@@ -221,6 +216,7 @@
         theLabel = [labelSpecs objectForKey:@"labelType2"];
         labelType = 2;
     }
+    
     labelXCoord = (CGFloat)[[theLabel objectForKey: @"xCoord"] floatValue];
     labelYCoord = (CGFloat)[[theLabel objectForKey: @"yCoord"] floatValue];
     labelWidth = (CGFloat)[[theLabel objectForKey: @"labelWidth"] floatValue];
@@ -233,20 +229,20 @@
         NSDictionary *indivCard = [cardSpecs objectForKey:key];
         
         for(id attribute in indivCard) {
+            // get the xCoord
             if([attribute isEqualToString:@"xCoord"]) {
-                // get the xCoord
                 xCoord = (CGFloat)[[indivCard objectForKey:attribute] floatValue];
             }
+            // get the yCoord
             else if([attribute isEqualToString:@"yCoord"]) {
-                // get the yCoord
                 yCoord = (CGFloat)[[indivCard objectForKey:attribute] floatValue];
             }
+            // get cardWidth
             else if([attribute isEqualToString:@"cardWidth"]) {
-                // get cardWidth
                 cardWidth = (CGFloat)[[indivCard objectForKey:attribute] floatValue];
             }
+            // get cardHeight
             else if([attribute isEqualToString:@"cardHeight"]){
-                // assumes to get cardHeight
                 cardHeight = (CGFloat)[[indivCard objectForKey:attribute] floatValue];
             }
         }
@@ -262,8 +258,9 @@
         
         singleCard = [singleCard makeCard : cardSpec WithLabel: labelSpec AndType: labelType AndCardNumber : cardNumber AndRole : role];
         
-        SingleCardViewController *singleCardVC = [[SingleCardViewController alloc] init];
-        singleCard.delegate = singleCardVC;
+        
+//        SingleCardViewController *singleCardVC = [[SingleCardViewController alloc] init];
+//        singleCard.delegate = singleCardVC;
         
         // Core Data stuff
         [CardsViewController saveCard : singleCard];
@@ -352,10 +349,7 @@
     NSLog(@"updated card!");
 }
 
--(void) addDeadLabel: (NSNotification *) cardSpec {
-//    NSDictionary *cardDict = [cardSpec userInfo];
-//    NSString *name = [cardDict objectForKey: @"playerName"];
-    
+-(void) addDeadLabel {
     // access the core data
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = appDelegate.managedObjectContext;

@@ -13,8 +13,9 @@
 @interface SingleCardPlayerViewController : UIViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
-@property (weak, nonatomic) IBOutlet UILabel *roleField;
+@property (weak, nonatomic) IBOutlet UILabel *roleLabel;
 
 -(void) modifyTextField : (NSString *) name;
+-(void) showRole : (NSInteger) roleNum;
 
 @end

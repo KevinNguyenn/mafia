@@ -14,13 +14,8 @@
 
 
 @property (weak, nonatomic) IBOutlet UIButton *exitButton;
-
 //the button
 @property (weak, nonatomic) IBOutlet UIButton *actionButton;
-
-// the outlet action
-- (IBAction)saveName:(UIButton *)sender;
-
 @property (weak, nonatomic) IBOutlet UILabel *notificationLabel;
 
 // methods to modify text of action button

@@ -17,12 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.nameField.delegate = self;
-    
-    
-    
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,6 +68,32 @@
     nameLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview: nameLabel];
     NSLog(@"show the name");
+}
+
+-(void) showRole : (NSInteger) roleNum {
+    // 1 - Mafia Role
+    // 2 - Police Role
+    // 3 - Innocent Role
+    
+    switch(roleNum) {
+        case 1:
+            [self.roleLabel setText: @"Mafia"];
+            [self.roleLabel setTextColor:[UIColor redColor]];
+            break;
+        case 2:
+            [self.roleLabel setText: @"Police"];
+            [self.roleLabel setTextColor:[UIColor blueColor]];
+            break;
+            
+        case 3:
+            [self.roleLabel setText: @"Innocent"];
+            [self.roleLabel setTextColor:[UIColor greenColor]];
+            break;
+        default:
+            NSLog(@"undefined role. should not reach here.");
+            break;
+    }
+
 }
 
 
