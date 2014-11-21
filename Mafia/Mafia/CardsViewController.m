@@ -105,8 +105,6 @@
 //    NSLog(@"-----");
     // reload the cards
     if(self.didSetupCards == YES) {
-//        NSLog(@"the refresh");
-//        NSLog(@"persist the cards");
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *context = appDelegate.managedObjectContext;
         NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Card" inManagedObjectContext:context];
@@ -124,6 +122,13 @@
             // changes color of a singleCard
             tempCard.backgroundColor = [UIColor lightGrayColor];
             [self.view addSubview:tempCard];
+            // [redux] enable the card touch to perform kill
+            if(self.canTouchCard == YES && self.isDeathSwitchOn == YES) {
+                tempCard.userInteractionEnabled = YES;
+            }
+//            else if({
+//                tempCard.userInteractionEnabled = NO;
+//            }
         }
     }
     // clean the cards
@@ -275,9 +280,10 @@
     [self refreshCards];
 }
 
--(void) updatePlayButton : (NSString *) text {
+-(void) updatePlayButton : (NSString *) text AndCanTouchCard : (BOOL) canTouch{
     self.currentButtonText = text;
     self.didSetupCards = YES;
+    self.canTouchCard = canTouch;
     [self refreshCards];
 }
 
@@ -307,10 +313,6 @@
     NSLog(@"pull up card");
     self.card = card;
     NSLog(@"%d", self.card.cardNumber);
-    if(self.isDeathSwitchOn == YES) {
-        //enable card
-        card.userInteractionEnabled = YES;
-    }
     [self performSegueWithIdentifier : @"viewSingleCard" sender : card];
 }
 
@@ -356,12 +358,12 @@
     if ([mySwitch isOn]) {
         NSLog(@"its on!");
         self.isDeathSwitchOn = YES;
-        
-        
+        [self refreshCards];
     }
     else {
         NSLog(@"its off!");
         self.isDeathSwitchOn = NO;
+        [self refreshCards];
     }
 }
 

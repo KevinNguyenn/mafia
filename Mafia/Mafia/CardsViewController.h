@@ -12,7 +12,7 @@
 @interface CardsViewController : UIViewController <SingleCardProtocol>
 
 -(void) setupCards : (NSDictionary *) cardSpecs AndLabels: (NSDictionary *) labelSpecs AndUpdate : (BOOL) update;
--(void) updatePlayButton : (NSString *) text;
+-(void) updatePlayButton : (NSString *) text AndCanTouchCard : (BOOL) canTouch;
 
 @property (weak, nonatomic) IBOutlet UIButton *beginNightButton;
 @property (weak, nonatomic) IBOutlet UIButton *beginDayButton;
@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *deathSwitchLabel;
 
 @property BOOL didSetupCards;
+@property BOOL canTouchCard;
 
 
 -(BOOL) getSwitchStatus;
