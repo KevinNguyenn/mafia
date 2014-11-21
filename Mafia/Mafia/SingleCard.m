@@ -27,7 +27,7 @@
 //    // Drawing code
 //}
 
--(id) makeCard : (CGRect) cardSpec WithLabel : (CGRect) labelSpec AndType : (int)labelType AndCardNumber : (NSInteger) cardNumber {
+-(id) makeCard : (CGRect) cardSpec WithLabel : (CGRect) labelSpec AndType : (int)labelType AndCardNumber : (NSInteger) cardNumber AndRole : (NSInteger) role {
     
     SingleCard *card = [[SingleCard alloc] initWithFrame: cardSpec];
     card.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |
@@ -46,6 +46,9 @@
     }
     
     [card.nameLabel setText:@"Name"];
+    
+    card.role = role;
+    card.isAlive = true;
     
     card.nameLabel.autoresizingMask = card.autoresizingMask;
     card.nameLabel.textAlignment = NSTextAlignmentCenter;

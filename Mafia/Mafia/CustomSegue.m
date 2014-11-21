@@ -9,6 +9,7 @@
 #import "CustomSegue.h"
 #import "SingleCardViewController.h"
 #import "CardsViewController.h"
+#import "SingleCardPlayerViewController.h"
 
 @implementation CustomSegue
 
@@ -46,14 +47,26 @@
                          // change the button here
                          if([(CardsViewController *)sourceViewController getSwitchStatus] == YES) {
                              NSLog(@"do the kill");
-                             [(SingleCardViewController *)destinationViewController displayKillButton:@"Kill" AndCardSpec: self.card];
+                             [(SingleCardViewController *)destinationViewController displayKillButton:@"Kill"];
+                             NSLog(@"change to kill");
+                             NSArray *childVCArray = ((SingleCardViewController *)destinationViewController).childViewControllers;
+                             UIViewController *vc;
+                             UIViewController *s2;
+                             for(vc in childVCArray) {
+                                 if([vc.title isEqualToString:@"SingleCard2 View Controller"]) {
+                                     NSLog(@"found the view controller");
+                                     s2 = vc;
+                                 }
+                             }
+                             // change from uitextfield to uilabel with the name
+                             [(SingleCardPlayerViewController *)s2 modifyTextField : self.card.name];
                          }
                          else {
 //                             NSLog(@"do the save");
                              
-//                             [(SingleCardViewController *)destinationViewController displaySaveButton:@"Save"];
+                             [(SingleCardViewController *)destinationViewController displaySaveButton:@"Save"];
                              
-                             [(SingleCardViewController *)destinationViewController displayKillButton:@"Kill" AndCardSpec: self.card];
+//                             [(SingleCardViewController *)destinationViewController displayKillButton:@"Kill" AndCardSpec: self.card];
                          }
                      }
      ];

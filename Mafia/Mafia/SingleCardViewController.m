@@ -71,19 +71,20 @@
 
 
 
--(void) displayKillButton : (NSString *) theKill AndCardSpec: (SingleCard *) cardView {
-    NSLog(@"%@", [cardView class]);
+-(void) displayKillButton : (NSString *) theKill {
+//    NSLog(@"%@", [cardView class]);
     NSLog(@"change to kill");
-    NSArray *childVCArray = self.childViewControllers;
-    UIViewController *vc;
-    UIViewController *s2;
-    for(vc in childVCArray) {
-        if([vc.title isEqualToString:@"SingleCard2 View Controller"]) {
-            NSLog(@"found the view controller");
-            s2 = vc;
-        }
-    }
-    [(SingleCardPlayerViewController *)s2 modifyTextField : cardView.name];
+//    NSArray *childVCArray = self.childViewControllers;
+//    UIViewController *vc;
+//    UIViewController *s2;
+//    for(vc in childVCArray) {
+//        if([vc.title isEqualToString:@"SingleCard2 View Controller"]) {
+//            NSLog(@"found the view controller");
+//            s2 = vc;
+//        }
+//    }
+//    // change from uitextfield to uilabel with the name
+//    [(SingleCardPlayerViewController *)s2 modifyTextField : cardView.name];
     [self.actionButton setTitle: theKill forState:UIControlStateNormal];
     [self.actionButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     

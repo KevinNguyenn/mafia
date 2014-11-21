@@ -14,6 +14,9 @@
 #import "CustomSegue.h"
 #import "CustomUnwindSegue.h"
 
+// Used to randomize player roles
+#import "NSMutableArray_Shuffle.h"
+
 
 
 @interface CardsViewController ()
@@ -102,8 +105,6 @@
 //    NSLog(@"-----");
     // reload the cards
     if(self.didSetupCards == YES) {
-//        NSLog(@"the refresh");
-//        NSLog(@"persist the cards");
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *context = appDelegate.managedObjectContext;
         NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Card" inManagedObjectContext:context];
@@ -121,6 +122,13 @@
             // changes color of a singleCard
             tempCard.backgroundColor = [UIColor lightGrayColor];
             [self.view addSubview:tempCard];
+            // [redux] enable the card touch to perform kill
+            if(self.canTouchCard == YES && self.isDeathSwitchOn == YES) {
+                tempCard.userInteractionEnabled = YES;
+            }
+//            else if({
+//                tempCard.userInteractionEnabled = NO;
+//            }
         }
     }
     // clean the cards
@@ -154,6 +162,40 @@
 
 
 -(void) setupCards : (NSDictionary *) cardSpecs AndLabels :(NSDictionary *) labelSpecs AndUpdate : (BOOL) update {
+    
+    // create roles and shuffle before assigning
+    //
+    // 1 - Mafia Role
+    // 2 - Police Role
+    // 3 - Innocent Role
+    NSMutableArray *roles = [[NSMutableArray alloc] init];
+    int numPlayers = (int)[cardSpecs count];
+    int numMafia = 0;
+    int numPolice = 1;
+    int numInnocents = 0;
+
+    if(numPlayers > 8)
+        numMafia = 3;
+    else
+        numMafia = 2;
+    
+    numInnocents = numPlayers - numMafia - numPolice;
+
+    // Add mafia
+    for(int i=0; i<numMafia; ++i)
+        [roles addObject:[NSNumber numberWithInt:1]];
+        
+    // Add police
+    for(int i=0; i<numPolice; ++i)
+        [roles addObject:[NSNumber numberWithInt:2]];
+        
+    // Add innocents
+    for(int i=0; i<numInnocents; ++i)
+        [roles addObject:[NSNumber numberWithInt:3]];
+    
+    // Randomize roles that are to be assigned
+    [roles shuffle];
+    
     // remove any hanging cards from previous session
     [self refreshCards];
     int labelType;
@@ -184,6 +226,8 @@
     labelWidth = (CGFloat)[[theLabel objectForKey: @"labelWidth"] floatValue];
     labelHeight = (CGFloat)[[theLabel objectForKey: @"labelHeight"] floatValue];
     
+    NSInteger role_index = 0;
+    
     // setup cards
     for(id key in cardSpecs) {
         NSDictionary *indivCard = [cardSpecs objectForKey:key];
@@ -210,8 +254,14 @@
         CGRect cardSpec = CGRectMake(xCoord, yCoord, cardWidth, cardHeight);
         CGRect labelSpec = CGRectMake(labelXCoord, labelYCoord, labelWidth, labelHeight);
         singleCard = [[SingleCard alloc] init];
-        singleCard = [singleCard makeCard : cardSpec WithLabel: labelSpec AndType: labelType AndCardNumber : cardNumber];
-
+        
+        NSInteger role = [[roles objectAtIndex:role_index] integerValue];
+        role_index++;
+        
+        NSLog(@"Assinging role = %lu to player %lu", (long)role, (long)role_index);
+        
+        singleCard = [singleCard makeCard : cardSpec WithLabel: labelSpec AndType: labelType AndCardNumber : cardNumber AndRole : role];
+        
         SingleCardViewController *singleCardVC = [[SingleCardViewController alloc] init];
         singleCard.delegate = singleCardVC;
         
@@ -230,9 +280,10 @@
     [self refreshCards];
 }
 
--(void) updatePlayButton : (NSString *) text {
+-(void) updatePlayButton : (NSString *) text AndCanTouchCard : (BOOL) canTouch{
     self.currentButtonText = text;
     self.didSetupCards = YES;
+    self.canTouchCard = canTouch;
     [self refreshCards];
 }
 
@@ -262,10 +313,6 @@
     NSLog(@"pull up card");
     self.card = card;
     NSLog(@"%d", self.card.cardNumber);
-    if(self.isDeathSwitchOn == YES) {
-        //enable card
-        card.userInteractionEnabled = YES;
-    }
     [self performSegueWithIdentifier : @"viewSingleCard" sender : card];
 }
 
@@ -340,12 +387,12 @@
     if ([mySwitch isOn]) {
         NSLog(@"its on!");
         self.isDeathSwitchOn = YES;
-        
-        
+        [self refreshCards];
     }
     else {
         NSLog(@"its off!");
         self.isDeathSwitchOn = NO;
+        [self refreshCards];
     }
 }
 
