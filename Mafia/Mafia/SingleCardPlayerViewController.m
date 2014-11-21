@@ -25,15 +25,16 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    NSLog(@"gonna go backkkkkkk");
 }
-*/
+
 
 // press away from keyboard to dismiss
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -42,7 +43,6 @@
     if(self.nameField.text != NULL && ![self.nameField.text isEqualToString:@""]) {
         NSDictionary *theCard = @{@"playerName": self.nameField.text};
         [[NSNotificationCenter defaultCenter] postNotificationName:@"gatherNameOfCard" object:nil userInfo:theCard];
-        NSLog(@"bank bank");
     }
 }
 
@@ -64,7 +64,7 @@
     [self.nameField removeFromSuperview];
     UILabel *nameLabel = [[UILabel alloc] initWithFrame: CGRectMake(16, 61, 204, 30)];
     [nameLabel setText:name];
-    [nameLabel setFont:[UIFont fontWithName: @"Helvetica Neue" size: 15.0f]];
+    [nameLabel setFont:[UIFont fontWithName: @"Helvetica Neue" size: 17.0f]];
     nameLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview: nameLabel];
     NSLog(@"show the name");
@@ -81,7 +81,7 @@
             [self.roleLabel setTextColor:[UIColor redColor]];
             break;
         case 2:
-            [self.roleLabel setText: @"Police"];
+            [self.roleLabel setText: @"Police Officer"];
             [self.roleLabel setTextColor:[UIColor blueColor]];
             break;
             

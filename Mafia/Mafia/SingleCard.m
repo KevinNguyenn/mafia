@@ -21,6 +21,20 @@
     return self;
 }
 
+-(id)initWithFrame : (CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code
+        // single tap
+        UITapGestureRecognizer* singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+        
+        singleTap.numberOfTapsRequired = 1;
+        singleTap.numberOfTouchesRequired = 1;
+        [self addGestureRecognizer: singleTap];
+    }
+    return self;
+}
+
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 //- (void)drawRect:(CGRect)rect {
@@ -68,29 +82,6 @@
     NSLog(@"%d", self.cardNumber);
     [[NSNotificationCenter defaultCenter] postNotificationName:@"pullUpIndividualCard" object:nil userInfo:theCard];
     
-}
-
-//-(void) handleDoubleMove:(UIPinchGestureRecognizer *)gr {
-//    NSLog(@"handleDoubleMove");
-//}
-
-- (id)initWithFrame : (CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-        // single tap
-        UITapGestureRecognizer* singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
-        
-        singleTap.numberOfTapsRequired = 1;
-        singleTap.numberOfTouchesRequired = 1;
-        [self addGestureRecognizer: singleTap];
-        
-        // 2 fingers pinch
-//        UIPinchGestureRecognizer* doubleMove = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleMove:)];
-//        
-//        [self addGestureRecognizer: doubleMove];
-    }
-    return self;
 }
 
 -(UILabel*) getNameLabel {

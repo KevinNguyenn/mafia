@@ -21,11 +21,11 @@
 		9D897BE919F07C4C00C1519F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D897BE819F07C4C00C1519F /* main.m */; };
 		9D897BEC19F07C4C00C1519F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D897BEB19F07C4C00C1519F /* AppDelegate.m */; };
 		9D897BEF19F07C4C00C1519F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D897BEE19F07C4C00C1519F /* ViewController.m */; };
-		9D897BF219F07C4C00C1519F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D897BF019F07C4C00C1519F /* Main.storyboard */; };
 		9D897BF419F07C4C00C1519F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D897BF319F07C4C00C1519F /* Images.xcassets */; };
 		9D897BF719F07C4C00C1519F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D897BF519F07C4C00C1519F /* LaunchScreen.xib */; };
 		9D897C0319F07C4D00C1519F /* MafiaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D897C0219F07C4D00C1519F /* MafiaTests.m */; };
 		9DAC8F6C1A1E98BD00FD6697 /* SingleCardPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DAC8F6B1A1E98BD00FD6697 /* SingleCardPlayerViewController.m */; };
+		9DB14CE31A1FB92C0083BBB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DB14CE21A1FB92C0083BBB1 /* Main.storyboard */; };
 		9DD954B01A12BB3700CAB60F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD954AF1A12BB3700CAB60F /* CoreData.framework */; };
 		9DD954B21A12BC8800CAB60F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD954B11A12BC8800CAB60F /* Foundation.framework */; };
 		9DD954B41A12BC9D00CAB60F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD954B31A12BC9D00CAB60F /* UIKit.framework */; };
@@ -72,7 +72,6 @@
 		9D897BEB19F07C4C00C1519F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9D897BED19F07C4C00C1519F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		9D897BEE19F07C4C00C1519F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		9D897BF119F07C4C00C1519F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9D897BF319F07C4C00C1519F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9D897BF619F07C4C00C1519F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9D897BFC19F07C4C00C1519F /* MafiaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MafiaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +79,7 @@
 		9D897C0219F07C4D00C1519F /* MafiaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MafiaTests.m; sourceTree = "<group>"; };
 		9DAC8F6A1A1E98BD00FD6697 /* SingleCardPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleCardPlayerViewController.h; sourceTree = "<group>"; };
 		9DAC8F6B1A1E98BD00FD6697 /* SingleCardPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleCardPlayerViewController.m; sourceTree = "<group>"; };
+		9DB14CE21A1FB92C0083BBB1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		9DD954AF1A12BB3700CAB60F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		9DD954B11A12BC8800CAB60F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9DD954B31A12BC9D00CAB60F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -136,7 +136,7 @@
 				9D3CC2C91A17FD6900ED9BE7 /* delete_24.png */,
 				9DEB387D1A12CE60003B72ED /* Model.xcdatamodeld */,
 				8B8B1D6919F7307B00306163 /* mafia.jpg */,
-				9D897BF019F07C4C00C1519F /* Main.storyboard */,
+				9DB14CE21A1FB92C0083BBB1 /* Main.storyboard */,
 				9D897BEA19F07C4C00C1519F /* AppDelegate.h */,
 				9D897BEB19F07C4C00C1519F /* AppDelegate.m */,
 				9D897BED19F07C4C00C1519F /* ViewController.h */,
@@ -289,7 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B8B1D6A19F7307B00306163 /* mafia.jpg in Resources */,
-				9D897BF219F07C4C00C1519F /* Main.storyboard in Resources */,
+				9DB14CE31A1FB92C0083BBB1 /* Main.storyboard in Resources */,
 				9D897BF719F07C4C00C1519F /* LaunchScreen.xib in Resources */,
 				9D3CC2CA1A17FD6900ED9BE7 /* delete_24.png in Resources */,
 				9D897BF419F07C4C00C1519F /* Images.xcassets in Resources */,
@@ -348,14 +348,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9D897BF019F07C4C00C1519F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9D897BF119F07C4C00C1519F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		9D897BF519F07C4C00C1519F /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

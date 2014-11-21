@@ -29,6 +29,8 @@
 
 @property (nonatomic, weak) SingleCard *theCard;
 
+@property (nonatomic) BOOL isSelected;
+
 
 // [TODO] attach connected textfield and update name
 

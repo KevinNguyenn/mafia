@@ -28,6 +28,8 @@
 @property CGPoint cardCenter;
 
 @property BOOL isDeathSwitchOn;
+@property BOOL canDisableCard;
+@property BOOL deathSwitchCase;
 
 @end
 
@@ -49,24 +51,22 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector : @selector(addDeadLabel) name:@"KillPlayer" object:nil];
     
     
-    
     if([self.currentButtonText isEqualToString:@"Enter Day Time"]) {
+        self.deathSwitchCase = YES;
         NSLog(@"about to enter day time");
         [self.beginDayButton setTitle: self.currentButtonText forState:UIControlStateNormal];
         self.beginDayButton.enabled = YES;
         self.beginNightButton.enabled = NO;
         self.continueDayButton.enabled = NO;
-//        [self.beginNightButton setTitle: @"Begin Game" forState:UIControlStateNormal];
         [self.continueDayButton setTitle: @"Continue Day Time" forState:UIControlStateNormal];
         [self.beginNightButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [self.continueDayButton setTitleColor: [UIColor grayColor] forState:UIControlStateNormal];
         [self.beginDayButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         self.deathSwitch.enabled = YES;
         [self.deathSwitchLabel setTextColor:[UIColor redColor]];
-        
-
     }
     else if([self.currentButtonText isEqualToString:@"Continue Day Time"]) {
+        self.deathSwitchCase = YES;
         NSLog(@"about to continue day time");
         [self.continueDayButton setTitle: self.currentButtonText forState:UIControlStateNormal];
         self.beginDayButton.enabled = NO;
@@ -80,6 +80,7 @@
     }
     // beginning start
     else {
+        self.deathSwitchCase = NO;
         NSLog(@"beginning start");
         self.beginDayButton.enabled = NO;
         self.beginNightButton.enabled = YES;
@@ -93,14 +94,15 @@
     
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    NSLog(@"U WOT M8");
-}
+//- (void)viewDidAppear:(BOOL)animated {
+//    [super viewDidAppear:animated];
+//    NSLog(@"U WOT M8");
+//
+//
+//}
 
-- (void)refreshCards {
-//    NSLog(@"-----");
-    // reload the cards
+-(void)refreshCards {
+    // Reload the cards
     if(self.didSetupCards == YES) {
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *context = appDelegate.managedObjectContext;
@@ -119,10 +121,23 @@
             // changes color of a singleCard
             tempCard.backgroundColor = [UIColor lightGrayColor];
             [self.view addSubview:tempCard];
-            // [redux] enable the card touch to perform kill
+            
+            // [redux] enable the card touch to perform kill conditioned on whether the death switch is on or not
+
+    
+            // case for death switch
+            if(self.deathSwitchCase == YES) {
+                NSLog(@"death switch case");
+                if(self.canDisableCard == NO) {
+                    tempCard.userInteractionEnabled = YES;
+                }
+                else {
+                    tempCard.userInteractionEnabled = NO;
+                }
+            }
         }
     }
-    // clean the cards
+    // Clean up the cards
     else {
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *context = appDelegate.managedObjectContext;
@@ -277,14 +292,6 @@
     [self refreshCards];
 }
 
--(void) updatePlayButton : (NSString *) text AndCanTouchCard : (BOOL) canTouch{
-    self.currentButtonText = text;
-    self.didSetupCards = YES;
-    self.canTouchCard = canTouch;
-    [self refreshCards];
-}
-
-
 -(void) ViewControllerShouldReloadNotification {
     [self refreshCards];
 }
@@ -337,16 +344,14 @@
     for (temp in tempArray) {
         tempCard = [temp valueForKey:@"oneCard"];
         if(tempCard.cardNumber == self.card.cardNumber) {
-            NSLog(@"reached the card");
             [tempCard.nameLabel setText: name];
             tempCard.name = name;
+            tempCard.isSelected = YES;
             // Don't let the user select the card again
             tempCard.userInteractionEnabled = NO;
         }
     }
     [context save:&error];
-    
-    NSLog(@"updated card!");
 }
 
 -(void) addDeadLabel {
@@ -367,27 +372,39 @@
     for (temp in tempArray) {
         tempCard = [temp valueForKey:@"oneCard"];
         if(tempCard.cardNumber == self.card.cardNumber) {
-            NSLog(@"reached the card");
             [tempCard.nameLabel setText: @"Dead"];
+            tempCard.isAlive = NO;
             tempCard.userInteractionEnabled = NO;
         }
     }
     [context save:&error];
 }
 
-
+// Trigged by toggle, and not be initial state
 -(void) deathToggled:(id)sender {
     UISwitch *mySwitch = (UISwitch *)sender;
     if ([mySwitch isOn]) {
-        NSLog(@"its on!");
+//        NSLog(@"its on!");
         self.isDeathSwitchOn = YES;
+        self.canDisableCard = NO;
         [self refreshCards];
     }
     else {
-        NSLog(@"its off!");
+//        NSLog(@"its off!");
         self.isDeathSwitchOn = NO;
+        self.canDisableCard = YES;
         [self refreshCards];
     }
+}
+
+-(void) updatePlayButton : (NSString *) text AndCanTouchCard : (BOOL) canTouch{
+    self.currentButtonText = text;
+    self.didSetupCards = YES;
+    // Can't access the card when kill is about to be made and when death switch is currently off
+    if([text isEqualToString:@"Enter Day Time"] || [text isEqualToString:@"Continue Day Time"]) {
+        self.canDisableCard = YES;
+    }
+    [self refreshCards];
 }
 
 
@@ -398,13 +415,36 @@
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
      // Get the new view controller using [segue destinationViewController].
      // Pass the selected object to the new view controller.
-     
      if([segue isKindOfClass:[CustomSegue class]]) {
          // Set the start point for the animation to center of the button for the animation
          ((CustomSegue *)segue).originatingPoint = [sender getCenter];
          ((CustomSegue *)segue).card = sender;
          self.cardCenter = [sender getCenter];
      }
+     // trigger message that restarts the card selections
+     
+//     else if([segue.identifier isEqualToString:@"beginGame"]) {
+//         NSLog(@"sorta about to start game");
+//         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+//         NSManagedObjectContext *context = appDelegate.managedObjectContext;
+//         NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Card" inManagedObjectContext:context];
+//         NSFetchRequest *request = [[NSFetchRequest alloc] init];
+//         [request setEntity:entityDescription];
+//         
+//         // put the nsmanageobjects/datamodels into the contactList
+//         self.cardStorage = [[context executeFetchRequest:request error:nil] mutableCopy];
+//         
+//         SingleCard *tempCard;
+//         NSManagedObject *temp;
+//         // actually load the cards onto the screen...
+//         for (temp in self.cardStorage) {
+//             tempCard = [temp valueForKey:@"oneCard"];
+//             if(tempCard.isSelected == NO) {
+//                 [self performSegueWithIdentifier : @"playersNotFilledSegue" sender : self];
+//             }
+//         }
+//     }
+     
      NSLog(@"done?");
  }
 

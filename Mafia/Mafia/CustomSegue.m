@@ -56,7 +56,7 @@
                              UIViewController *s2;
                              for(vc in childVCArray) {
                                  if([vc.title isEqualToString:@"SingleCard2 View Controller"]) {
-                                     NSLog(@"found the view controller SingleCard2");
+//                                     NSLog(@"found the view controller SingleCard2");
                                      s2 = vc;
                                  }
                              }
@@ -65,7 +65,6 @@
                              [(SingleCardPlayerViewController *)s2 showRole : self.card.role];
                          }
                          else {
-                             NSLog(@"do the save from custom segue");
                              [(SingleCardViewController *)destinationViewController displaySaveButton:@"Save"];
                              NSArray *childVCArray = ((SingleCardViewController *)destinationViewController).childViewControllers;
                              // temp variable for iteration
@@ -74,7 +73,7 @@
                              UIViewController *s2;
                              for(vc in childVCArray) {
                                  if([vc.title isEqualToString:@"SingleCard2 View Controller"]) {
-                                     NSLog(@"found the view controller SingleCard2");
+//                                     NSLog(@"found the view controller SingleCard2");
                                      s2 = vc;
                                  }
                              }
