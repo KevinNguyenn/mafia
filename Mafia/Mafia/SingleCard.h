@@ -8,12 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "SingleCard.h"
+#import "SingleCardViewController.h"
 
-@protocol SingleCardProtocol <NSObject>
-
--(void) pullUpIndividualCard : (UIView *) theCard;
-
-@end
 
 @interface SingleCard : UIView
 
@@ -33,7 +29,9 @@
 
 @property (nonatomic, weak) SingleCard *theCard;
 
-@property(weak, nonatomic) id <SingleCardProtocol> delegate;
+@property (nonatomic) BOOL isSelected;
+
+
 // [TODO] attach connected textfield and update name
 
 

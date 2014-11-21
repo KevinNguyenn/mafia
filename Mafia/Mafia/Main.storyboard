@@ -313,7 +313,7 @@
                                     <color key="titleShadowColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="HiU-Ek-Ho5" kind="unwind" unwindAction="unwindFromViewController:" id="FAl-XW-EJW"/>
+                                    <segue destination="HiU-Ek-Ho5" kind="unwind" unwindAction="unwindFromViewController:" id="S4D-dh-RoF"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Status:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8HR-Au-jC0">
@@ -322,7 +322,7 @@
                                 <color key="textColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name not saved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9kp-7g-IOc">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9kp-7g-IOc">
                                 <rect key="frame" x="161" y="525" width="117" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -330,12 +330,9 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUt-R9-iVS">
                                 <rect key="frame" x="137" y="474" width="46" height="30"/>
-                                <state key="normal" title="-">
+                                <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="saveName:" destination="Hw8-cr-clw" eventType="touchUpInside" id="Soy-fp-t7V"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -393,7 +390,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8WB-EO-4xu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="734" y="406"/>
+            <point key="canvasLocation" x="1004" y="406"/>
         </scene>
         <!--Day Time2 View Controller-->
         <scene sceneID="o9a-lX-iZh">
@@ -436,7 +433,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="upP-mG-MU5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1094" y="406"/>
+            <point key="canvasLocation" x="1422" y="406"/>
         </scene>
         <!--Day Time3 View Controller-->
         <scene sceneID="kJB-vb-D8O">
@@ -479,7 +476,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="liJ-G5-721" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1462" y="406"/>
+            <point key="canvasLocation" x="1834" y="406"/>
         </scene>
         <!--Select Players View Controller-->
         <scene sceneID="SaZ-go-od6">
@@ -697,6 +694,59 @@
             </objects>
             <point key="canvasLocation" x="-566" y="1078"/>
         </scene>
+        <!--playersNotFilled View Controller-->
+        <scene sceneID="jc0-Xt-Kfc">
+            <objects>
+                <viewController title="playersNotFilled View Controller" id="mHY-fR-UaX" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vME-0N-xRE"/>
+                        <viewControllerLayoutGuide type="bottom" id="bhK-cK-Nac"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hwp-yu-fZG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Not all of the cards have been selected! All cards must be selected to start the game!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXk-Xg-ZwQ">
+                                <rect key="frame" x="41" y="193" width="238" height="182"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.80000000000000004" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IeL-nv-uiJ">
+                                <rect key="frame" x="143" y="518" width="35" height="30"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="DaY-SH-9iD" kind="modal" id="djJ-dj-rOw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zzF-My-HyQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1009" y="-442"/>
+        </scene>
+        <!--endGame View Controller-->
+        <scene sceneID="A3u-ID-xFn">
+            <objects>
+                <viewController title="endGame View Controller" id="asc-T3-9V1" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hsh-ih-2Fj"/>
+                        <viewControllerLayoutGuide type="bottom" id="pM7-be-o6T"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ofb-gN-fVq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vd0-zF-zqm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-476" y="-1023"/>
+        </scene>
         <!--Cards View Controller-->
         <scene sceneID="Acf-EQ-Y6o">
             <objects>
@@ -752,7 +802,7 @@
                                     <color key="titleColor" red="1" green="0.1228240162" blue="0.1770648568" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="vCi-2L-isc" kind="modal" modalTransitionStyle="crossDissolve" id="4AE-H6-ULJ"/>
+                                    <segue destination="vCi-2L-isc" kind="modal" identifier="beginGame" modalTransitionStyle="crossDissolve" id="4AE-H6-ULJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mz1-Bv-TEv" userLabel="Begin Day">
@@ -762,7 +812,7 @@
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="lec-FO-ej2" kind="modal" modalTransitionStyle="crossDissolve" id="Esp-Oc-Hn6"/>
+                                    <segue destination="lec-FO-ej2" kind="modal" identifier="" modalTransitionStyle="crossDissolve" id="Esp-Oc-Hn6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4kk-de-DfW" userLabel="Continue Day">
@@ -792,6 +842,8 @@
                         <outlet property="deathSwitch" destination="7Ls-EY-On0" id="xmD-8l-5X4"/>
                         <outlet property="deathSwitchLabel" destination="2Nh-2X-Krs" id="JYp-EH-do7"/>
                         <segue destination="Hw8-cr-clw" kind="custom" identifier="viewSingleCard" customClass="CustomSegue" id="5OS-V4-xJS"/>
+                        <segue destination="asc-T3-9V1" kind="modal" identifier="endGameSegue" modalTransitionStyle="crossDissolve" id="1g5-P1-Iv7"/>
+                        <segue destination="mHY-fR-UaX" kind="modal" identifier="playersNotFilledSegue" modalTransitionStyle="crossDissolve" id="xEs-R9-SPq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cpo-Ey-8sC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -884,7 +936,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Role is here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMb-BG-hgg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMb-BG-hgg">
                                 <rect key="frame" x="16" y="354" width="204" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -896,12 +948,12 @@
                     <toolbarItems/>
                     <connections>
                         <outlet property="nameField" destination="OLL-We-999" id="ocw-5m-Vbp"/>
-                        <outlet property="roleField" destination="gMb-BG-hgg" id="hHC-sT-krR"/>
+                        <outlet property="roleLabel" destination="gMb-BG-hgg" id="oGs-Dg-iEb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SfT-uz-7tw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="342" y="630.5"/>
+            <point key="canvasLocation" x="298" y="630.5"/>
         </scene>
     </scenes>
     <resources>
@@ -913,7 +965,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="djJ-dj-rOw"/>
+        <segue reference="ht0-VE-uw8"/>
         <segue reference="4AE-H6-ULJ"/>
-        <segue reference="fFL-co-Ina"/>
     </inferredMetricsTieBreakers>
 </document>

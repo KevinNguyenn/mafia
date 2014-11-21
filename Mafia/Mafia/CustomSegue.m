@@ -45,29 +45,41 @@
                          
                          
                          // change the button here
+                         // and show roles
                          if([(CardsViewController *)sourceViewController getSwitchStatus] == YES) {
-                             NSLog(@"do the kill");
+                             NSLog(@"do the kill from custom segue");
                              [(SingleCardViewController *)destinationViewController displayKillButton:@"Kill"];
-                             NSLog(@"change to kill");
                              NSArray *childVCArray = ((SingleCardViewController *)destinationViewController).childViewControllers;
+                             // temp variable for iteration
                              UIViewController *vc;
+                             // get the VC for the inner view controller
                              UIViewController *s2;
                              for(vc in childVCArray) {
                                  if([vc.title isEqualToString:@"SingleCard2 View Controller"]) {
-                                     NSLog(@"found the view controller");
+//                                     NSLog(@"found the view controller SingleCard2");
                                      s2 = vc;
                                  }
                              }
                              // change from uitextfield to uilabel with the name
                              [(SingleCardPlayerViewController *)s2 modifyTextField : self.card.name];
+                             [(SingleCardPlayerViewController *)s2 showRole : self.card.role];
                          }
                          else {
-//                             NSLog(@"do the save");
-                             
                              [(SingleCardViewController *)destinationViewController displaySaveButton:@"Save"];
-                             
-//                             [(SingleCardViewController *)destinationViewController displayKillButton:@"Kill" AndCardSpec: self.card];
+                             NSArray *childVCArray = ((SingleCardViewController *)destinationViewController).childViewControllers;
+                             // temp variable for iteration
+                             UIViewController *vc;
+                             // get the VC for the inner view controller
+                             UIViewController *s2;
+                             for(vc in childVCArray) {
+                                 if([vc.title isEqualToString:@"SingleCard2 View Controller"]) {
+//                                     NSLog(@"found the view controller SingleCard2");
+                                     s2 = vc;
+                                 }
+                             }
+                             [(SingleCardPlayerViewController *)s2 showRole : self.card.role];
                          }
+                         
                      }
      ];
     

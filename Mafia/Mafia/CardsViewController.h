@@ -9,10 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SingleCard.h"
 
-@interface CardsViewController : UIViewController <SingleCardProtocol>
-
--(void) setupCards : (NSDictionary *) cardSpecs AndLabels: (NSDictionary *) labelSpecs AndUpdate : (BOOL) update;
--(void) updatePlayButton : (NSString *) text AndCanTouchCard : (BOOL) canTouch;
+@interface CardsViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIButton *beginNightButton;
 @property (weak, nonatomic) IBOutlet UIButton *beginDayButton;
@@ -29,6 +26,9 @@
 
 // part of custom segue stuff
 -(CGPoint) getViewCenter;
+
+-(void) setupCards : (NSDictionary *) cardSpecs AndLabels: (NSDictionary *) labelSpecs AndUpdate : (BOOL) update;
+-(void) updatePlayButton : (NSString *) text AndCanTouchCard : (BOOL) canTouch;
 
 
 @end
