@@ -66,8 +66,13 @@
 
 
 -(void) modifyTextField : (NSString *) name {
-    [self.nameField setText:name];
-    
+    [self.nameField removeFromSuperview];
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame: CGRectMake(16, 61, 204, 30)];
+    [nameLabel setText:name];
+    [nameLabel setFont:[UIFont fontWithName: @"Helvetica Neue" size: 15.0f]];
+    nameLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview: nameLabel];
+    NSLog(@"show the name");
 }
 
 
