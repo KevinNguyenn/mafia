@@ -355,9 +355,9 @@
 }
 
 -(void) addDeadLabel: (NSNotification *) cardSpec {
-    //    NSDictionary *cardDict = [cardSpec userInfo];
-    //    NSString *name = [cardDict objectForKey: @"playerName"];
-    
+    NSDictionary *cardDict = [cardSpec userInfo];
+    NSString *name = [cardDict objectForKey:@"playerName"];
+                      
     // access the core data
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = appDelegate.managedObjectContext;

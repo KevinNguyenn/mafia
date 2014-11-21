@@ -128,13 +128,15 @@
     }
 }
 
-
 -(IBAction)btnClicked: (UIButton *)sender {
+    NSLog(@"%@", self.actionButton.titleLabel.text);
     if ([self.actionButton.titleLabel.text isEqualToString: @"Save"]) {
         [self saveName:sender];
+        NSLog(@"SaveName");
     }
     else if ([self.actionButton.titleLabel.text isEqualToString: @"Kill"]){
         [self killPlayer:sender];
+         NSLog(@"KillPlayer");
     }
 }
 
