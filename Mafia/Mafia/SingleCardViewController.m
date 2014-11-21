@@ -118,24 +118,27 @@
 }
 
 - (void)killPlayer:(UIButton *)sender {
-    if(self.tempString != NULL && ![self.tempString isEqualToString:@""]) {
-        NSDictionary *theName = @{@"playerName": self.tempString};
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"KillPlayer" object:nil userInfo:theName];
+
+    NSLog(@"KillButton");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"KillPlayer" object:nil ];
     
-        [NSThread sleepForTimeInterval:1.0f];
-        dispatch_async(dispatch_get_main_queue(), ^(void){
-            [self.notificationLabel setText:@"Player Killed."];
-        });
-    }
+    [NSThread sleepForTimeInterval:1.0f];
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        [self.notificationLabel setText:@"Player Killed."];
+    });
+    
 }
 
 
 -(IBAction)btnClicked: (UIButton *)sender {
+    NSLog(@"%@", self.actionButton.titleLabel.text);
     if ([self.actionButton.titleLabel.text isEqualToString: @"Save"]) {
         [self saveName:sender];
+        NSLog(@"SaveName");
     }
     else if ([self.actionButton.titleLabel.text isEqualToString: @"Kill"]){
         [self killPlayer:sender];
+        NSLog(@"KillPlayer");
     }
 }
 
