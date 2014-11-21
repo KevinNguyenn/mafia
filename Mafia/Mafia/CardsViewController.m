@@ -35,6 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.cardStorage = [[NSMutableArray alloc] init];
     
     self.playerRoles = [[NSMutableArray alloc] init];
@@ -101,6 +102,52 @@
 
 }
 
+
+// if gameover, performSegue which leads to another viewcontroller gameover
+// play again leads back to player picker
+
+// TODO: Need help figuring out when to call this method
+//       and where to perform this segue
+- (void)checkGameStatus {
+    bool gameOver = false;
+    bool allMafiaDead = false;
+    int numAlive = 0;
+    int numMafiaAlive = 0;
+    
+    SingleCard *tempCard;
+    NSManagedObject *temp;
+
+    for (temp in self.cardStorage) {
+        tempCard = [temp valueForKey:@"oneCard"];
+        
+        if(tempCard.isAlive) {
+            numAlive++;
+            if(tempCard.role == 1) {
+                numMafiaAlive++;
+            }
+        }
+    }
+
+    NSLog(@"NumAlive = %i\n NumMafiaAlive = %i\n", numAlive, numMafiaAlive);
+    
+    if(numMafiaAlive == 0) {
+        allMafiaDead = true;
+        gameOver = true;
+    }
+    else if(numMafiaAlive > numAlive - numMafiaAlive) {
+        gameOver = true;
+    }
+    
+    if(gameOver) {
+        if(allMafiaDead) {
+            //[self performSegueWithIdentifier : @"mafiaLoses" sender : tempCard];
+        }
+        else {
+            //[self performSegueWithIdentifier : @"mafiaWins" sender : tempCard];
+        }
+    }
+}
+
 - (void)refreshCards {
 //    NSLog(@"-----");
     // reload the cards
@@ -113,6 +160,13 @@
         
         // put the nsmanageobjects/datamodels into the contactList
         self.cardStorage = [[context executeFetchRequest:request error:nil] mutableCopy];
+        
+        // Call helper method checkGameStatus(self.cardStorage)
+        // if gameover, performSegue which leads to another viewcontroller gameover
+        // play again leads back to player picker
+        if(self.isDeathSwitchOn) {
+            [self checkGameStatus];
+        }
         
         SingleCard *tempCard;
         NSManagedObject *temp;
