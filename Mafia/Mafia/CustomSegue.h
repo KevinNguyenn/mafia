@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SingleCard.h"
 
 @interface CustomSegue : UIStoryboardSegue
 // Originating point for animation
 @property CGPoint originatingPoint;
+
+// hold the singleCard
+@property (nonatomic, weak) SingleCard *card;
+
 @end

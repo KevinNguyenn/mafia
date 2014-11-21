@@ -9,15 +9,22 @@
 #import <UIKit/UIKit.h>
 #import "SingleCard.h"
 
+
 @interface SingleCardViewController : UIViewController <UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *nameField;
+
 @property (weak, nonatomic) IBOutlet UIButton *exitButton;
+
+//the button
 @property (weak, nonatomic) IBOutlet UIButton *actionButton;
 
+// the outlet action
+- (IBAction)saveName:(UIButton *)sender;
 
-//methods
--(void) displayKillButton : (NSString *) theKill;
+@property (weak, nonatomic) IBOutlet UILabel *notificationLabel;
+
+// methods to modify text of action button
+-(void) displayKillButton : (NSString *) theKill AndCardSpec: (SingleCard *) cardView;
 -(void) displaySaveButton : (NSString *) theSave;
 
 

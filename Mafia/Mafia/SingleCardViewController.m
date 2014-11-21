@@ -8,10 +8,12 @@
 
 #import "SingleCardViewController.h"
 #import "CardsViewController.h"
+#import "SingleCardPlayerViewController.h"
 
 
 @interface SingleCardViewController ()
 
+@property (nonatomic, strong) NSString *tempString;
 
 @end
 
@@ -22,15 +24,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-    self.nameField.delegate = self;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector : @selector(gatherNameOfCard:) name:@"gatherNameOfCard" object:nil];
+  
     
 //    [self.exitButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     
     //Commented out for now
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
-    [self.view addGestureRecognizer:singleTap];
-    singleTap.numberOfTapsRequired = 1;
-    singleTap.numberOfTouchesRequired = 1;
+//    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+//    [self.view addGestureRecognizer:singleTap];
+//    singleTap.numberOfTapsRequired = 1;
+//    singleTap.numberOfTouchesRequired = 1;
     
     
 //    [self displaySaveButton];
@@ -57,49 +60,58 @@
 }
 */
 
--(void) handleSingleTap:(UITapGestureRecognizer *)gr {
-    // Use or nah???
-    NSLog(@"use or nah");
-}
 
-// press away from keyboard to dismiss
--(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.nameField resignFirstResponder];
-    
-    // pass notification back to cards view to update the name
-    if(self.nameField.text != NULL && ![self.nameField.text isEqualToString:@""]) {
-        NSDictionary *theCard = @{@"playerName": self.nameField.text};
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateNameOfCard" object:nil userInfo:theCard];
-    }
-}
+//
+//-(void) handleSingleTap:(UITapGestureRecognizer *)gr {
+//    // Use or nah???
+//    NSLog(@"use or nah");
+//}
 
-// resign the keyboard when done "return button"
--(BOOL)textFieldShouldReturn:(UITextField *)textField {
-    if(textField) {
-        [textField resignFirstResponder];
-    }
-    // pass notification back to cards view to update the name
-    if(self.nameField.text != NULL && ![self.nameField.text isEqualToString:@""]) {
-        NSDictionary *theCard = @{@"playerName": self.nameField.text};
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateNameOfCard" object:nil userInfo:theCard];
-    }
-    return YES;
-}
 
--(void) displayKillButton : (NSString *) theKill {
+
+
+-(void) displayKillButton : (NSString *) theKill AndCardSpec: (SingleCard *) cardView {
+    NSLog(@"%@", [cardView class]);
     NSLog(@"change to kill");
+    NSArray *childVCArray = self.childViewControllers;
+    UIViewController *vc;
+    UIViewController *s2;
+    for(vc in childVCArray) {
+        if([vc.title isEqualToString:@"SingleCard2 View Controller"]) {
+            NSLog(@"found the view controller");
+            s2 = vc;
+        }
+    }
+    [(SingleCardPlayerViewController *)s2 modifyTextField : cardView.name];
     [self.actionButton setTitle: theKill forState:UIControlStateNormal];
     [self.actionButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    
 }
 
-
-
 -(void) displaySaveButton : (NSString *) theSave {
-    NSLog(@"%@", self.actionButton.titleLabel.text);
     NSLog(@"change to save");
     [self.actionButton setTitle: theSave forState:UIControlStateNormal];
     [self.actionButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    NSLog(@"%@", self.actionButton.titleLabel.text);
+}
+
+-(void) gatherNameOfCard : (NSNotification *) dict {
+    NSDictionary *theName = [dict userInfo];
+    NSString *name = [theName objectForKey: @"playerName"];
+    self.tempString = name;
+    NSLog(@"put name into temp string");
+}
+
+- (IBAction)saveName:(UIButton *)sender {
+    if(self.tempString != NULL && ![self.tempString isEqualToString:@""]) {
+        NSDictionary *theName = @{@"playerName": self.tempString};
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateNameOfCard" object:nil userInfo:theName];
+        
+        [NSThread sleepForTimeInterval:1.0f];
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            [self.notificationLabel setText:@"Name Saved."];
+        });
+    }
+
 }
 
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="DaY-SH-9iD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="DaY-SH-9iD">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -292,7 +292,7 @@
         <!--SingleCard1 View Controller-->
         <scene sceneID="hnm-23-y4F">
             <objects>
-                <viewController id="Hw8-cr-clw" userLabel="SingleCard1 View Controller" customClass="SingleCardViewController" sceneMemberID="viewController">
+                <viewController title="SingleCard1 View Controller" id="Hw8-cr-clw" userLabel="SingleCard1 View Controller" customClass="SingleCardViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JOT-44-AWw"/>
                         <viewControllerLayoutGuide type="bottom" id="vUt-er-pcy"/>
@@ -302,13 +302,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vao-V6-GQn">
-                                <rect key="frame" x="42" y="86" width="236" height="395"/>
+                                <rect key="frame" x="42" y="71" width="236" height="395"/>
                                 <connections>
                                     <segue destination="vcU-hd-x7E" kind="embed" id="9oM-1L-7Qj"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ss6-47-Fsi">
-                                <rect key="frame" x="22" y="54" width="24" height="24"/>
+                                <rect key="frame" x="23" y="39" width="24" height="24"/>
                                 <state key="normal" image="delete_24.png">
                                     <color key="titleShadowColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -316,11 +316,26 @@
                                     <segue destination="HiU-Ek-Ho5" kind="unwind" unwindAction="unwindFromViewController:" id="FAl-XW-EJW"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Status:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8HR-Au-jC0">
+                                <rect key="frame" x="82" y="525" width="55" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name not saved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9kp-7g-IOc">
+                                <rect key="frame" x="161" y="525" width="117" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUt-R9-iVS">
-                                <rect key="frame" x="137" y="509" width="46" height="30"/>
-                                <state key="normal">
+                                <rect key="frame" x="137" y="474" width="46" height="30"/>
+                                <state key="normal" title="-">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveName:" destination="Hw8-cr-clw" eventType="touchUpInside" id="Soy-fp-t7V"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -328,6 +343,7 @@
                     <connections>
                         <outlet property="actionButton" destination="FUt-R9-iVS" id="lfq-zb-vXK"/>
                         <outlet property="exitButton" destination="ss6-47-Fsi" id="3ls-8k-oEm"/>
+                        <outlet property="notificationLabel" destination="9kp-7g-IOc" id="RBk-T7-ENa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VOD-ec-l3T" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -854,7 +870,7 @@
         <!--SingleCard2 View Controller-->
         <scene sceneID="PgP-9Z-ZPa">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="vcU-hd-x7E" userLabel="SingleCard2 View Controller" customClass="SingleCardViewController" sceneMemberID="viewController">
+                <viewController title="SingleCard2 View Controller" automaticallyAdjustsScrollViewInsets="NO" id="vcU-hd-x7E" userLabel="SingleCard2 View Controller" customClass="SingleCardPlayerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="P1R-Tq-KWA"/>
                         <viewControllerLayoutGuide type="bottom" id="a1j-L1-xob"/>
@@ -879,7 +895,8 @@
                     </view>
                     <toolbarItems/>
                     <connections>
-                        <outlet property="nameField" destination="OLL-We-999" id="gdC-YL-a3D"/>
+                        <outlet property="nameField" destination="OLL-We-999" id="ocw-5m-Vbp"/>
+                        <outlet property="roleField" destination="gMb-BG-hgg" id="hHC-sT-krR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SfT-uz-7tw" userLabel="First Responder" sceneMemberID="firstResponder"/>

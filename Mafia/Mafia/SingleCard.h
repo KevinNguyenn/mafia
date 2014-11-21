@@ -26,6 +26,7 @@
 @property (nonatomic) NSInteger cardNumber;
 
 @property (nonatomic) UILabel *nameLabel;
+@property (nonatomic) NSString *name;
 
 @property (nonatomic, weak) SingleCard *theCard;
 

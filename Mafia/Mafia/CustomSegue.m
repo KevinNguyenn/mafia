@@ -13,6 +13,7 @@
 @implementation CustomSegue
 
 - (void)perform {
+
     UIViewController *sourceViewController = self.sourceViewController;
     UIViewController *destinationViewController = self.destinationViewController;
     
@@ -45,11 +46,14 @@
                          // change the button here
                          if([(CardsViewController *)sourceViewController getSwitchStatus] == YES) {
                              NSLog(@"do the kill");
-                             [(SingleCardViewController *)destinationViewController displayKillButton:@"Kill"];
+                             [(SingleCardViewController *)destinationViewController displayKillButton:@"Kill" AndCardSpec: self.card];
                          }
                          else {
-                             NSLog(@"do the save");
-                             [(SingleCardViewController *)destinationViewController displaySaveButton:@"Save"];
+//                             NSLog(@"do the save");
+                             
+//                             [(SingleCardViewController *)destinationViewController displaySaveButton:@"Save"];
+                             
+                             [(SingleCardViewController *)destinationViewController displayKillButton:@"Kill" AndCardSpec: self.card];
                          }
                      }
      ];

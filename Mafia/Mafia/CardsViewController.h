@@ -22,6 +22,7 @@
 
 @property BOOL didSetupCards;
 
+
 -(BOOL) getSwitchStatus;
 -(void) refreshCards;
 

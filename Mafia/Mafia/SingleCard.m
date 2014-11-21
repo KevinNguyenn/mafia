@@ -39,10 +39,10 @@
     [card.nameLabel setBackgroundColor:[UIColor clearColor]];
     
     if(labelType == 1) {
-       [card.nameLabel setFont:[UIFont fontWithName: @"Helvetica Neue" size: 11.0f]];
+       [card.nameLabel setFont:[UIFont fontWithName: @"Helvetica Neue" size: 12.0f]];
     }
     else {
-        [card.nameLabel setFont:[UIFont fontWithName: @"Helvetica Neue" size: 10.0f]];
+        [card.nameLabel setFont:[UIFont fontWithName: @"Helvetica Neue" size: 11.0f]];
     }
     
     [card.nameLabel setText:@"Name"];
@@ -50,9 +50,7 @@
     card.nameLabel.autoresizingMask = card.autoresizingMask;
     card.nameLabel.textAlignment = NSTextAlignmentCenter;
     [card addSubview:card.nameLabel];
-    
     card.cardNumber = cardNumber;
-    
     card.cardHeight = cardSpec.size.width;
     card.cardWidth = cardSpec.size.width;
     card.xCoord = cardSpec.origin.x;

@@ -168,7 +168,6 @@
                      @{@"cardWidth": @"58", @"cardHeight": @"80", @"xCoord": @"136", @"yCoord": @"409"}, @"card10", nil];
         labelSpecs = [[NSDictionary alloc] initWithObjectsAndKeys:
                      @{@"labelWidth": @"58", @"labelHeight": @"20", @"xCoord": @"0", @"yCoord": @"60"} , @"labelType2", nil];
-                     
     }
     else {
         NSLog(@"wat something went wrong");

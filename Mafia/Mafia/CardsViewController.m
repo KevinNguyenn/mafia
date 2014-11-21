@@ -234,7 +234,6 @@
     self.currentButtonText = text;
     self.didSetupCards = YES;
     [self refreshCards];
-    [self killOneInnocent];
 }
 
 
@@ -242,11 +241,6 @@
     [self refreshCards];
 }
 
--(void) killOneInnocent {
-    if(self.deathSwitch.on == YES) {
-        NSLog(@"kill a nigga");
-    }
-}
 
 // Core data under-the-hood method
 +(void) saveCard : (SingleCard *) card {
@@ -268,6 +262,10 @@
     NSLog(@"pull up card");
     self.card = card;
     NSLog(@"%d", self.card.cardNumber);
+    if(self.isDeathSwitchOn == YES) {
+        //enable card
+        card.userInteractionEnabled = YES;
+    }
     [self performSegueWithIdentifier : @"viewSingleCard" sender : card];
 }
 
@@ -297,6 +295,9 @@
         if(tempCard.cardNumber == self.card.cardNumber) {
             NSLog(@"reached the card");
             [tempCard.nameLabel setText: name];
+            tempCard.name = name;
+            // Don't let the user select the card again
+            tempCard.userInteractionEnabled = NO;
         }
     }
     [context save:&error];
@@ -305,14 +306,12 @@
 }
 
 
-
-
-
 -(void) deathToggled:(id)sender {
     UISwitch *mySwitch = (UISwitch *)sender;
     if ([mySwitch isOn]) {
         NSLog(@"its on!");
         self.isDeathSwitchOn = YES;
+        
         
     }
     else {
@@ -329,9 +328,11 @@
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
      // Get the new view controller using [segue destinationViewController].
      // Pass the selected object to the new view controller.
+     
      if([segue isKindOfClass:[CustomSegue class]]) {
          // Set the start point for the animation to center of the button for the animation
          ((CustomSegue *)segue).originatingPoint = [sender getCenter];
+         ((CustomSegue *)segue).card = sender;
          self.cardCenter = [sender getCenter];
      }
      NSLog(@"done?");
@@ -350,7 +351,6 @@
 - (UIStoryboardSegue *)segueForUnwindingToViewController:(UIViewController *)toViewController fromViewController:(UIViewController *)fromViewController identifier:(NSString *)identifier {
     // Instantiate a new CustomUnwindSegue
     CustomUnwindSegue *segue = [[CustomUnwindSegue alloc] initWithIdentifier:identifier source:fromViewController destination:toViewController];
-    NSLog(@"blahhhhh");
     // Set the target point for the animation to the center of the button in this VC
     segue.targetPoint = [(CardsViewController*)toViewController getViewCenter];
     return segue;
