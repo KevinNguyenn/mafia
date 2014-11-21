@@ -50,6 +50,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector : @selector(ViewControllerShouldReloadNotification) name:@"ViewControllerShouldReloadNotification" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector : @selector(pullUpIndividualCard:) name:@"pullUpIndividualCard" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector : @selector(updateNameOfCard:) name:@"updateNameOfCard" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector : @selector(addDeadLabel:) name:@"KillPlayer" object:nil];
+
     
     
     // Do any additional setup after loading the view.
@@ -350,6 +352,35 @@
     [context save:&error];
     
     NSLog(@"updated card!");
+}
+
+-(void) addDeadLabel: (NSNotification *) cardSpec {
+    //    NSDictionary *cardDict = [cardSpec userInfo];
+    //    NSString *name = [cardDict objectForKey: @"playerName"];
+    
+    // access the core data
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = appDelegate.managedObjectContext;
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Card" inManagedObjectContext:context];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    
+    // Save changes to the persistent store
+    NSError *error;
+    
+    NSMutableArray *tempArray = [[NSMutableArray alloc] init];
+    tempArray = [[context executeFetchRequest :request error: &error] mutableCopy];
+    SingleCard *tempCard;
+    NSManagedObject *temp;
+    for (temp in tempArray) {
+        tempCard = [temp valueForKey:@"oneCard"];
+        if(tempCard.cardNumber == self.card.cardNumber) {
+            NSLog(@"reached the card");
+            [tempCard.nameLabel setText: @"Dead"];
+            tempCard.userInteractionEnabled = NO;
+        }
+    }
+    [context save:&error];
 }
 
 
