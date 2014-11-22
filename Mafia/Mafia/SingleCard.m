@@ -77,9 +77,7 @@
 }
 
 -(void) handleSingleTap : (UITapGestureRecognizer *)gr {
-    NSLog(@"touched card!");
     NSDictionary *theCard = @{@"card": self};
-    NSLog(@"%d", self.cardNumber);
     [[NSNotificationCenter defaultCenter] postNotificationName:@"pullUpIndividualCard" object:nil userInfo:theCard];
     
 }

@@ -9,6 +9,7 @@
 #import "CardsViewController.h"
 #import "AppDelegate.h"
 #import "SingleCardViewController.h"
+#import "EndGameViewController.h"
 
 // Custom segue stuff
 #import "CustomSegue.h"
@@ -31,6 +32,10 @@
 @property BOOL canDisableCard;
 @property BOOL deathSwitchCase;
 
+// indicate which team won
+@property (nonatomic, weak) NSString *whichSideWon;
+@property BOOL gameOver;
+
 @end
 
 @implementation CardsViewController
@@ -46,7 +51,7 @@
     [self.deathSwitch addTarget:self action:@selector(deathToggled:) forControlEvents: UIControlEventValueChanged];
     
     // setup observers for nsnotification methods
-    [[NSNotificationCenter defaultCenter] addObserver:self selector : @selector(ViewControllerShouldReloadNotification) name:@"ViewControllerShouldReloadNotification" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector : @selector(ViewControllerShouldReloadNotification) name:@"ViewControllerShouldReloadNotification" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector : @selector(pullUpIndividualCard:) name:@"pullUpIndividualCard" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector : @selector(updateNameOfCard:) name:@"updateNameOfCard" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector : @selector(addDeadLabel) name:@"KillPlayer" object:nil];
@@ -82,7 +87,6 @@
     // beginning start
     else {
         self.deathSwitchCase = NO;
-        NSLog(@"beginning start");
         self.beginDayButton.enabled = NO;
         self.beginNightButton.enabled = YES;
         self.continueDayButton.enabled = NO;
@@ -95,20 +99,22 @@
     
 }
 
-//- (void)viewDidAppear:(BOOL)animated {
-//    [super viewDidAppear:animated];
-//    NSLog(@"U WOT M8");
-//
-//
-//}
+// Perhaps hacky
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if(self.gameOver) {
+        // slight delay
+        [NSThread sleepForTimeInterval:1.0f];
+        [self performSegueWithIdentifier : @"endGameSegue" sender : self];
+    }
+
+}
 
 // if gameover, performSegue which leads to another viewcontroller gameover
 // play again leads back to player picker
 
-// TODO: Need help figuring out when to call this method
-//       and where to perform this segue
 - (void)checkGameStatus {
-    bool gameOver = false;
+    self.gameOver = false;
     bool allMafiaDead = false;
     int numAlive = 0;
     int numMafiaAlive = 0;
@@ -131,19 +137,12 @@
     
     if(numMafiaAlive == 0) {
         allMafiaDead = true;
-        gameOver = true;
+        self.gameOver = true;
+        self.whichSideWon = @"Innocent Win!!";
     }
     else if(numMafiaAlive > numAlive - numMafiaAlive) {
-        gameOver = true;
-    }
-    
-    if(gameOver) {
-        if(allMafiaDead) {
-            //[self performSegueWithIdentifier : @"mafiaLoses" sender : tempCard];
-        }
-        else {
-            //[self performSegueWithIdentifier : @"mafiaWins" sender : tempCard];
-        }
+        self.gameOver = true;
+        self.whichSideWon = @"Mafia Win!!";
     }
 }
 
@@ -174,11 +173,8 @@
             [self.view addSubview:tempCard];
             
             // [redux] enable the card touch to perform kill conditioned on whether the death switch is on or not
-
-    
             // case for death switch
             if(self.deathSwitchCase == YES) {
-                NSLog(@"death switch case");
                 if(self.canDisableCard == NO) {
                     tempCard.userInteractionEnabled = YES;
                 }
@@ -343,9 +339,10 @@
     [self refreshCards];
 }
 
--(void) ViewControllerShouldReloadNotification {
-    [self refreshCards];
-}
+//-(void) ViewControllerShouldReloadNotification {
+//    NSLog(@"IS THIS CALLLLLED???");
+//    [self refreshCards];
+//}
 
 
 // Core data under-the-hood method
@@ -365,18 +362,15 @@
     NSDictionary *cardDict = [cardSpec userInfo];
     SingleCard *card = [cardDict objectForKey: @"card"];
     // temporary variable
-    NSLog(@"pull up card");
     self.card = card;
-    NSLog(@"%d", self.card.cardNumber);
     [self performSegueWithIdentifier : @"viewSingleCard" sender : card];
 }
 
 // NSNotification method
 -(void) updateNameOfCard : (NSNotification *) cardSpec {
-    NSLog(@"pls update name");
     NSDictionary *cardDict = [cardSpec userInfo];
     NSString *name = [cardDict objectForKey: @"playerName"];
-    NSLog(@"%@", name);
+//    NSLog(@"%@", name);
     
     // access the core data
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
@@ -472,6 +466,14 @@
          ((CustomSegue *)segue).card = sender;
          self.cardCenter = [sender getCenter];
      }
+     else if([segue.identifier isEqualToString:@"endGameSegue"]) {
+         EndGameViewController *destinationViewController = [segue destinationViewController];
+         NSLog(@"this is the end game");
+         [destinationViewController showTeam : self.whichSideWon];
+     }
+     
+     
+     
      // trigger message that restarts the card selections
      
 //     else if([segue.identifier isEqualToString:@"beginGame"]) {
@@ -496,7 +498,9 @@
 //         }
 //     }
      
-     NSLog(@"done?");
+     
+     
+//     NSLog(@"done?");
  }
 
 // THIS IS REALLY HACKY...
@@ -504,6 +508,7 @@
 // It needs to be here to create a link for the unwind segue.
 // But we'll do nothing with it.
 - (IBAction) unwindFromViewController:(UIStoryboardSegue *)sender {
+    // perform a check everytime individual card has been made.
     [self refreshCards];
 }
 

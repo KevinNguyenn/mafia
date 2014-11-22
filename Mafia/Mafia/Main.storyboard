@@ -727,12 +727,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zzF-My-HyQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1009" y="-442"/>
+            <point key="canvasLocation" x="-1086" y="-476"/>
         </scene>
         <!--endGame View Controller-->
         <scene sceneID="A3u-ID-xFn">
             <objects>
-                <viewController title="endGame View Controller" id="asc-T3-9V1" sceneMemberID="viewController">
+                <viewController title="endGame View Controller" id="asc-T3-9V1" customClass="EndGameViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hsh-ih-2Fj"/>
                         <viewControllerLayoutGuide type="bottom" id="pM7-be-o6T"/>
@@ -740,8 +740,28 @@
                     <view key="view" contentMode="scaleToFill" id="ofb-gN-fVq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmV-lg-bJX">
+                                <rect key="frame" x="16" y="273" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3W6-GI-4Jh">
+                                <rect key="frame" x="16" y="518" width="288" height="30"/>
+                                <state key="normal" title="Play Again?">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="DaY-SH-9iD" kind="modal" id="jJ8-PT-gJn"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="winnerLabel" destination="gmV-lg-bJX" id="cja-7w-iqq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vd0-zF-zqm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -842,7 +862,7 @@
                         <outlet property="deathSwitch" destination="7Ls-EY-On0" id="xmD-8l-5X4"/>
                         <outlet property="deathSwitchLabel" destination="2Nh-2X-Krs" id="JYp-EH-do7"/>
                         <segue destination="Hw8-cr-clw" kind="custom" identifier="viewSingleCard" customClass="CustomSegue" id="5OS-V4-xJS"/>
-                        <segue destination="asc-T3-9V1" kind="modal" identifier="endGameSegue" modalTransitionStyle="crossDissolve" id="1g5-P1-Iv7"/>
+                        <segue destination="asc-T3-9V1" kind="modal" identifier="endGameSegue" modalTransitionStyle="coverVertical" id="1g5-P1-Iv7"/>
                         <segue destination="mHY-fR-UaX" kind="modal" identifier="playersNotFilledSegue" modalTransitionStyle="crossDissolve" id="xEs-R9-SPq"/>
                     </connections>
                 </viewController>
@@ -946,6 +966,8 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="236" height="395"/>
                     <connections>
                         <outlet property="nameField" destination="OLL-We-999" id="ocw-5m-Vbp"/>
                         <outlet property="roleLabel" destination="gMb-BG-hgg" id="oGs-Dg-iEb"/>
@@ -965,8 +987,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="djJ-dj-rOw"/>
-        <segue reference="ht0-VE-uw8"/>
         <segue reference="4AE-H6-ULJ"/>
+        <segue reference="ht0-VE-uw8"/>
+        <segue reference="jJ8-PT-gJn"/>
     </inferredMetricsTieBreakers>
 </document>

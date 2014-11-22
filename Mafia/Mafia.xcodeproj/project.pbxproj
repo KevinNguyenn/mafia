@@ -14,6 +14,7 @@
 		9D3CC2CA1A17FD6900ED9BE7 /* delete_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3CC2C91A17FD6900ED9BE7 /* delete_24.png */; };
 		9D4A589A1A0069EE00B955D4 /* CardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A58991A0069EE00B955D4 /* CardsViewController.m */; };
 		9D4FE8E61A1803A300608336 /* NSMutableArray_Shuffle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4FE8E51A1803A300608336 /* NSMutableArray_Shuffle.m */; };
+		9D75A9071A2011F200E14854 /* EndGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D75A9061A2011F200E14854 /* EndGameViewController.m */; };
 		9D7E388C1A15713E00044C2B /* SingleCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7E388B1A15713E00044C2B /* SingleCardViewController.m */; };
 		9D7E388F1A15BB0300044C2B /* CustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7E388E1A15BB0300044C2B /* CustomSegue.m */; };
 		9D7E38921A15BC0800044C2B /* CustomUnwindSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7E38911A15BC0800044C2B /* CustomUnwindSegue.m */; };
@@ -57,6 +58,8 @@
 		9D4A58991A0069EE00B955D4 /* CardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardsViewController.m; sourceTree = "<group>"; };
 		9D4FE8E41A1803A300608336 /* NSMutableArray_Shuffle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMutableArray_Shuffle.h; sourceTree = "<group>"; };
 		9D4FE8E51A1803A300608336 /* NSMutableArray_Shuffle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMutableArray_Shuffle.m; sourceTree = "<group>"; };
+		9D75A9051A2011F200E14854 /* EndGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndGameViewController.h; sourceTree = "<group>"; };
+		9D75A9061A2011F200E14854 /* EndGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndGameViewController.m; sourceTree = "<group>"; };
 		9D7E388A1A15713E00044C2B /* SingleCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleCardViewController.h; sourceTree = "<group>"; };
 		9D7E388B1A15713E00044C2B /* SingleCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleCardViewController.m; sourceTree = "<group>"; };
 		9D7E388D1A15BB0300044C2B /* CustomSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSegue.h; sourceTree = "<group>"; };
@@ -136,9 +139,9 @@
 				9D3CC2C91A17FD6900ED9BE7 /* delete_24.png */,
 				9DEB387D1A12CE60003B72ED /* Model.xcdatamodeld */,
 				8B8B1D6919F7307B00306163 /* mafia.jpg */,
-				9DB14CE21A1FB92C0083BBB1 /* Main.storyboard */,
 				9D897BEA19F07C4C00C1519F /* AppDelegate.h */,
 				9D897BEB19F07C4C00C1519F /* AppDelegate.m */,
+				9DB14CE21A1FB92C0083BBB1 /* Main.storyboard */,
 				9D897BED19F07C4C00C1519F /* ViewController.h */,
 				9D897BEE19F07C4C00C1519F /* ViewController.m */,
 				8B8B1D6219F72E3A00306163 /* MafiaBackground.h */,
@@ -155,6 +158,8 @@
 				9D7E388B1A15713E00044C2B /* SingleCardViewController.m */,
 				9DAC8F6A1A1E98BD00FD6697 /* SingleCardPlayerViewController.h */,
 				9DAC8F6B1A1E98BD00FD6697 /* SingleCardPlayerViewController.m */,
+				9D75A9051A2011F200E14854 /* EndGameViewController.h */,
+				9D75A9061A2011F200E14854 /* EndGameViewController.m */,
 				9D4FE8E41A1803A300608336 /* NSMutableArray_Shuffle.h */,
 				9D4FE8E51A1803A300608336 /* NSMutableArray_Shuffle.m */,
 				9D32D1A61A108C7200319C4E /* NightKillPersonViewController.h */,
@@ -311,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D7E38951A15D35D00044C2B /* CardsNavigationViewController.m in Sources */,
+				9D75A9071A2011F200E14854 /* EndGameViewController.m in Sources */,
 				8B8B1D6419F72E3B00306163 /* MafiaBackground.m in Sources */,
 				9D897BEF19F07C4C00C1519F /* ViewController.m in Sources */,
 				9D897BEC19F07C4C00C1519F /* AppDelegate.m in Sources */,

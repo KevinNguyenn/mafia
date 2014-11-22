@@ -47,7 +47,7 @@
                          // change the button here
                          // and show roles
                          if([(CardsViewController *)sourceViewController getSwitchStatus] == YES) {
-                             NSLog(@"do the kill from custom segue");
+//                             NSLog(@"do the kill from custom segue");
                              [(SingleCardViewController *)destinationViewController displayKillButton:@"Kill"];
                              NSArray *childVCArray = ((SingleCardViewController *)destinationViewController).childViewControllers;
                              // temp variable for iteration

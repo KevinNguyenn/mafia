@@ -64,10 +64,9 @@
     [self.nameField removeFromSuperview];
     UILabel *nameLabel = [[UILabel alloc] initWithFrame: CGRectMake(16, 61, 204, 30)];
     [nameLabel setText:name];
-    [nameLabel setFont:[UIFont fontWithName: @"Helvetica Neue" size: 17.0f]];
+    [nameLabel setFont:[UIFont fontWithName: @"Helvetica Neue" size: 20.0f]];
     nameLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview: nameLabel];
-    NSLog(@"show the name");
 }
 
 -(void) showRole : (NSInteger) roleNum {
