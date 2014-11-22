@@ -41,14 +41,17 @@
 //    // Drawing code
 //}
 
--(id) makeCard : (CGRect) cardSpec WithLabel : (CGRect) labelSpec AndType : (int)labelType AndCardNumber : (NSInteger) cardNumber AndRole : (NSInteger) role {
+-(id) makeCard : (CGRect) cardSpec WithLabel : (CGRect) labelSpec AndType : (int)labelType AndCardNumber : (NSInteger) cardNumber AndRole : (NSInteger) role AndDeath: (CGRect) deathSpec {
     
     SingleCard *card = [[SingleCard alloc] initWithFrame: cardSpec];
     card.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |
     UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
     
+    card.deathLabel = [[UILabel alloc] initWithFrame: deathSpec];
+    
     card.nameLabel = [[UILabel alloc] initWithFrame: labelSpec];
     
+    [card.deathLabel setTextColor:[UIColor redColor]];
     [card.nameLabel setTextColor:[UIColor blackColor]];
     [card.nameLabel setBackgroundColor:[UIColor clearColor]];
     
@@ -64,9 +67,12 @@
     card.role = role;
     card.isAlive = true;
     
+    card.deathLabel.autoresizingMask = card.autoresizingMask;
+    card.deathLabel.textAlignment = NSTextAlignmentCenter;
     card.nameLabel.autoresizingMask = card.autoresizingMask;
     card.nameLabel.textAlignment = NSTextAlignmentCenter;
     [card addSubview:card.nameLabel];
+    [card addSubview:card.deathLabel];
     card.cardNumber = cardNumber;
     card.cardHeight = cardSpec.size.width;
     card.cardWidth = cardSpec.size.width;

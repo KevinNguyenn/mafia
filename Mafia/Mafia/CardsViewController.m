@@ -268,14 +268,22 @@
     CGFloat labelWidth = 0.0;
     CGFloat labelHeight = 0.0;
     
+    CGFloat deathXCoord = 0.0;
+    CGFloat deathYCoord = 0.0;
+    CGFloat deathWidth = 0.0;
+    CGFloat deathHeight = 0.0;
+    
     // setup label for different sizes of cards
     NSDictionary *theLabel;
+    NSDictionary *deathLabel;
     if([labelSpecs objectForKey:@"labelType1"]) {
         theLabel = [labelSpecs objectForKey:@"labelType1"];
+        deathLabel = [labelSpecs objectForKey:@"deathLabel"];
         labelType = 1;
     }
     else {
         theLabel = [labelSpecs objectForKey:@"labelType2"];
+        deathLabel = [labelSpecs objectForKey:@"deathLabel2"];
         labelType = 2;
     }
     
@@ -283,6 +291,11 @@
     labelYCoord = (CGFloat)[[theLabel objectForKey: @"yCoord"] floatValue];
     labelWidth = (CGFloat)[[theLabel objectForKey: @"labelWidth"] floatValue];
     labelHeight = (CGFloat)[[theLabel objectForKey: @"labelHeight"] floatValue];
+    
+    deathXCoord = (CGFloat)[[deathLabel objectForKey: @"xCoord"] floatValue];
+    deathYCoord = (CGFloat)[[deathLabel objectForKey: @"yCoord"] floatValue];
+    deathWidth = (CGFloat)[[deathLabel objectForKey: @"labelWidth"] floatValue];
+    deathHeight = (CGFloat)[[deathLabel objectForKey: @"labelHeight"] floatValue];
     
     NSInteger role_index = 0;
     
@@ -311,6 +324,7 @@
         // setup card
         CGRect cardSpec = CGRectMake(xCoord, yCoord, cardWidth, cardHeight);
         CGRect labelSpec = CGRectMake(labelXCoord, labelYCoord, labelWidth, labelHeight);
+        CGRect deathSpec = CGRectMake(deathXCoord, deathYCoord, deathWidth,  deathHeight);
         singleCard = [[SingleCard alloc] init];
         
         NSInteger role = [[roles objectAtIndex:role_index] integerValue];
@@ -318,7 +332,7 @@
         
         NSLog(@"Assinging role = %lu to player %lu", (long)role, (long)role_index);
         
-        singleCard = [singleCard makeCard : cardSpec WithLabel: labelSpec AndType: labelType AndCardNumber : cardNumber AndRole : role];
+        singleCard = [singleCard makeCard : cardSpec WithLabel: labelSpec AndType: labelType AndCardNumber : cardNumber AndRole : role AndDeath: deathSpec];
         
         
 //        SingleCardViewController *singleCardVC = [[SingleCardViewController alloc] init];
@@ -417,9 +431,11 @@
     for (temp in tempArray) {
         tempCard = [temp valueForKey:@"oneCard"];
         if(tempCard.cardNumber == self.card.cardNumber) {
-            [tempCard.nameLabel setText: @"Dead"];
+            [tempCard.deathLabel setText: @"Dead"];
             tempCard.isAlive = NO;
-            tempCard.userInteractionEnabled = NO;
+            self.canDisableCard = YES;
+            [self.deathSwitch setOn:NO];
+            self.deathSwitch.enabled = NO;
         }
     }
     [context save:&error];
@@ -476,27 +492,27 @@
      
      // trigger message that restarts the card selections
      
-//     else if([segue.identifier isEqualToString:@"beginGame"]) {
-//         NSLog(@"sorta about to start game");
-//         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-//         NSManagedObjectContext *context = appDelegate.managedObjectContext;
-//         NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Card" inManagedObjectContext:context];
-//         NSFetchRequest *request = [[NSFetchRequest alloc] init];
-//         [request setEntity:entityDescription];
-//         
-//         // put the nsmanageobjects/datamodels into the contactList
-//         self.cardStorage = [[context executeFetchRequest:request error:nil] mutableCopy];
-//         
-//         SingleCard *tempCard;
-//         NSManagedObject *temp;
-//         // actually load the cards onto the screen...
-//         for (temp in self.cardStorage) {
-//             tempCard = [temp valueForKey:@"oneCard"];
-//             if(tempCard.isSelected == NO) {
-//                 [self performSegueWithIdentifier : @"playersNotFilledSegue" sender : self];
-//             }
-//         }
-//     }
+     else if([segue.identifier isEqualToString:@"beginGame"]) {
+         NSLog(@"sorta about to start game");
+         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+         NSManagedObjectContext *context = appDelegate.managedObjectContext;
+         NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Card" inManagedObjectContext:context];
+         NSFetchRequest *request = [[NSFetchRequest alloc] init];
+         [request setEntity:entityDescription];
+         
+         // put the nsmanageobjects/datamodels into the contactList
+         self.cardStorage = [[context executeFetchRequest:request error:nil] mutableCopy];
+         
+         SingleCard *tempCard;
+         NSManagedObject *temp;
+         // actually load the cards onto the screen...
+         for (temp in self.cardStorage) {
+             tempCard = [temp valueForKey:@"oneCard"];
+             if(tempCard.isSelected == NO) {
+                 [self performSegueWithIdentifier : @"playersNotFilledSegue" sender : self];
+             }
+         }
+     }
      
      
      

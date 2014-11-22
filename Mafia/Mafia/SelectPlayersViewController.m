@@ -54,7 +54,9 @@
                      @{@"cardWidth": @"75", @"cardHeight": @"112", @"xCoord": @"123", @"yCoord": @"288"}, @"card5",
                      @{@"cardWidth": @"75", @"cardHeight": @"112", @"xCoord": @"228", @"yCoord": @"288"}, @"card6", nil];
         labelSpecs = [[NSDictionary alloc] initWithObjectsAndKeys:
-                      @{@"labelWidth": @"75", @"labelHeight": @"20", @"xCoord": @"0", @"yCoord": @"90"} , @"labelType1", nil];
+                      @{@"labelWidth": @"75", @"labelHeight": @"20", @"xCoord": @"0", @"yCoord": @"90"} , @"labelType1",
+                      @{@"labelWidth": @"75", @"labelHeight": @"20", @"xCoord": @"0", @"yCoord": @"45"} , @"deathLabel",
+                      nil];
     }
 }
 
@@ -100,7 +102,9 @@
                      @{@"cardWidth": @"75", @"cardHeight": @"112", @"xCoord": @"123", @"yCoord": @"288"}, @"card5",
                      @{@"cardWidth": @"75", @"cardHeight": @"112", @"xCoord": @"228", @"yCoord": @"288"}, @"card6", nil];
         labelSpecs = [[NSDictionary alloc] initWithObjectsAndKeys:
-                      @{@"labelWidth": @"75", @"labelHeight": @"20", @"xCoord": @"0", @"yCoord": @"90"} , @"labelType1", nil];
+                      @{@"labelWidth": @"75", @"labelHeight": @"20", @"xCoord": @"0", @"yCoord": @"90"} , @"labelType1",
+                      @{@"labelWidth": @"75", @"labelHeight": @"20", @"xCoord": @"0", @"yCoord": @"45"} , @"deathLabel",
+                      nil];
     }
     //!!!!!!!!!
     // Scale #: 1
@@ -116,7 +120,9 @@
                      @{@"cardWidth": @"75", @"cardHeight": @"112", @"xCoord": @"228", @"yCoord": @"258"}, @"card6",
                      @{@"cardWidth": @"75", @"cardHeight": @"112", @"xCoord": @"123", @"yCoord": @"388"}, @"card7", nil];
         labelSpecs = [[NSDictionary alloc] initWithObjectsAndKeys:
-                      @{@"labelWidth": @"75", @"labelHeight": @"20", @"xCoord": @"0", @"yCoord": @"90"} , @"labelType1", nil];
+                      @{@"labelWidth": @"75", @"labelHeight": @"20", @"xCoord": @"0", @"yCoord": @"90"} , @"labelType1",
+                      @{@"labelWidth": @"75", @"labelHeight": @"20", @"xCoord": @"0", @"yCoord": @"45"} , @"deathLabel",
+                      nil];
     }
     // Scale #: 2
     // 8 players
@@ -132,7 +138,9 @@
                      @{@"cardWidth": @"65", @"cardHeight": @"102", @"xCoord": @"77", @"yCoord": @"380"}, @"card7",
                      @{@"cardWidth": @"65", @"cardHeight": @"102", @"xCoord": @"186", @"yCoord": @"380"}, @"card8", nil];
         labelSpecs = [[NSDictionary alloc] initWithObjectsAndKeys:
-                      @{@"labelWidth": @"65", @"labelHeight": @"20", @"xCoord": @"0", @"yCoord": @"79"} , @"labelType1", nil];
+                      @{@"labelWidth": @"65", @"labelHeight": @"20", @"xCoord": @"0", @"yCoord": @"79"} , @"labelType1",
+                      @{@"labelWidth": @"65", @"labelHeight": @"20", @"xCoord": @"0", @"yCoord": @"40"} , @"deathLabel",
+                      nil];
     }
     // Scale #: 2
     // 9 players
@@ -149,7 +157,9 @@
                      @{@"cardWidth": @"65", @"cardHeight": @"102", @"xCoord": @"128", @"yCoord": @"380"}, @"card8",
                      @{@"cardWidth": @"65", @"cardHeight": @"102", @"xCoord": @"228", @"yCoord": @"380"}, @"card9", nil];
         labelSpecs = [[NSDictionary alloc] initWithObjectsAndKeys:
-                      @{@"labelWidth": @"65", @"labelHeight": @"20", @"xCoord": @"0", @"yCoord": @"79"} , @"labelType1", nil];
+                      @{@"labelWidth": @"65", @"labelHeight": @"20", @"xCoord": @"0", @"yCoord": @"79"} , @"labelType1",
+                      @{@"labelWidth": @"65", @"labelHeight": @"20", @"xCoord": @"0", @"yCoord": @"40"} , @"deathLabel",
+                      nil];
     }
     // Scale #: 3
     // 10 players
@@ -167,7 +177,9 @@
                      @{@"cardWidth": @"58", @"cardHeight": @"80", @"xCoord": @"225", @"yCoord": @"313"}, @"card9",
                      @{@"cardWidth": @"58", @"cardHeight": @"80", @"xCoord": @"136", @"yCoord": @"409"}, @"card10", nil];
         labelSpecs = [[NSDictionary alloc] initWithObjectsAndKeys:
-                     @{@"labelWidth": @"58", @"labelHeight": @"20", @"xCoord": @"0", @"yCoord": @"60"} , @"labelType2", nil];
+                     @{@"labelWidth": @"58", @"labelHeight": @"20", @"xCoord": @"0", @"yCoord": @"60"} , @"labelType2",
+                     @{@"labelWidth": @"58", @"labelHeight": @"20", @"xCoord": @"0", @"yCoord": @"30"} , @"deathLabel2",
+                      nil];
     }
     else {
         NSLog(@"wat something went wrong");

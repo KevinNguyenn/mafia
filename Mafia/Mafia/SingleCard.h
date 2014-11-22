@@ -21,6 +21,8 @@
 
 @property (nonatomic) NSInteger cardNumber;
 
+@property (nonatomic) UILabel *deathLabel;
+
 @property (nonatomic) UILabel *nameLabel;
 @property (nonatomic) NSString *name;
 
@@ -35,7 +37,7 @@
 // [TODO] attach connected textfield and update name
 
 
--(id)makeCard : (CGRect) cardSpec WithLabel : (CGRect) labelSpec AndType : (int) labelType AndCardNumber : (NSInteger) cardNumber AndRole : (NSInteger) role;
+-(id)makeCard : (CGRect) cardSpec WithLabel : (CGRect) labelSpec AndType : (int) labelType AndCardNumber : (NSInteger) cardNumber AndRole : (NSInteger) role AndDeath: (CGRect) deathSpec;
 -(CGPoint) getCenter;
 -(UILabel*) getNameLabel;
 

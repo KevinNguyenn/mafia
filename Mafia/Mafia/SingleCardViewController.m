@@ -40,6 +40,7 @@
 
 -(void) displayKillButton : (NSString *) theKill {
     [self.notificationLabel setText:@"Player not killed."];
+    self.exitButton.enabled = YES;
     [self.actionButton setTitle: theKill forState:UIControlStateNormal];
     [self.actionButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
 }
@@ -78,7 +79,7 @@
     if(self.tempString != NULL && ![self.tempString isEqualToString:@""]) {
         NSDictionary *theName = @{@"playerName": self.tempString};
         [[NSNotificationCenter defaultCenter] postNotificationName:@"updateNameOfCard" object:nil userInfo:theName];
-        [NSThread sleepForTimeInterval:1.0f];
+        [NSThread sleepForTimeInterval:0.5f];
         dispatch_async(dispatch_get_main_queue(), ^(void){
             [self.notificationLabel setText:@"Name saved."];
         });
@@ -90,7 +91,7 @@
 -(void)killPlayer:(UIButton *)sender {
     NSLog(@"KillButton");
     [[NSNotificationCenter defaultCenter] postNotificationName:@"KillPlayer" object:nil ];
-    [NSThread sleepForTimeInterval:1.0f];
+    [NSThread sleepForTimeInterval:0.5f];
     dispatch_async(dispatch_get_main_queue(), ^(void){
         [self.notificationLabel setText:@"Player killed."];
     });
