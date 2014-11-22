@@ -27,6 +27,7 @@
 		9D897C0319F07C4D00C1519F /* MafiaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D897C0219F07C4D00C1519F /* MafiaTests.m */; };
 		9DAC8F6C1A1E98BD00FD6697 /* SingleCardPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DAC8F6B1A1E98BD00FD6697 /* SingleCardPlayerViewController.m */; };
 		9DB14CE31A1FB92C0083BBB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DB14CE21A1FB92C0083BBB1 /* Main.storyboard */; };
+		9DD5AA9D1A2129E3000EAC03 /* PlayersNotFilledViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD5AA9C1A2129E3000EAC03 /* PlayersNotFilledViewController.m */; };
 		9DD954B01A12BB3700CAB60F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD954AF1A12BB3700CAB60F /* CoreData.framework */; };
 		9DD954B21A12BC8800CAB60F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD954B11A12BC8800CAB60F /* Foundation.framework */; };
 		9DD954B41A12BC9D00CAB60F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD954B31A12BC9D00CAB60F /* UIKit.framework */; };
@@ -83,6 +84,8 @@
 		9DAC8F6A1A1E98BD00FD6697 /* SingleCardPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleCardPlayerViewController.h; sourceTree = "<group>"; };
 		9DAC8F6B1A1E98BD00FD6697 /* SingleCardPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleCardPlayerViewController.m; sourceTree = "<group>"; };
 		9DB14CE21A1FB92C0083BBB1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		9DD5AA9B1A2129E3000EAC03 /* PlayersNotFilledViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayersNotFilledViewController.h; sourceTree = "<group>"; };
+		9DD5AA9C1A2129E3000EAC03 /* PlayersNotFilledViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayersNotFilledViewController.m; sourceTree = "<group>"; };
 		9DD954AF1A12BB3700CAB60F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		9DD954B11A12BC8800CAB60F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9DD954B31A12BC9D00CAB60F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -160,6 +163,8 @@
 				9DAC8F6B1A1E98BD00FD6697 /* SingleCardPlayerViewController.m */,
 				9D75A9051A2011F200E14854 /* EndGameViewController.h */,
 				9D75A9061A2011F200E14854 /* EndGameViewController.m */,
+				9DD5AA9B1A2129E3000EAC03 /* PlayersNotFilledViewController.h */,
+				9DD5AA9C1A2129E3000EAC03 /* PlayersNotFilledViewController.m */,
 				9D4FE8E41A1803A300608336 /* NSMutableArray_Shuffle.h */,
 				9D4FE8E51A1803A300608336 /* NSMutableArray_Shuffle.m */,
 				9D32D1A61A108C7200319C4E /* NightKillPersonViewController.h */,
@@ -323,6 +328,7 @@
 				9D897BE919F07C4C00C1519F /* main.m in Sources */,
 				9D4FE8E61A1803A300608336 /* NSMutableArray_Shuffle.m in Sources */,
 				9DAC8F6C1A1E98BD00FD6697 /* SingleCardPlayerViewController.m in Sources */,
+				9DD5AA9D1A2129E3000EAC03 /* PlayersNotFilledViewController.m in Sources */,
 				9DEAE22F1A0ABCC400887B50 /* SingleCard.m in Sources */,
 				9D4A589A1A0069EE00B955D4 /* CardsViewController.m in Sources */,
 				9D32D1A81A108C7200319C4E /* NightKillPersonViewController.m in Sources */,

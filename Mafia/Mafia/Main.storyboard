@@ -697,7 +697,7 @@
         <!--playersNotFilled View Controller-->
         <scene sceneID="jc0-Xt-Kfc">
             <objects>
-                <viewController title="playersNotFilled View Controller" id="mHY-fR-UaX" sceneMemberID="viewController">
+                <viewController title="playersNotFilled View Controller" id="mHY-fR-UaX" customClass="PlayersNotFilledViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vME-0N-xRE"/>
                         <viewControllerLayoutGuide type="bottom" id="bhK-cK-Nac"/>
@@ -706,21 +706,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Not all of the cards have been selected! All cards must be selected to start the game!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXk-Xg-ZwQ">
-                                <rect key="frame" x="41" y="193" width="238" height="182"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="textColor" red="0.80000000000000004" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IeL-nv-uiJ">
                                 <rect key="frame" x="143" y="518" width="35" height="30"/>
                                 <state key="normal" title="Back">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="DaY-SH-9iD" kind="modal" id="djJ-dj-rOw"/>
+                                    <action selector="goBackToCards:" destination="mHY-fR-UaX" eventType="touchUpInside" id="z56-c8-4mW"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Not all of the cards have been selected! All cards must be selected to start the game!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXk-Xg-ZwQ">
+                                <rect key="frame" x="16" y="193" width="288" height="182"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.80000000000000004" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -977,6 +977,58 @@
             </objects>
             <point key="canvasLocation" x="298" y="630.5"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="i7a-vC-zrO">
+            <objects>
+                <viewController id="lA5-i0-Ykt" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="olc-eN-TvQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="2oW-xO-Je7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2N9-dH-fCk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bdt-6B-kFf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="175" y="1294"/>
+        </scene>
+        <!--Collection View Controller-->
+        <scene sceneID="aZH-on-M6Z">
+            <objects>
+                <collectionViewController id="Ivf-fS-NsA" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="kwG-Bj-ox6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7WO-9W-MLd">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="n2E-Yd-HLw">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="Ivf-fS-NsA" id="lHf-NV-V6s"/>
+                            <outlet property="delegate" destination="Ivf-fS-NsA" id="2pu-2y-O36"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TkP-An-h5y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="440" y="1346"/>
+        </scene>
     </scenes>
     <resources>
         <image name="delete_24.png" width="24" height="24"/>
@@ -988,7 +1040,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="4AE-H6-ULJ"/>
-        <segue reference="ht0-VE-uw8"/>
+        <segue reference="fFL-co-Ina"/>
         <segue reference="jJ8-PT-gJn"/>
     </inferredMetricsTieBreakers>
 </document>
