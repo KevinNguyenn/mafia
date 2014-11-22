@@ -21,6 +21,12 @@
     // Do any additional setup after loading the view.
     
     [self.winnerLabel setText:self.tempString];
+    if([self.winnerLabel.text isEqualToString:@"Innocent Win!!"]) {
+        [self.winnerLabel setTextColor:[UIColor greenColor]];
+    }
+    else if([self.winnerLabel.text isEqualToString:@"Mafia Win!!"]) {
+        [self.winnerLabel setTextColor:[UIColor redColor]];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
