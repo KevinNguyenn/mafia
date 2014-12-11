@@ -32,6 +32,8 @@
 }
 
 
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -56,7 +58,6 @@
     NSDictionary *theName = [dict userInfo];
     NSString *name = [theName objectForKey: @"playerName"];
     self.tempString = name;
-    NSLog(@"put name into temp string");
 }
 
 
@@ -64,14 +65,11 @@
 
 // Dynamic method actionButton defined in viewDidLoad
 -(IBAction) btnClicked: (UIButton *)sender {
-    NSLog(@"%@", self.actionButton.titleLabel.text);
     if ([self.actionButton.titleLabel.text isEqualToString: @"Save"]) {
         [self saveName:sender];
-        NSLog(@"SaveName");
     }
     else if ([self.actionButton.titleLabel.text isEqualToString: @"Kill"]){
         [self killPlayer:sender];
-        NSLog(@"KillPlayer");
     }
 }
 
@@ -89,7 +87,6 @@
 }
 
 -(void)killPlayer:(UIButton *)sender {
-    NSLog(@"KillButton");
     [[NSNotificationCenter defaultCenter] postNotificationName:@"KillPlayer" object:nil ];
     [NSThread sleepForTimeInterval:0.5f];
     dispatch_async(dispatch_get_main_queue(), ^(void){

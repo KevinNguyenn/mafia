@@ -87,13 +87,10 @@
 // [DYNAMIC ACTION] to setup the number of cards based on the number of players
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row   inComponent:(NSInteger)component
 {
-//    NSLog(@"num players selected: %d",row);
     // 6 players
     // nil means sentinel value
     //!!!!!!!!!!!
     if(row == 0) {
-        // SHOULD NOT REACH HERE BECAUSE SET DEFAULT ON TOP OF FILE
-        NSLog(@"should not reach here?");
         cardSpecs = [[NSDictionary alloc] initWithObjectsAndKeys:
                      @{@"cardWidth": @"75", @"cardHeight": @"112", @"xCoord": @"16", @"yCoord": @"139"}, @"card1",
                      @{@"cardWidth": @"75", @"cardHeight": @"112", @"xCoord": @"123", @"yCoord": @"139"}, @"card2",
@@ -110,7 +107,6 @@
     // Scale #: 1
     // 7 players
     else if(row == 1) {
-//        NSLog(@"7 players");
         cardSpecs = [[NSDictionary alloc] initWithObjectsAndKeys:
                      @{@"cardWidth": @"75", @"cardHeight": @"112", @"xCoord": @"16", @"yCoord": @"121"}, @"card1",
                      @{@"cardWidth": @"75", @"cardHeight": @"112", @"xCoord": @"123", @"yCoord": @"121"}, @"card2",
@@ -127,7 +123,6 @@
     // Scale #: 2
     // 8 players
     else if(row == 2) {
-//        NSLog(@"8 players");
         cardSpecs = [[NSDictionary alloc] initWithObjectsAndKeys:
                      @{@"cardWidth": @"65", @"cardHeight": @"102", @"xCoord": @"27", @"yCoord": @"118"}, @"card1",
                      @{@"cardWidth": @"65", @"cardHeight": @"102", @"xCoord": @"128", @"yCoord": @"118"}, @"card2",
@@ -145,7 +140,6 @@
     // Scale #: 2
     // 9 players
     else if(row == 3) {
-//        NSLog(@"9 players");
         cardSpecs = [[NSDictionary alloc] initWithObjectsAndKeys:
                      @{@"cardWidth": @"65", @"cardHeight": @"102", @"xCoord": @"27", @"yCoord": @"118"}, @"card1",
                      @{@"cardWidth": @"65", @"cardHeight": @"102", @"xCoord": @"128", @"yCoord": @"118"}, @"card2",
@@ -164,7 +158,6 @@
     // Scale #: 3
     // 10 players
     else if(row == 4) {
-//        NSLog(@"10 players");
         cardSpecs = [[NSDictionary alloc] initWithObjectsAndKeys:
                      @{@"cardWidth": @"58", @"cardHeight": @"80", @"xCoord": @"47", @"yCoord": @"121"}, @"card1",
                      @{@"cardWidth": @"58", @"cardHeight": @"80", @"xCoord": @"136", @"yCoord": @"121"}, @"card2",
@@ -182,11 +175,8 @@
                       nil];
     }
     else {
-        NSLog(@"wat something went wrong");
+        NSLog(@"Something went wrong");
     }
-
-
-    
 }
 
 
@@ -199,7 +189,6 @@
     // Pass the selected object to the new view controller.
     
     if([segue.identifier isEqualToString: @"goToCards"]) {
-//        NSLog(@"about to go to cards");
         [segue.destinationViewController setupCards : cardSpecs AndLabels: labelSpecs AndUpdate : NO ];
     }
 }

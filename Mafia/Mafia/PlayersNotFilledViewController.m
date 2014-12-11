@@ -35,6 +35,7 @@
 */
 
 
+// added method to go back to the previous controller
 - (IBAction)goBackToCards:(UIStoryboardSegue *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }

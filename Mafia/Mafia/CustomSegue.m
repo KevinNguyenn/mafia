@@ -40,14 +40,12 @@
                      }
                      completion:^(BOOL finished){
                          [destinationViewController.view removeFromSuperview]; // remove from temp super view
-                         // present VC
-                         [sourceViewController presentViewController:destinationViewController animated:NO completion:NULL];
                          
                          
                          // change the button here
                          // and show roles
+                         // show kill from custom segue
                          if([(CardsViewController *)sourceViewController getSwitchStatus] == YES) {
-//                             NSLog(@"do the kill from custom segue");
                              [(SingleCardViewController *)destinationViewController displayKillButton:@"Kill"];
                              NSArray *childVCArray = ((SingleCardViewController *)destinationViewController).childViewControllers;
                              // temp variable for iteration
@@ -56,7 +54,6 @@
                              UIViewController *s2;
                              for(vc in childVCArray) {
                                  if([vc.title isEqualToString:@"SingleCard2 View Controller"]) {
-//                                     NSLog(@"found the view controller SingleCard2");
                                      s2 = vc;
                                  }
                              }
@@ -64,6 +61,7 @@
                              [(SingleCardPlayerViewController *)s2 modifyTextField : self.card.name];
                              [(SingleCardPlayerViewController *)s2 showRole : self.card.role];
                          }
+                         // show save from custom segue
                          else {
                              [(SingleCardViewController *)destinationViewController displaySaveButton:@"Save"];
                              NSArray *childVCArray = ((SingleCardViewController *)destinationViewController).childViewControllers;
@@ -73,12 +71,15 @@
                              UIViewController *s2;
                              for(vc in childVCArray) {
                                  if([vc.title isEqualToString:@"SingleCard2 View Controller"]) {
-//                                     NSLog(@"found the view controller SingleCard2");
                                      s2 = vc;
                                  }
                              }
                              [(SingleCardPlayerViewController *)s2 showRole : self.card.role];
                          }
+                         
+                         
+                         // present VC
+                         [sourceViewController presentViewController:destinationViewController animated:NO completion:NULL];
                          
                      }
      ];
