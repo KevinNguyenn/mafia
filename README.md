@@ -1,7 +1,7 @@
 mafia
 =====
 
-CS 378 Project
+CS 378 iOS Mobile Computing Project Fall 2014
 
 [FINAL VERSION]
 Implemented most of the targeted features that were required for app functionality. However, based on our design and structure, there are warnings that pertain to the hierarchy of the Navigation View Controller. A survey of design on the app indicates major aesthetic improvements, but this will be a future milestone as a side project.
